@@ -2,20 +2,14 @@
  * @FilePath: /Programs/Users/a123/lg-cr.github.io/content/about.md
  * @Author: Infter
  * @Date: 2026-04-17 20:53:47
- * @LastEditTime: 2026-04-17 21:53:46
+ * @LastEditTime: 2026-04-17 22:35:24
 -->
+
 +++
 date = '2026-04-17T20:53:47+08:00'
 draft = false
 title = 'About'
 +++
-
----
-title: "关于"
-date: 2026-04-17T22:30:00+08:00
-draft: false
-layout: "about"   # 如果主题有单独关于页模板可使用，否则留空
----
 
 ## 👋 我是谁
 
