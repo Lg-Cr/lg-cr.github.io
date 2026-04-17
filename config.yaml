@@ -1,5 +1,5 @@
 # config.yaml
-baseURL: "https://lg-cr.github.io/"   # 换成你自己的
+baseURL: "https://inftress.pages.dev/"   # 换成你自己的
 languageCode: "zh-cn"
 title: "Inftress 妹妹的小窝"
 theme: "PaperMod"

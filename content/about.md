@@ -2,7 +2,7 @@
  * @FilePath: /Programs/Users/a123/lg-cr.github.io/content/about.md
  * @Author: Infter
  * @Date: 2026-04-17 20:53:47
- * @LastEditTime: 2026-04-17 20:57:27
+ * @LastEditTime: 2026-04-17 21:53:46
 -->
 +++
 date = '2026-04-17T20:53:47+08:00'

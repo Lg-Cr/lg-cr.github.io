@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Inftress 妹妹的小窝</title>
-    <link>http://localhost:50785/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Inftress 妹妹的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 17 Apr 2026 19:03:14 +0800</lastBuildDate>
-    <atom:link href="http://localhost:50785/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
-      <link>http://localhost:50785/posts/hello-world/</link>
+      <link>http://localhost:1313/posts/hello-world/</link>
       <pubDate>Fri, 17 Apr 2026 19:03:14 +0800</pubDate>
-      <guid>http://localhost:50785/posts/hello-world/</guid>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
       <description>&lt;p&gt;Test
 &lt;em&gt;Test&lt;/em&gt;
 &lt;strong&gt;Test&lt;/strong&gt;
@@ -25,6 +25,62 @@
 $$
 a
 $$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;!--
+ * @FilePath: /Programs/Users/a123/lg-cr.github.io/content/about.md
+ * @Author: Infter
+ * @Date: 2026-04-17 20:53:47
+ * @LastEditTime: 2026-04-17 21:53:46
+--&gt;
+&lt;p&gt;+++
+date = &amp;lsquo;2026-04-17T20:53:47+08:00&amp;rsquo;
+draft = false
+title = &amp;lsquo;About&amp;rsquo;
++++&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;layout-about----如果主题有单独关于页模板可使用否则留空&#34;&gt;title: &amp;ldquo;关于&amp;rdquo;
+date: 2026-04-17T22:30:00+08:00
+draft: false
+layout: &amp;ldquo;about&amp;rdquo;   # 如果主题有单独关于页模板可使用，否则留空&lt;/h2&gt;
+&lt;h2 id=&#34;-我是谁&#34;&gt;👋 我是谁&lt;/h2&gt;
+&lt;p&gt;我是 &lt;strong&gt;Infter/Inftress&lt;/strong&gt;，一名热爱算法的 OIer / 信息学竞赛选手。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;坐标&lt;/strong&gt;：江西/南昌&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CCF认证等级&lt;/strong&gt;：8 级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;-关于本博客&#34;&gt;📝 关于本博客&lt;/h2&gt;
+&lt;p&gt;这里主要记录我在算法学习路上的点滴，包括但不限于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;题解与思路复盘&lt;/strong&gt;：记录经典题目的解题过程与代码实现。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;算法笔记&lt;/strong&gt;：整理数据结构与算法的核心要点，方便随时复习。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;竞赛总结&lt;/strong&gt;：赛后复盘与经验教训。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我希望通过写作，不仅能巩固自己的知识，也能帮助到同样在这条路上的你。&lt;/p&gt;
+&lt;h2 id=&#34;-博客技术栈&#34;&gt;🛠️ 博客技术栈&lt;/h2&gt;
+&lt;p&gt;本博客由以下工具驱动：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; —— 极速的静态站点生成器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主题&lt;/strong&gt;：&lt;a href=&#34;https://github.com/adityatelange/hugo-PaperMod&#34;&gt;PaperMod&lt;/a&gt; —— 简洁、响应式、支持深色模式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;部署&lt;/strong&gt;：&lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; + &lt;a href=&#34;https://github.com/features/actions&#34;&gt;GitHub Actions&lt;/a&gt; —— 自动构建与免费托管&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;评论&lt;/strong&gt;：&lt;a href=&#34;https://utteranc.es/&#34;&gt;utterances&lt;/a&gt; —— 基于 GitHub Issues 的轻量评论系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;-找到我&#34;&gt;🔗 找到我&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;：&lt;a href=&#34;https://github.com/Lg-Cr&#34;&gt;https://github.com/Lg-Cr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;洛谷&lt;/strong&gt;：&lt;a href=&#34;https://www.luogu.com.cn/user/386547&#34;&gt;https://www.luogu.com.cn/user/386547&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Codeforces&lt;/strong&gt;：&lt;a href=&#34;https://codeforces.com/profile/Infter&#34;&gt;https://codeforces.com/profile/Infter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Atcoder&lt;/strong&gt;：&lt;a href=&#34;https://atcoder.jp/users/Infter&#34;&gt;https://atcoder.jp/users/Infter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UOJ&lt;/strong&gt;：&lt;a href=&#34;https://uoj.ac/user/profile/LightningCreeper&#34;&gt;https://uoj.ac/user/profile/LightningCreeper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;电子邮箱&lt;/strong&gt;：lightningcreeper@163.com&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;QQ&lt;/strong&gt;：3655485944&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;-关于评论&#34;&gt;💬 关于评论&lt;/h2&gt;
+&lt;p&gt;本博客的评论系统基于 GitHub Issues，你需要登录 GitHub 账号才能留言。所有评论内容均存储于本博客的 GitHub 仓库中，公开透明。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
