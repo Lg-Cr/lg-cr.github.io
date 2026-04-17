@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Inftress 妹妹的小窝</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>http://localhost:50785/posts/</link>
     <description>Recent content in Posts on Inftress 妹妹的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 17 Apr 2026 19:03:14 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:50785/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
-      <link>http://localhost:1313/posts/hello-world/</link>
+      <link>http://localhost:50785/posts/hello-world/</link>
       <pubDate>Fri, 17 Apr 2026 19:03:14 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hello-world/</guid>
+      <guid>http://localhost:50785/posts/hello-world/</guid>
       <description>&lt;p&gt;Test
 &lt;em&gt;Test&lt;/em&gt;
 &lt;strong&gt;Test&lt;/strong&gt;
