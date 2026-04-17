@@ -1,10 +1,3 @@
-<!--
- * @FilePath: /Programs/Users/a123/lg-cr.github.io/content/about.md
- * @Author: Infter
- * @Date: 2026-04-17 20:53:47
- * @LastEditTime: 2026-04-17 22:35:24
--->
-
 +++
 date = '2026-04-17T20:53:47+08:00'
 draft = false
