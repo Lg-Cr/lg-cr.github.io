@@ -1,0 +1,15 @@
+<!--
+ * @FilePath: /Programs/Users/a123/lg-cr.github.io/layouts/partials/extend_footer.html
+ * @Author: Infter
+ * @Date: 2026-04-17 19:11:22
+ * @LastEditTime: 2026-04-17 19:11:27
+-->
+{{ if .Site.Params.utterances.enable }}
+<script src="https://utteranc.es/client.js"
+  repo="{{ .Site.Params.utterances.repo }}"
+  issue-term="{{ .Site.Params.utterances.issueTerm }}"
+  theme="{{ .Site.Params.utterances.theme }}"
+  crossorigin="anonymous"
+  async>
+</script>
+{{ end }}

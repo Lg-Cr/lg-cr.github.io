@@ -1,0 +1,44 @@
+# config.yaml
+baseURL: "https://lg-cr.github.io/"   # 换成你自己的
+languageCode: "zh-cn"
+title: "Inftress 妹妹的小窝"
+theme: "PaperMod"
+
+# 启用代码高亮
+markup:
+  goldmark:
+    renderer:
+      unsafe: true   # 允许渲染HTML（KaTeX 需要）
+  highlight:
+    noClasses: false
+    style: "monokai"   # 代码高亮主题
+
+# 菜单
+menu:
+  main:
+    - identifier: posts
+      name: 文章
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 20
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 30
+
+# PaperMod 主题参数
+params:
+  author: "Inftress"
+  defaultTheme: auto   # 自动切换明暗主题
+  ShowCodeCopyButtons: true   # 显示代码复制按钮
+  ShowReadingTime: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  utterances:
+    enable: true
+    repo: "lg-cr/blog-comments"
+    issueTerm: "pathname"   # 按路径名关联 Issue
+    theme: "github-light"
