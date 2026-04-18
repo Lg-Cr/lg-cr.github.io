@@ -43,7 +43,7 @@ params:
   hasCJKLanguage: true
   homeInfoParams:
     Title: "Inftress"
-    Content: "the End of this World, and the Girl who Cross the Moon's Ocean"
+    Content: "the End of this World, and the Girl who Crossed the Moon's Ocean"
   utterances:
     enable: true
     repo: "lg-cr/blog-comments"
