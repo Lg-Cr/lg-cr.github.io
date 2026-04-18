@@ -5,46 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>About | Inftress 妹妹的小窝</title>
+<title>P4384 QOJ2994 [八省联考 2018] 制胡窜 | Inftress 妹妹的小窝</title>
 <meta name="keywords" content="">
-<meta name="description" content="👋 我是谁
-我是 Infter/Inftress，一名热爱算法的 OIer / 信息学竞赛选手。
-
-坐标：江西/南昌
-CCF认证等级：8 级
-
-📝 关于本博客
-这里主要记录我在算法学习路上的点滴，包括但不限于：
-
-题解与思路复盘：记录经典题目的解题过程与代码实现。
-算法笔记：整理数据结构与算法的核心要点，方便随时复习。
-竞赛总结：赛后复盘与经验教训。
-
-我希望通过写作，不仅能巩固自己的知识，也能帮助到同样在这条路上的你。
-🛠️ 博客技术栈
-本博客由以下工具驱动：
-
-框架：Hugo —— 极速的静态站点生成器
-主题：PaperMod —— 简洁、响应式、支持深色模式
-部署：GitHub Pages &#43; GitHub Actions —— 自动构建与免费托管
-评论：utterances —— 基于 GitHub Issues 的轻量评论系统
-
-🔗 找到我
-
-GitHub：https://github.com/Lg-Cr
-洛谷：https://www.luogu.com.cn/user/386547
-Codeforces：https://codeforces.com/profile/Infter
-Atcoder：https://atcoder.jp/users/Infter
-UOJ：https://uoj.ac/user/profile/LightningCreeper
-电子邮箱：lightningcreeper@163.com
-QQ：3655485944
-
-💬 关于评论
-本博客的评论系统基于 GitHub Issues，你需要登录 GitHub 账号才能留言。所有评论内容均存储于本博客的 GitHub 仓库中，公开透明。
-
-本博客所有文章若无特殊声明，均采用 CC BY-SA 4.0 许可协议。转载请注明出处。">
+<meta name="description" content="看到子串出现类直接套上一个 SAM。
+然后非常套路地使用线段树合并来维护子树的 endpos。
+我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。
+我们考虑正难则反，考虑多少种会把所有插到。
+然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。
+这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。
+我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。
+二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个右下角的，阶梯状面积，其中凹点在 $x=y$ 上，且凹点的 $x$ 就是点的位置。
+然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。
+我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。
+你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 pushup 的时候算一下两边的贡献然后额外把少算的贡献算上即可。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/about/">
+<link rel="canonical" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -53,7 +28,7 @@ QQ：3655485944
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/about/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/">
 <noscript>
     <style>
         #theme-toggle,
@@ -157,7 +132,7 @@ QQ：3655485944
             </li>
             <li>
                 <a href="http://localhost:1313/about/" title="关于">
-                    <span class="active">关于</span>
+                    <span>关于</span>
                 </a>
             </li>
         </ul>
@@ -168,50 +143,30 @@ QQ：3655485944
 <article class="post-single">
   <header class="post-header">
     <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-    <a href='http://localhost:1313/'>Home</a></nav>
+    <a href='http://localhost:1313/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="http://localhost:1313/posts/">Posts</a></nav>
     <h1 class="post-title entry-hint-parent">
-      About
+      P4384 QOJ2994 [八省联考 2018] 制胡窜
     </h1>
-    <div class="post-meta"><span title='2026-04-17 20:53:47 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+    <div class="post-meta"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
 
 </div>
   </header> 
-  <div class="post-content md-content"><h2 id="-我是谁">👋 我是谁<a hidden class="anchor" aria-hidden="true" href="#-我是谁">#</a></h2>
-<p>我是 <strong>Infter/Inftress</strong>，一名热爱算法的 OIer / 信息学竞赛选手。</p>
-<ul>
-<li><strong>坐标</strong>：江西/南昌</li>
-<li><strong>CCF认证等级</strong>：8 级</li>
-</ul>
-<h2 id="-关于本博客">📝 关于本博客<a hidden class="anchor" aria-hidden="true" href="#-关于本博客">#</a></h2>
-<p>这里主要记录我在算法学习路上的点滴，包括但不限于：</p>
-<ul>
-<li><strong>题解与思路复盘</strong>：记录经典题目的解题过程与代码实现。</li>
-<li><strong>算法笔记</strong>：整理数据结构与算法的核心要点，方便随时复习。</li>
-<li><strong>竞赛总结</strong>：赛后复盘与经验教训。</li>
-</ul>
-<p>我希望通过写作，不仅能巩固自己的知识，也能帮助到同样在这条路上的你。</p>
-<h2 id="-博客技术栈">🛠️ 博客技术栈<a hidden class="anchor" aria-hidden="true" href="#-博客技术栈">#</a></h2>
-<p>本博客由以下工具驱动：</p>
-<ul>
-<li><strong>框架</strong>：<a href="https://gohugo.io/">Hugo</a> —— 极速的静态站点生成器</li>
-<li><strong>主题</strong>：<a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod</a> —— 简洁、响应式、支持深色模式</li>
-<li><strong>部署</strong>：<a href="https://pages.github.com/">GitHub Pages</a> + <a href="https://github.com/features/actions">GitHub Actions</a> —— 自动构建与免费托管</li>
-<li><strong>评论</strong>：<a href="https://utteranc.es/">utterances</a> —— 基于 GitHub Issues 的轻量评论系统</li>
-</ul>
-<h2 id="-找到我">🔗 找到我<a hidden class="anchor" aria-hidden="true" href="#-找到我">#</a></h2>
-<ul>
-<li><strong>GitHub</strong>：<a href="https://github.com/Lg-Cr">https://github.com/Lg-Cr</a></li>
-<li><strong>洛谷</strong>：<a href="https://www.luogu.com.cn/user/386547">https://www.luogu.com.cn/user/386547</a></li>
-<li><strong>Codeforces</strong>：<a href="https://codeforces.com/profile/Infter">https://codeforces.com/profile/Infter</a></li>
-<li><strong>Atcoder</strong>：<a href="https://atcoder.jp/users/Infter">https://atcoder.jp/users/Infter</a></li>
-<li><strong>UOJ</strong>：<a href="https://uoj.ac/user/profile/LightningCreeper">https://uoj.ac/user/profile/LightningCreeper</a></li>
-<li><strong>电子邮箱</strong>：lightningcreeper@163.com</li>
-<li><strong>QQ</strong>：3655485944</li>
-</ul>
-<h2 id="-关于评论">💬 关于评论<a hidden class="anchor" aria-hidden="true" href="#-关于评论">#</a></h2>
-<p>本博客的评论系统基于 GitHub Issues，你需要登录 GitHub 账号才能留言。所有评论内容均存储于本博客的 GitHub 仓库中，公开透明。</p>
-<hr>
-<p><em>本博客所有文章若无特殊声明，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 许可协议。转载请注明出处。</em></p>
+  <div class="post-content md-content"><p>看到子串出现类直接套上一个 SAM。</p>
+<p>然后非常套路地使用线段树合并来维护子树的 endpos。</p>
+<p>我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。</p>
+<p>我们考虑正难则反，考虑多少种会把所有插到。</p>
+<p>然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。</p>
+<p>这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。</p>
+<p>我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。</p>
+<p>二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个<strong>右下角的，阶梯状面积</strong>，其中<strong>凹点在 $x=y$ 上</strong>，且凹点的 $x$ 就是点的位置。</p>
+<p>然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。</p>
+<p>我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。</p>
+<p>你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 <code>pushup</code> 的时候算一下两边的贡献然后额外把少算的贡献算上即可。</p>
 
 
   </div>
@@ -219,6 +174,12 @@ QQ：3655485944
   <footer class="post-footer">
     <ul class="post-tags">
     </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/posts/hello-world/">
+    <span class="title">Next »</span>
+    <span>Hello World</span>
+  </a>
+</nav>
 
   </footer>
 </article>
