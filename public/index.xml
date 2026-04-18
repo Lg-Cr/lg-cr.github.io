@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Inftress 妹妹的小窝</title>
+    <title>Inftopia</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on Inftress 妹妹的小窝</description>
+    <description>Recent content on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 17 Apr 2026 22:42:18 +0800</lastBuildDate>
@@ -49,7 +49,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; —— 极速的静态站点生成器&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;主题&lt;/strong&gt;：&lt;a href=&#34;https://github.com/adityatelange/hugo-PaperMod&#34;&gt;PaperMod&lt;/a&gt; —— 简洁、响应式、支持深色模式&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;部署&lt;/strong&gt;：&lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; + &lt;a href=&#34;https://github.com/features/actions&#34;&gt;GitHub Actions&lt;/a&gt; —— 自动构建与免费托管&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;部署&lt;/strong&gt;：&lt;a href=&#34;https://pages.cloudflare.com/&#34;&gt;Cloudflare Pages&lt;/a&gt; + &lt;a href=&#34;https://github.com/features/actions&#34;&gt;GitHub Actions&lt;/a&gt; —— 自动构建与全球 CDN 加速&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;评论&lt;/strong&gt;：&lt;a href=&#34;https://utteranc.es/&#34;&gt;utterances&lt;/a&gt; —— 基于 GitHub Issues 的轻量评论系统&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;-找到我&#34;&gt;🔗 找到我&lt;/h2&gt;

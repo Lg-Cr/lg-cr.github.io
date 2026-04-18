@@ -27,7 +27,7 @@ title = 'About'
 
 - **框架**：[Hugo](https://gohugo.io/) —— 极速的静态站点生成器
 - **主题**：[PaperMod](https://github.com/adityatelange/hugo-PaperMod) —— 简洁、响应式、支持深色模式
-- **部署**：[GitHub Pages](https://pages.github.com/) + [GitHub Actions](https://github.com/features/actions) —— 自动构建与免费托管
+- **部署**：[Cloudflare Pages](https://pages.cloudflare.com/) + [GitHub Actions](https://github.com/features/actions) —— 自动构建与全球 CDN 加速
 - **评论**：[utterances](https://utteranc.es/) —— 基于 GitHub Issues 的轻量评论系统
 
 ## 🔗 找到我

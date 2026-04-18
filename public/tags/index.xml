@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Inftress 妹妹的小窝</title>
+    <title>Tags on Inftopia</title>
     <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on Inftress 妹妹的小窝</description>
+    <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Apr 2026 22:42:18 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SAM</title>
+      <link>http://localhost:1313/tags/sam/</link>
+      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
+      <guid>http://localhost:1313/tags/sam/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Solutions</title>
+      <link>http://localhost:1313/tags/solutions/</link>
+      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
+      <guid>http://localhost:1313/tags/solutions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Strings</title>
+      <link>http://localhost:1313/tags/strings/</link>
+      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
+      <guid>http://localhost:1313/tags/strings/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ti Jie on Inftopia</title>
+    <link>http://localhost:1313/tags/ti-jie/</link>
+    <description>Recent content in Ti Jie on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Apr 2026 22:42:18 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ti-jie/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>P4384 QOJ2994 [八省联考 2018] 制胡窜</title>
+      <link>http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/</link>
+      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/</guid>
+      <description>&lt;p&gt;看到子串出现类直接套上一个 SAM。&lt;/p&gt;
+&lt;p&gt;然后非常套路地使用线段树合并来维护子树的 endpos。&lt;/p&gt;
+&lt;p&gt;我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。&lt;/p&gt;
+&lt;p&gt;我们考虑正难则反，考虑多少种会把所有插到。&lt;/p&gt;
+&lt;p&gt;然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。&lt;/p&gt;
+&lt;p&gt;这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。&lt;/p&gt;
+&lt;p&gt;我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。&lt;/p&gt;
+&lt;p&gt;二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个&lt;strong&gt;右下角的，阶梯状面积&lt;/strong&gt;，其中&lt;strong&gt;凹点在 $x=y$ 上&lt;/strong&gt;，且凹点的 $x$ 就是点的位置。&lt;/p&gt;
+&lt;p&gt;然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。&lt;/p&gt;
+&lt;p&gt;我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。&lt;/p&gt;
+&lt;p&gt;你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 &lt;code&gt;pushup&lt;/code&gt; 的时候算一下两边的贡献然后额外把少算的贡献算上即可。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

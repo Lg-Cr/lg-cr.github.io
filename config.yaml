@@ -1,7 +1,7 @@
 # config.yaml
 baseURL: "https://inftress.pages.dev/"   # 换成你自己的
 languageCode: "zh-cn"
-title: "Inftress 妹妹的小窝"
+title: "Inftopia"
 theme: "PaperMod"
 
 # 启用代码高亮
@@ -16,18 +16,22 @@ markup:
 # 菜单
 menu:
   main:
-    - identifier: posts
-      name: 文章
-      url: /posts/
+    - identifier: archives
+      name: Archives
+      url: /archives/
       weight: 10
     - identifier: tags
-      name: 标签
+      name: Tags
       url: /tags/
       weight: 20
     - identifier: about
-      name: 关于
+      name: About
       url: /about/
       weight: 30
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 100
 
 # PaperMod 主题参数
 params:
@@ -35,10 +39,25 @@ params:
   defaultTheme: auto   # 自动切换明暗主题
   ShowCodeCopyButtons: true   # 显示代码复制按钮
   ShowReadingTime: true
-  ShowBreadCrumbs: true
-  ShowPostNavLinks: true
+  ShowToc: true
+  hasCJKLanguage: true
+  homeInfoParams:
+    Title: "Inftress"
+    Content: "the End of this World, and the Girl who Cross the Moon's Ocean"
   utterances:
     enable: true
     repo: "lg-cr/blog-comments"
     issueTerm: "pathname"   # 按路径名关联 Issue
-    theme: "github-light"
+    theme: "github-dark"
+  socialIcons:
+    - name: "Github"
+      url: "https://github.com/Lg-Cr"
+    - name: "Codeforces"
+      url: "https://codeforces.com/profile/Infter"
+
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
