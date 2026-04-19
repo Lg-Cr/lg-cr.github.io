@@ -6,27 +6,48 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Apr 2026 22:42:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2026 20:13:21 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SAM</title>
-      <link>http://localhost:1313/tags/sam/</link>
-      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
-      <guid>http://localhost:1313/tags/sam/</guid>
+      <title>Chunking</title>
+      <link>http://localhost:1313/tags/chunking/</link>
+      <pubDate>Sun, 19 Apr 2026 20:13:21 +0800</pubDate>
+      <guid>http://localhost:1313/tags/chunking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DS</title>
+      <link>http://localhost:1313/tags/ds/</link>
+      <pubDate>Sun, 19 Apr 2026 20:13:21 +0800</pubDate>
+      <guid>http://localhost:1313/tags/ds/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KDT</title>
+      <link>http://localhost:1313/tags/kdt/</link>
+      <pubDate>Sun, 19 Apr 2026 20:13:21 +0800</pubDate>
+      <guid>http://localhost:1313/tags/kdt/</guid>
       <description></description>
     </item>
     <item>
       <title>Solutions</title>
       <link>http://localhost:1313/tags/solutions/</link>
-      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
+      <pubDate>Sun, 19 Apr 2026 20:13:21 +0800</pubDate>
       <guid>http://localhost:1313/tags/solutions/</guid>
       <description></description>
     </item>
     <item>
-      <title>Strings</title>
-      <link>http://localhost:1313/tags/strings/</link>
-      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
-      <guid>http://localhost:1313/tags/strings/</guid>
+      <title>Solving</title>
+      <link>http://localhost:1313/tags/solving/</link>
+      <pubDate>Sun, 19 Apr 2026 20:13:21 +0800</pubDate>
+      <guid>http://localhost:1313/tags/solving/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TB5</title>
+      <link>http://localhost:1313/tags/tb5/</link>
+      <pubDate>Sun, 19 Apr 2026 20:13:21 +0800</pubDate>
+      <guid>http://localhost:1313/tags/tb5/</guid>
       <description></description>
     </item>
   </channel>

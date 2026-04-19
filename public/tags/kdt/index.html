@@ -5,21 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>P4384 QOJ2994 [八省联考 2018] 制胡窜 | Inftopia</title>
-<meta name="keywords" content="Solutions, Strings, DS, SAM, SegTree">
-<meta name="description" content="看到子串出现类直接套上一个 SAM。
-然后非常套路地使用线段树合并来维护子树的 endpos。
-我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。
-我们考虑正难则反，考虑多少种会把所有插到。
-然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。
-这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。
-我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。
-二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个右下角的，阶梯状面积，其中凹点在 $x=y$ 上，且凹点的 $x$ 就是点的位置。
-然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。
-我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。
-你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 pushup 的时候算一下两边的贡献然后额外把少算的贡献算上即可。">
+<title>KDT | Inftopia</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/">
+<link rel="canonical" href="http://localhost:1313/tags/kdt/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -28,7 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/kdt/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/kdt/">
 <noscript>
     <style>
         #theme-toggle,
@@ -91,7 +82,7 @@
   });">
 </script>
 </head>
-<body id="top">
+<body class="list" id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -143,43 +134,43 @@
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    KDT
+  </h1>
+</header>
 
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      P4384 QOJ2994 [八省联考 2018] 制胡窜
-    </h1>
-    <div class="post-meta"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
-
-</div>
-  </header> 
-
-  <div class="post-content md-content"><p>看到子串出现类直接套上一个 SAM。</p>
-<p>然后非常套路地使用线段树合并来维护子树的 endpos。</p>
-<p>我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。</p>
-<p>我们考虑正难则反，考虑多少种会把所有插到。</p>
-<p>然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。</p>
-<p>这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。</p>
-<p>我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。</p>
-<p>二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个<strong>右下角的，阶梯状面积</strong>，其中<strong>凹点在 $x=y$ 上</strong>，且凹点的 $x$ 就是点的位置。</p>
-<p>然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。</p>
-<p>我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。</p>
-<p>你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 <code>pushup</code> 的时候算一下两边的贡献然后额外把少算的贡献算上即可。</p>
-
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">古明地枣的袜子
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>以下假设 $n,m$ 同阶。
+很好的题目！
+第一个重要的观察就是，这个操作的顺序显然是不影响这个答案的。
+我们想到我们不能直接去进行这个操作，因为他涉及到 $O(n)$ 个点，就算再怎么维护，都是困难的，我们要把他压缩一波。
+我们要把这个信息最好是压到 $O(1)$，但在没有预处理的情况下有些困难。
+我们先不考虑查询，我们直接考虑给一堆修改，你怎么小空间地干这个事情。
+首先明显的想法是，这个前缀加有点太蠢了，考虑差分一下，变成单点加，后缀最大值。
+然后你发现你可以把调换两维啊。既然你这个单点加的顺序没有关系，那我们就直接从后往前考虑，刚好算得就是后缀最大值。
+然后你就变成了，把这些操作呢按照以 $x$ 为第一关键字从大到小，以 $y$ 为第二关键字从小到大排序，依次考虑，于是你发现你根本不需要考虑 $x$ 的问题，你直接把排完序后的 $y$ 求一个前缀最大值就可以了。
+这个时候你发现前缀最小值这个东西是好东西！他可以看作是一个半裙元素，可以简单地拼接，且信息量为 $O(1)$。只需记录内部前缀最大值，以及总和，即可方便地合并。
+然后我们到了这个序列上呢，你发现你还是要把区间排序，这个事情难做的，因为你至少要根号 log 的复杂度。然后考虑你干脆先排好序，然后在排好序的序列上找 $i\in[l,r]$，把这个子序列拿出来即可。
+然后就出现了一个 KDT 的做法，你考虑类似整体二分一样，把所有询问一起做，从后往前扫一遍，考虑每个点对每个询问的贡献，画在二维平面上，就是矩形加上一个半裙元素，使用 KDT 做到 $O(n\sqrt n)$。
+但是呢，KDT 常数太大了，于是我们考虑其他做法。
+我们考虑分块对吧，然后呢我们想想对什么分块，对扫描的东西？还是原本的下标？
+原本的下标的话，你发现仍旧是退化成了一个你要往里面加东西，而这个你加一个至少要 $O(\log n)$，不可取。
+我们对扫描的东西分块，我们就发现我们直接在每个块里面算即可，合并块之间是好合并的，你对每个询问来讲，你如果知道了每个块内部的东西，那合并起来，直接把所有的信息加在一起即可。
+我们考虑如何计算一个块内所有下标在 $[l,r]$ 内的答案。
+我们突然发现这个块内的元素只有 $O(\sqrt n)$ 个啊！那你不是总共只有 $O(n)$ 种可能的本质不同询问，那你直接把所有的算出来就可以了，至于把原询问映射到小询问上，这个是简单的，直接离散化。
+我们问题转化为了，给定长为 $n$ 的序列 $a$ 和半裙元素序列 $b$，要求在 $O(n^2)$ 的时间复杂度内求出对于每个 $[l,r]$，满足 $a_i \in [l,r]$ 的 $i$ 的子序列的 $b$ 的和是多少。
+我们一招鲜吃遍天。既然我们都搞的是本质不同询问，那你再搞一次，用 TB5？
+...</p>
   </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
-      <li><a href="http://localhost:1313/tags/strings/">Strings</a></li>
-      <li><a href="http://localhost:1313/tags/ds/">DS</a></li>
-      <li><a href="http://localhost:1313/tags/sam/">SAM</a></li>
-      <li><a href="http://localhost:1313/tags/segtree/">SegTree</a></li>
-    </ul>
-  </footer>
+  <footer class="entry-footer"><span title='2026-04-19 20:13:21 +0800 CST'>April 19, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 古明地枣的袜子" href="http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/"></a>
 </article>
     </main>
     
@@ -267,53 +258,6 @@
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
 </script>
 </body>
 

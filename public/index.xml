@@ -6,8 +6,34 @@
     <description>Recent content on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Apr 2026 22:42:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2026 20:13:21 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>古明地枣的袜子</title>
+      <link>http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/</link>
+      <pubDate>Sun, 19 Apr 2026 20:13:21 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/</guid>
+      <description>&lt;p&gt;以下假设 $n,m$ 同阶。&lt;/p&gt;
+&lt;p&gt;很好的题目！&lt;/p&gt;
+&lt;p&gt;第一个重要的观察就是，这个操作的顺序显然是不影响这个答案的。&lt;/p&gt;
+&lt;p&gt;我们想到我们不能直接去进行这个操作，因为他涉及到 $O(n)$ 个点，就算再怎么维护，都是困难的，我们要把他压缩一波。&lt;/p&gt;
+&lt;p&gt;我们要把这个信息最好是压到 $O(1)$，但在没有预处理的情况下有些困难。&lt;/p&gt;
+&lt;p&gt;我们先不考虑查询，我们直接考虑给一堆修改，你怎么小空间地干这个事情。&lt;/p&gt;
+&lt;p&gt;首先明显的想法是，这个前缀加有点太蠢了，考虑差分一下，变成单点加，后缀最大值。&lt;/p&gt;
+&lt;p&gt;然后你发现你可以把调换两维啊。既然你这个单点加的顺序没有关系，那我们就直接从后往前考虑，刚好算得就是后缀最大值。&lt;/p&gt;
+&lt;p&gt;然后你就变成了，把这些操作呢按照以 $x$ 为第一关键字从大到小，以 $y$ 为第二关键字从小到大排序，依次考虑，于是你发现你根本不需要考虑 $x$ 的问题，你直接把排完序后的 $y$ 求一个前缀最大值就可以了。&lt;/p&gt;
+&lt;p&gt;这个时候你发现前缀最小值这个东西是好东西！他可以看作是一个半裙元素，可以简单地拼接，且信息量为 $O(1)$。只需记录内部前缀最大值，以及总和，即可方便地合并。&lt;/p&gt;
+&lt;p&gt;然后我们到了这个序列上呢，你发现你还是要把区间排序，这个事情难做的，因为你至少要根号 log 的复杂度。然后考虑你干脆先排好序，然后在排好序的序列上找 $i\in[l,r]$，把这个子序列拿出来即可。&lt;/p&gt;
+&lt;p&gt;然后就出现了一个 KDT 的做法，你考虑类似整体二分一样，把所有询问一起做，从后往前扫一遍，考虑每个点对每个询问的贡献，画在二维平面上，就是矩形加上一个半裙元素，使用 KDT 做到 $O(n\sqrt n)$。&lt;/p&gt;
+&lt;p&gt;但是呢，KDT 常数太大了，于是我们考虑其他做法。&lt;/p&gt;
+&lt;p&gt;我们考虑分块对吧，然后呢我们想想对什么分块，对扫描的东西？还是原本的下标？&lt;/p&gt;
+&lt;p&gt;原本的下标的话，你发现仍旧是退化成了一个你要往里面加东西，而这个你加一个至少要 $O(\log n)$，不可取。&lt;/p&gt;
+&lt;p&gt;我们对扫描的东西分块，我们就发现我们直接在每个块里面算即可，合并块之间是好合并的，你对每个询问来讲，你如果知道了每个块内部的东西，那合并起来，直接把所有的信息加在一起即可。&lt;/p&gt;
+&lt;p&gt;我们考虑如何计算一个块内所有下标在 $[l,r]$ 内的答案。&lt;/p&gt;
+&lt;p&gt;我们突然发现这个块内的元素只有 $O(\sqrt n)$ 个啊！那你不是总共只有 $O(n)$ 种可能的本质不同询问，那你直接把所有的算出来就可以了，至于把原询问映射到小询问上，这个是简单的，直接离散化。&lt;/p&gt;
+&lt;p&gt;我们问题转化为了，给定长为 $n$ 的序列 $a$ 和半裙元素序列 $b$，要求在 $O(n^2)$ 的时间复杂度内求出对于每个 $[l,r]$，满足 $a_i \in [l,r]$ 的 $i$ 的子序列的 $b$ 的和是多少。&lt;/p&gt;
+&lt;p&gt;我们一招鲜吃遍天。既然我们都搞的是本质不同询问，那你再搞一次，用 TB5？&lt;/p&gt;</description>
+    </item>
     <item>
       <title>P4384 QOJ2994 [八省联考 2018] 制胡窜</title>
       <link>http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/</link>

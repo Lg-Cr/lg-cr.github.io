@@ -5,21 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>P4384 QOJ2994 [八省联考 2018] 制胡窜 | Inftopia</title>
-<meta name="keywords" content="Solutions, Strings, DS, SAM, SegTree">
-<meta name="description" content="看到子串出现类直接套上一个 SAM。
-然后非常套路地使用线段树合并来维护子树的 endpos。
-我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。
-我们考虑正难则反，考虑多少种会把所有插到。
-然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。
-这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。
-我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。
-二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个右下角的，阶梯状面积，其中凹点在 $x=y$ 上，且凹点的 $x$ 就是点的位置。
-然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。
-我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。
-你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 pushup 的时候算一下两边的贡献然后额外把少算的贡献算上即可。">
+<title>SegTree | Inftopia</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/">
+<link rel="canonical" href="http://localhost:1313/tags/segtree/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -28,7 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/segtree/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/segtree/">
 <noscript>
     <style>
         #theme-toggle,
@@ -91,7 +82,7 @@
   });">
 </script>
 </head>
-<body id="top">
+<body class="list" id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -143,43 +134,34 @@
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    SegTree
+  </h1>
+</header>
 
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      P4384 QOJ2994 [八省联考 2018] 制胡窜
-    </h1>
-    <div class="post-meta"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
-
-</div>
-  </header> 
-
-  <div class="post-content md-content"><p>看到子串出现类直接套上一个 SAM。</p>
-<p>然后非常套路地使用线段树合并来维护子树的 endpos。</p>
-<p>我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。</p>
-<p>我们考虑正难则反，考虑多少种会把所有插到。</p>
-<p>然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。</p>
-<p>这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。</p>
-<p>我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。</p>
-<p>二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个<strong>右下角的，阶梯状面积</strong>，其中<strong>凹点在 $x=y$ 上</strong>，且凹点的 $x$ 就是点的位置。</p>
-<p>然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。</p>
-<p>我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。</p>
-<p>你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 <code>pushup</code> 的时候算一下两边的贡献然后额外把少算的贡献算上即可。</p>
-
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">P4384 QOJ2994 [八省联考 2018] 制胡窜
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>看到子串出现类直接套上一个 SAM。
+然后非常套路地使用线段树合并来维护子树的 endpos。
+我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。
+我们考虑正难则反，考虑多少种会把所有插到。
+然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。
+这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。
+我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。
+二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个右下角的，阶梯状面积，其中凹点在 $x=y$ 上，且凹点的 $x$ 就是点的位置。
+然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。
+我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。
+你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 pushup 的时候算一下两边的贡献然后额外把少算的贡献算上即可。
+</p>
   </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
-      <li><a href="http://localhost:1313/tags/strings/">Strings</a></li>
-      <li><a href="http://localhost:1313/tags/ds/">DS</a></li>
-      <li><a href="http://localhost:1313/tags/sam/">SAM</a></li>
-      <li><a href="http://localhost:1313/tags/segtree/">SegTree</a></li>
-    </ul>
-  </footer>
+  <footer class="entry-footer"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to P4384 QOJ2994 [八省联考 2018] 制胡窜" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/"></a>
 </article>
     </main>
     
@@ -267,53 +249,6 @@
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
 </script>
 </body>
 
