@@ -5,11 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Archives | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="archives">
+<title>Construction of Highway | Inftopia</title>
+<meta name="keywords" content="Solutions, DS, ODT, 树剖, Binary">
+<meta name="description" content="这个题本身是相对简单的。首先由路径修改查询想到树剖，从区间覆盖想到 ODT，从求逆序对想到树状数组，然后就做完了。
+但我们要探讨一个更深刻的东西，这本质上是一个根到单点的覆盖问题。我们自然希望得到他的一些性质。
+你 feel 一下，感觉你每次暴力合并连续段的时间复杂度好像均摊是不高的，但我想了很久这个东西怎么证。
+一开始我以为是 $O(1)$ 的，然后一直在试图构造但失败了。
+后面我想到树剖，然后就很容易得到 $O(\log n)$ 的上界，因为如果不看轻边那剩下的就是颜色段均摊，是 $O(n)$ 的。
+但我一直怀疑有没有更紧的上界，琢磨了好久。我好像一直不是很会构造。然后扔到了 u 群里，结果被 le0n 和 rqy 秒了。
+构造大概就是你做一个满二叉树，然后按照二进制位翻转的顺序去插入叶子（我们只考虑叶子的贡献），然后你发现就得到了 $O(\log n)$ 的构造。
+我觉得这个其实非常深刻，就是我从来没想到过二进制位翻转除了 fft 外还能有其他的用处，这里体现出来是他能最大化与之前的“冲突”。
+然后 rqy 还指出，实际上对于一般的树而言，上界就是 $\sum_i \min(sz_i, 2\sum_{\text v\in{lightson}} sz_v)$。想来确实如此，你考虑一个点与他的父亲被连上/断掉了多少次。你发现最多是你的子树内每个点搞一次，然后这个次数就限定了一定是跟轻重儿子有关系。你可以通过简单地构造得出。
+这实际上又是一个所谓的通过拆贡献并重新统计大大简化的过程，我觉得这个事情其实很本质，仍然是你对一个事情计数困难的时候考虑拆然后再拼起来。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/archives/">
+<link rel="canonical" href="http://localhost:1313/posts/construction-of-highway/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,7 +27,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/archives/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/construction-of-highway/">
 <noscript>
     <style>
         #theme-toggle,
@@ -81,7 +90,7 @@
   });">
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -112,7 +121,7 @@
         <ul id="menu" class="menu">
             <li>
                 <a href="http://localhost:1313/archives/" title="Archives">
-                    <span class="active">Archives</span>
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -135,55 +144,47 @@
 </header>
 <main class="main">
 
-<header class="page-header">
-  <h1>
-    Archives
-  </h1>
-</header>
-<div class="archive-year">
-  <h2 class="archive-year-header" id="2026">
-    <a class="archive-header-link" href="#2026">2026</a>
-    <sup class="archive-count">&nbsp;4</sup>
-  </h2>
-  <div class="archive-month">
-    <h3 class="archive-month-header" id="2026-April">
-      <a class="archive-header-link" href="#2026-April">April</a>
-      <sup class="archive-count">&nbsp;4</sup>
-    </h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Construction of Highway
-          <span class="entry-hint" title="Draft">
-            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
-              <path
-                d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-            </svg>
-          </span>
-        </h3>
-        <div class="archive-meta"><span title='2026-04-20 22:57:49 +0800 CST'>April 20, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Construction of Highway" href="http://localhost:1313/posts/construction-of-highway/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">古明地枣的袜子
-        </h3>
-        <div class="archive-meta"><span title='2026-04-19 20:13:21 +0800 CST'>April 19, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to 古明地枣的袜子" href="http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">P4384 QOJ2994 [八省联考 2018] 制胡窜
-        </h3>
-        <div class="archive-meta"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to P4384 QOJ2994 [八省联考 2018] 制胡窜" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Hello World
-        </h3>
-        <div class="archive-meta"><span title='2026-04-17 19:03:14 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Hello World" href="http://localhost:1313/posts/hello-world/"></a>
-      </div>
-    </div>
-  </div>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Construction of Highway
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2026-04-20 22:57:49 +0800 CST'>April 20, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
 </div>
+  </header> 
+
+  <div class="post-content md-content"><p>这个题本身是相对简单的。首先由路径修改查询想到树剖，从区间覆盖想到 ODT，从求逆序对想到树状数组，然后就做完了。</p>
+<p>但我们要探讨一个更深刻的东西，这本质上是一个根到单点的覆盖问题。我们自然希望得到他的一些性质。</p>
+<p>你 feel 一下，感觉你每次暴力合并连续段的时间复杂度好像均摊是不高的，但我想了很久这个东西怎么证。</p>
+<p>一开始我以为是 $O(1)$ 的，然后一直在试图构造但失败了。</p>
+<p>后面我想到树剖，然后就很容易得到 $O(\log n)$ 的上界，因为如果不看轻边那剩下的就是颜色段均摊，是 $O(n)$ 的。</p>
+<p>但我一直怀疑有没有更紧的上界，琢磨了好久。我好像一直不是很会构造。然后扔到了 u 群里，结果被 le0n 和 rqy 秒了。</p>
+<p>构造大概就是你做一个满二叉树，然后按照二进制位翻转的顺序去插入叶子（我们只考虑叶子的贡献），然后你发现就得到了 $O(\log n)$ 的构造。</p>
+<p>我觉得这个其实非常深刻，就是我从来没想到过二进制位翻转除了 fft 外还能有其他的用处，这里体现出来是他能最大化与之前的“冲突”。</p>
+<p>然后 rqy 还指出，实际上对于一般的树而言，上界就是 $\sum_i \min(sz_i, 2\sum_{\text v\in{lightson}} sz_v)$。想来确实如此，你考虑一个点与他的父亲被连上/断掉了多少次。你发现最多是你的子树内每个点搞一次，然后这个次数就限定了一定是跟轻重儿子有关系。你可以通过简单地构造得出。</p>
+<p>这实际上又是一个所谓的通过拆贡献并重新统计大大简化的过程，我觉得这个事情其实很本质，仍然是你对一个事情计数困难的时候考虑拆然后再拼起来。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/ds/">DS</a></li>
+      <li><a href="http://localhost:1313/tags/odt/">ODT</a></li>
+      <li><a href="http://localhost:1313/tags/%E6%A0%91%E5%89%96/">树剖</a></li>
+      <li><a href="http://localhost:1313/tags/binary/">Binary</a></li>
+    </ul>
+  </footer>
+</article>
     </main>
     
 <footer class="footer">
@@ -270,6 +271,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

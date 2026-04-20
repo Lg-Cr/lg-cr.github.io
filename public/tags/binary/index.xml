@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Binary on Inftopia</title>
+    <link>http://localhost:1313/tags/binary/</link>
+    <description>Recent content in Binary on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 20 Apr 2026 22:57:49 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/binary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Construction of Highway</title>
+      <link>http://localhost:1313/posts/construction-of-highway/</link>
+      <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
+      <guid>http://localhost:1313/posts/construction-of-highway/</guid>
+      <description>&lt;p&gt;这个题本身是相对简单的。首先由路径修改查询想到树剖，从区间覆盖想到 ODT，从求逆序对想到树状数组，然后就做完了。&lt;/p&gt;
+&lt;p&gt;但我们要探讨一个更深刻的东西，这本质上是一个根到单点的覆盖问题。我们自然希望得到他的一些性质。&lt;/p&gt;
+&lt;p&gt;你 feel 一下，感觉你每次暴力合并连续段的时间复杂度好像均摊是不高的，但我想了很久这个东西怎么证。&lt;/p&gt;
+&lt;p&gt;一开始我以为是 $O(1)$ 的，然后一直在试图构造但失败了。&lt;/p&gt;
+&lt;p&gt;后面我想到树剖，然后就很容易得到 $O(\log n)$ 的上界，因为如果不看轻边那剩下的就是颜色段均摊，是 $O(n)$ 的。&lt;/p&gt;
+&lt;p&gt;但我一直怀疑有没有更紧的上界，琢磨了好久。我好像一直不是很会构造。然后扔到了 u 群里，结果被 le0n 和 rqy 秒了。&lt;/p&gt;
+&lt;p&gt;构造大概就是你做一个满二叉树，然后按照二进制位翻转的顺序去插入叶子（我们只考虑叶子的贡献），然后你发现就得到了 $O(\log n)$ 的构造。&lt;/p&gt;
+&lt;p&gt;我觉得这个其实非常深刻，就是我从来没想到过二进制位翻转除了 fft 外还能有其他的用处，这里体现出来是他能最大化与之前的“冲突”。&lt;/p&gt;
+&lt;p&gt;然后 rqy 还指出，实际上对于一般的树而言，上界就是 $\sum_i \min(sz_i, 2\sum_{\text v\in{lightson}} sz_v)$。想来确实如此，你考虑一个点与他的父亲被连上/断掉了多少次。你发现最多是你的子树内每个点搞一次，然后这个次数就限定了一定是跟轻重儿子有关系。你可以通过简单地构造得出。&lt;/p&gt;
+&lt;p&gt;这实际上又是一个所谓的通过拆贡献并重新统计大大简化的过程，我觉得这个事情其实很本质，仍然是你对一个事情计数困难的时候考虑拆然后再拼起来。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

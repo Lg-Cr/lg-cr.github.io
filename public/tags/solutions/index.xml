@@ -6,8 +6,24 @@
     <description>Recent content in Solutions on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Apr 2026 20:13:21 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2026 22:57:49 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/solutions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Construction of Highway</title>
+      <link>http://localhost:1313/posts/construction-of-highway/</link>
+      <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
+      <guid>http://localhost:1313/posts/construction-of-highway/</guid>
+      <description>&lt;p&gt;这个题本身是相对简单的。首先由路径修改查询想到树剖，从区间覆盖想到 ODT，从求逆序对想到树状数组，然后就做完了。&lt;/p&gt;
+&lt;p&gt;但我们要探讨一个更深刻的东西，这本质上是一个根到单点的覆盖问题。我们自然希望得到他的一些性质。&lt;/p&gt;
+&lt;p&gt;你 feel 一下，感觉你每次暴力合并连续段的时间复杂度好像均摊是不高的，但我想了很久这个东西怎么证。&lt;/p&gt;
+&lt;p&gt;一开始我以为是 $O(1)$ 的，然后一直在试图构造但失败了。&lt;/p&gt;
+&lt;p&gt;后面我想到树剖，然后就很容易得到 $O(\log n)$ 的上界，因为如果不看轻边那剩下的就是颜色段均摊，是 $O(n)$ 的。&lt;/p&gt;
+&lt;p&gt;但我一直怀疑有没有更紧的上界，琢磨了好久。我好像一直不是很会构造。然后扔到了 u 群里，结果被 le0n 和 rqy 秒了。&lt;/p&gt;
+&lt;p&gt;构造大概就是你做一个满二叉树，然后按照二进制位翻转的顺序去插入叶子（我们只考虑叶子的贡献），然后你发现就得到了 $O(\log n)$ 的构造。&lt;/p&gt;
+&lt;p&gt;我觉得这个其实非常深刻，就是我从来没想到过二进制位翻转除了 fft 外还能有其他的用处，这里体现出来是他能最大化与之前的“冲突”。&lt;/p&gt;
+&lt;p&gt;然后 rqy 还指出，实际上对于一般的树而言，上界就是 $\sum_i \min(sz_i, 2\sum_{\text v\in{lightson}} sz_v)$。想来确实如此，你考虑一个点与他的父亲被连上/断掉了多少次。你发现最多是你的子树内每个点搞一次，然后这个次数就限定了一定是跟轻重儿子有关系。你可以通过简单地构造得出。&lt;/p&gt;
+&lt;p&gt;这实际上又是一个所谓的通过拆贡献并重新统计大大简化的过程，我觉得这个事情其实很本质，仍然是你对一个事情计数困难的时候考虑拆然后再拼起来。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>古明地枣的袜子</title>
       <link>http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/</link>
@@ -33,6 +49,23 @@
 &lt;p&gt;我们突然发现这个块内的元素只有 $O(\sqrt n)$ 个啊！那你不是总共只有 $O(n)$ 种可能的本质不同询问，那你直接把所有的算出来就可以了，至于把原询问映射到小询问上，这个是简单的，直接离散化。&lt;/p&gt;
 &lt;p&gt;我们问题转化为了，给定长为 $n$ 的序列 $a$ 和半裙元素序列 $b$，要求在 $O(n^2)$ 的时间复杂度内求出对于每个 $[l,r]$，满足 $a_i \in [l,r]$ 的 $i$ 的子序列的 $b$ 的和是多少。&lt;/p&gt;
 &lt;p&gt;我们一招鲜吃遍天。既然我们都搞的是本质不同询问，那你再搞一次，用 TB5？&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>P4384 QOJ2994 [八省联考 2018] 制胡窜</title>
+      <link>http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/</link>
+      <pubDate>Fri, 17 Apr 2026 22:42:18 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/</guid>
+      <description>&lt;p&gt;看到子串出现类直接套上一个 SAM。&lt;/p&gt;
+&lt;p&gt;然后非常套路地使用线段树合并来维护子树的 endpos。&lt;/p&gt;
+&lt;p&gt;我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。&lt;/p&gt;
+&lt;p&gt;我们考虑正难则反，考虑多少种会把所有插到。&lt;/p&gt;
+&lt;p&gt;然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。&lt;/p&gt;
+&lt;p&gt;这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。&lt;/p&gt;
+&lt;p&gt;我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。&lt;/p&gt;
+&lt;p&gt;二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个&lt;strong&gt;右下角的，阶梯状面积&lt;/strong&gt;，其中&lt;strong&gt;凹点在 $x=y$ 上&lt;/strong&gt;，且凹点的 $x$ 就是点的位置。&lt;/p&gt;
+&lt;p&gt;然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。&lt;/p&gt;
+&lt;p&gt;我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。&lt;/p&gt;
+&lt;p&gt;你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 &lt;code&gt;pushup&lt;/code&gt; 的时候算一下两边的贡献然后额外把少算的贡献算上即可。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
