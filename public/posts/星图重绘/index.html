@@ -5,11 +5,36 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Tags | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>星图重绘 | Inftopia</title>
+<meta name="keywords" content="Solution, Construction, Graph Euler Theorem">
+<meta name="description" content="神啦兄弟神啦。
+逆天构造拼尽全力无法战胜。
+明明想出了所有的结论，却仍然不会构造。
+我们称左上右下为 A 区，左下右上为 B 区。
+结论 1: 一个三角形可以被放入矩形当且仅当没有连续上升或连续下降。换个说法就是有 2 个点的两条边在不同区。
+这个显然，手玩即可。
+结论 2: 一定不会有一个点被包含在三角形内。
+如果这样的话可以通过把原来那个三角形删了并通过手玩发现至少获得两个三角形，一定更优。
+结论 3: 答案图一定不会有两个分开的三角形连通块。
+如果 P 和 Q 在横坐标或者纵坐标上有交叉，那直接去交叉的那个点，然后在另一侧取两侧的两个外围点组成三角形就联通了。
+如果整个 P 在 Q 左下角，那取 P 的一个点然后取一条132形三角形（一个多边形一定有逆序对）然后再把其包含的点像 2 一样塞进去即可。
+结论 4: 一个点如果周围被三角形挤满，那一定四个象限都有边。
+假设没有，那就有一边是不符合条件的三角形。
+结论 5：一个多边形的坨坨子里面不会有空。
+这个十分大便，你就分讨吧，然后会发现这个是对的。
+结论 6：前缀最大值最小值后缀最大值最小值一定在边界上。
+因为你不可能在里面啊，你在里面与 4 矛盾，然而又不能在里面空出来，这样与 5 矛盾。
+然后呢一个 native 的想法是增量构造，你直接把能连的都连上。
+然后你如果是 acm 赛制你一发交上去然后你发现你通过了。
+但我们是 oier 不是 acmer 我们不能这样，我们不能瞎猜，得有理有据的推。
+然后你发现推不出来。
+好的。然后这个逆天构造干了个事情。他宣称答案就是以前缀最大值前缀最小值后缀最大值后缀最小值为边界组成的坨坨子，并且内部通过单调栈来进行分配。
+这实际上就是增量构造构造出来的东西。但这个东西十分的吓人，你哪知道这个为什么是最优的，感觉一眼看上去是完全没有这个道理的。
+然而你发现你不知道一个叫作平面图欧拉定理的东东：$V&#43;F=E&#43;1$（此处 F 不包括最外面那个平面）。
+其实是忘了。
+然后你发现我们直接构造出来的东西的这个三角形数算一下为这个 $2V-P-2$。$P$ 为边界个数。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/tags/">
+<link rel="canonical" href="http://localhost:1313/posts/%E6%98%9F%E5%9B%BE%E9%87%8D%E7%BB%98/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +43,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E6%98%9F%E5%9B%BE%E9%87%8D%E7%BB%98/">
 <noscript>
     <style>
         #theme-toggle,
@@ -82,7 +106,7 @@
   });">
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -118,7 +142,7 @@
             </li>
             <li>
                 <a href="http://localhost:1313/tags/" title="Tags">
-                    <span class="active">Tags</span>
+                    <span>Tags</span>
                 </a>
             </li>
             <li>
@@ -135,57 +159,59 @@
     </nav>
 </header>
 <main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
-</header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="http://localhost:1313/tags/binary/">Binary <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/chunking/">Chunking <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/construction/">Construction <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ds/">DS <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph-euler-theorem/">Graph Euler Theorem <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/kdt/">KDT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/odt/">ODT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sam/">SAM <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/segtree/">SegTree <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solution/">Solution <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solutions/">Solutions <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solving/">Solving <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/strings/">Strings <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tb5/">TB5 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/%E6%A0%91%E5%89%96/">树剖 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      星图重绘
+    </h1>
+    <div class="post-meta"><span title='2026-04-26 22:16:41 +0800 CST'>April 26, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>神啦兄弟神啦。</p>
+<p>逆天构造拼尽全力无法战胜。</p>
+<p>明明想出了所有的结论，却仍然不会构造。</p>
+<p>我们称左上右下为 A 区，左下右上为 B 区。</p>
+<p>结论 1: 一个三角形可以被放入矩形当且仅当没有连续上升或连续下降。换个说法就是有 2 个点的两条边在不同区。</p>
+<p>这个显然，手玩即可。</p>
+<p>结论 2: 一定不会有一个点被包含在三角形内。</p>
+<p>如果这样的话可以通过把原来那个三角形删了并通过手玩发现至少获得两个三角形，一定更优。</p>
+<p>结论 3: 答案图一定不会有两个分开的三角形连通块。</p>
+<p>如果 P 和 Q 在横坐标或者纵坐标上有交叉，那直接去交叉的那个点，然后在另一侧取两侧的两个外围点组成三角形就联通了。</p>
+<p>如果整个 P 在 Q 左下角，那取 P 的一个点然后取一条132形三角形（一个多边形一定有逆序对）然后再把其包含的点像 2 一样塞进去即可。</p>
+<p>结论 4: 一个点如果周围被三角形挤满，那一定四个象限都有边。</p>
+<p>假设没有，那就有一边是不符合条件的三角形。</p>
+<p>结论 5：一个多边形的坨坨子里面不会有空。</p>
+<p>这个十分大便，你就分讨吧，然后会发现这个是对的。</p>
+<p>结论 6：前缀最大值最小值后缀最大值最小值一定在边界上。</p>
+<p>因为你不可能在里面啊，你在里面与 4 矛盾，然而又不能在里面空出来，这样与 5 矛盾。</p>
+<p>然后呢一个 <del>native</del> 的想法是增量构造，你直接把能连的都连上。</p>
+<p>然后你如果是 acm 赛制你一发交上去然后你发现你通过了。</p>
+<p>但我们是 oier 不是 acmer 我们不能这样，我们不能瞎猜，得有理有据的推。</p>
+<p><del>然后你发现推不出来</del>。</p>
+<p>好的。然后这个逆天构造干了个事情。他宣称答案就是以前缀最大值前缀最小值后缀最大值后缀最小值为边界组成的坨坨子，并且内部通过单调栈来进行分配。</p>
+<p>这实际上就是增量构造构造出来的东西。但这个东西十分的吓人，你哪知道这个为什么是最优的，感觉一眼看上去是完全没有这个道理的。</p>
+<p>然而你发现你不知道一个叫作平面图欧拉定理的东东：$V+F=E+1$（此处 F 不包括最外面那个平面）。</p>
+<p><del>其实是忘了</del>。</p>
+<p>然后你发现我们直接构造出来的东西的这个三角形数算一下为这个 $2V-P-2$。$P$ 为边界个数。</p>
+<p>然后你又发现这个 $P+3F \le 2E$ 你发现上面这个情况刚好取到了等号。</p>
+<p>神奇吧。</p>
+<p>很难想象这种题目放在 oi 赛制里能有多少人过。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solution/">Solution</a></li>
+      <li><a href="http://localhost:1313/tags/construction/">Construction</a></li>
+      <li><a href="http://localhost:1313/tags/graph-euler-theorem/">Graph Euler Theorem</a></li>
+    </ul>
+  </footer>
+</article>
     </main>
     
 <footer class="footer">
@@ -272,6 +298,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 
