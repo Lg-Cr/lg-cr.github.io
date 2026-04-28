@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Continued Fraction Theory | Inftopia</title>
+<meta name="keywords" content="Tricks, Maths, Continued Fraction Theory, Number Theory, Tree, Approximation">
+<meta name="description" content="这个东西本质上是用离散的东西去拟合和逼近实数。本质上是整数序列与实数的对应。是用来逼近的，拥有非常良好的性质。
+这个东西用我的话来说的话，连分数本身通过截断可以用来近似，而且很好的性质是他是最优有理近似。而且他与这个数本身的性质有着非同寻常的关系，他们在本质上同源。以及他实际上和欧几里得算法是亲戚，本质上都是对东西进行数论上的分解，只不过这个连分数把范围扩大了，扩大到实数，而且还拥有众多其他性质。还有一个点就是他还有另一个出现的形式就是通过若干次分子加分母或者分母加分子也就是 Stern-Brocot 树的形式出现，我感觉这种方式更好出 oi 题。
+例题：Square Resistance Value
+贴上 DeepSeek 的讲解：
+
+连分数是一个被严重低估的数学工具。它用一串整数编码一个实数，并且这串整数直接给出了该实数的最佳有理逼近序列。下面我从定义开始，逐步推进到关键性质、证明，最后给出你想要的概括。
+
+1. 什么是连分数
+一种最常用的形式是简单连分数（Simple Continued Fraction）：
+对于实数 $\alpha$，令
+$$
+\alpha_0 = \alpha, \quad a_0 = \lfloor \alpha_0 \rfloor
+$$
+然后递归定义：
+如果 $\alpha_n$ 不是整数，则
+$$
+\alpha_{n&#43;1} = \frac{1}{\alpha_n - a_n}, \quad a_{n&#43;1} = \lfloor \alpha_{n&#43;1} \rfloor
+$$
+这样会得到一个可能终止的整数序列 $a_0, a_1, a_2, \dots$，记作
+$$
+\alpha = [a_0; a_1, a_2, a_3, \dots]
+$$
+其含义是：
+$$
+\alpha = a_0 &#43; \cfrac{1}{a_1 &#43; \cfrac{1}{a_2 &#43; \cfrac{1}{a_3 &#43; \ddots}}}
+$$">
+<meta name="author" content="Inftress">
+<link rel="canonical" href="http://localhost:1313/posts/continued-fraction-theory/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/continued-fraction-theory/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });">
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Inftopia (Alt + H)">Inftopia</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Continued Fraction Theory
+    </h1>
+    <div class="post-meta"><span title='2026-04-28 23:19:48 +0800 CST'>April 28, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
+</div>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#1-%e4%bb%80%e4%b9%88%e6%98%af%e8%bf%9e%e5%88%86%e6%95%b0" aria-label="1. 什么是连分数">1. 什么是连分数</a></li>
+            <li>
+                <a href="#2-%e5%85%b3%e9%94%ae%e6%a6%82%e5%bf%b5%e6%b8%90%e8%bf%91%e5%88%86%e6%95%b0" aria-label="2. 关键概念：渐近分数">2. 关键概念：渐近分数</a><ul>
+                    
+            <li>
+                <a href="#%e6%a0%b8%e5%bf%83%e9%80%92%e6%8e%a8%e5%85%b3%e7%b3%bb%e9%99%84%e8%af%81%e6%98%8e" aria-label="核心递推关系（附证明）">核心递推关系（附证明）</a></li></ul>
+            </li>
+            <li>
+                <a href="#3-%e6%9c%80%e4%bd%b3%e6%9c%89%e7%90%86%e9%80%bc%e8%bf%91%e6%80%a7%e8%b4%a8" aria-label="3. 最佳有理逼近性质">3. 最佳有理逼近性质</a></li>
+            <li>
+                <a href="#4-%e5%ae%9e%e6%95%b0%e7%9a%84%e8%bf%9e%e5%88%86%e6%95%b0%e5%88%86%e7%b1%bb%e4%b8%8e%e5%91%a8%e6%9c%9f%e6%80%a7%e8%b4%a8" aria-label="4. 实数的连分数分类与周期性质">4. 实数的连分数分类与周期性质</a><ul>
+                    
+            <li>
+                <a href="#%e6%9c%89%e9%99%90--%e6%9c%89%e7%90%86%e6%95%b0" aria-label="有限 ⇔ 有理数">有限 ⇔ 有理数</a></li>
+            <li>
+                <a href="#%e5%91%a8%e6%9c%9f%e8%bf%9e%e5%88%86%e6%95%b0--%e4%ba%8c%e6%ac%a1%e6%97%a0%e7%90%86%e6%95%b0%e6%8b%89%e6%a0%bc%e6%9c%97%e6%97%a5%e5%ae%9a%e7%90%86" aria-label="周期连分数 ⇔ 二次无理数（拉格朗日定理）">周期连分数 ⇔ 二次无理数（拉格朗日定理）</a></li></ul>
+            </li>
+            <li>
+                <a href="#5-%e8%af%af%e5%b7%ae%e4%b8%8e%e6%94%b6%e6%95%9b%e9%80%9f%e5%ba%a6" aria-label="5. 误差与收敛速度">5. 误差与收敛速度</a></li>
+            <li>
+                <a href="#6-%e4%b8%80%e5%8f%a5%e8%af%9d%e6%a6%82%e6%8b%ac%e7%b2%be%e9%ab%93" aria-label="6. 一句话概括精髓">6. 一句话概括精髓</a></li>
+            <li>
+                <a href="#7-%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af" aria-label="7. 使用场景">7. 使用场景</a></li>
+            <li>
+                <a href="#8-%e5%ae%83%e6%8f%ad%e7%a4%ba%e4%ba%86%e4%bb%80%e4%b9%88%e6%95%b0%e5%ad%a6%e7%bb%93%e6%9e%84" aria-label="8. 它揭示了什么数学结构">8. 它揭示了什么数学结构</a></li>
+            <li>
+                <a href="#81-%e5%ae%9e%e6%95%b0-longleftrightarrow-%e6%95%b4%e6%95%b0%e5%ba%8f%e5%88%97%e4%b8%80%e7%a7%8d%e5%9d%90%e6%a0%87%e5%8c%96" aria-label="8.1 实数 $\longleftrightarrow$ 整数序列：一种“坐标化”">8.1 实数 $\longleftrightarrow$ 整数序列：一种“坐标化”</a></li>
+            <li>
+                <a href="#82-%e9%ab%98%e6%96%af%e6%98%a0%e5%b0%84%e5%8a%a8%e5%8a%9b%e7%b3%bb%e7%bb%9f%e7%9a%84%e8%a7%86%e8%a7%92" aria-label="8.2 高斯映射：动力系统的视角">8.2 高斯映射：动力系统的视角</a></li>
+            <li>
+                <a href="#83-mathrmgl2mathbbz-%e7%9f%a9%e9%98%b5%e4%bd%9c%e7%94%a8%e7%ba%bf%e6%80%a7%e5%8c%96" aria-label="8.3 $\mathrm{GL}(2,\mathbb{Z})$ 矩阵作用：线性化">8.3 $\mathrm{GL}(2,\mathbb{Z})$ 矩阵作用：线性化</a></li>
+            <li>
+                <a href="#84-stern-brocot-%e6%a0%91%e4%ba%8c%e5%8f%89%e6%a0%91%e7%bb%93%e6%9e%84" aria-label="8.4 Stern-Brocot 树：二叉树结构">8.4 Stern-Brocot 树：二叉树结构</a></li>
+            <li>
+                <a href="#85-%e8%bf%9e%e7%bb%ad%e4%b8%8e%e7%a6%bb%e6%95%a3%e4%b9%8b%e9%97%b4%e7%9a%84%e5%90%8c%e6%9e%84" aria-label="8.5 连续与离散之间的“同构”">8.5 连续与离散之间的“同构”</a>
+            </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><p>这个东西本质上是用离散的东西去拟合和逼近实数。本质上是整数序列与实数的对应。是用来逼近的，拥有非常良好的性质。</p>
+<p>这个东西用我的话来说的话，连分数本身通过截断可以用来近似，而且很好的性质是他是最优有理近似。而且他与这个数本身的性质有着非同寻常的关系，他们在本质上同源。以及他实际上和欧几里得算法是亲戚，本质上都是对东西进行数论上的分解，只不过这个连分数把范围扩大了，扩大到实数，而且还拥有众多其他性质。还有一个点就是他还有另一个出现的形式就是通过若干次分子加分母或者分母加分子也就是 Stern-Brocot 树的形式出现，我感觉这种方式更好出 oi 题。</p>
+<p>例题：<a href="/posts/Square-Resistance-Value">Square Resistance Value</a></p>
+<p>贴上 DeepSeek 的讲解：</p>
+<blockquote>
+<p>连分数是一个被严重低估的数学工具。它用<strong>一串整数</strong>编码一个实数，并且这串整数直接给出了该实数的<strong>最佳有理逼近序列</strong>。下面我从定义开始，逐步推进到关键性质、证明，最后给出你想要的概括。</p>
+<hr>
+<h2 id="1-什么是连分数">1. 什么是连分数<a hidden class="anchor" aria-hidden="true" href="#1-什么是连分数">#</a></h2>
+<p>一种最常用的形式是<strong>简单连分数</strong>（Simple Continued Fraction）：</p>
+<p>对于实数 $\alpha$，令<br>
+$$
+\alpha_0 = \alpha, \quad a_0 = \lfloor \alpha_0 \rfloor
+$$<br>
+然后递归定义：<br>
+如果 $\alpha_n$ 不是整数，则<br>
+$$
+\alpha_{n+1} = \frac{1}{\alpha_n - a_n}, \quad a_{n+1} = \lfloor \alpha_{n+1} \rfloor
+$$<br>
+这样会得到一个<strong>可能终止</strong>的整数序列 $a_0, a_1, a_2, \dots$，记作<br>
+$$
+\alpha = [a_0; a_1, a_2, a_3, \dots]
+$$<br>
+其含义是：
+$$
+\alpha = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \ddots}}}
+$$</p>
+<ul>
+<li>若 $\alpha$ 是有理数，上面的过程会终止（某一步 $\alpha_n$ 为整数），得到<strong>有限连分数</strong>：<br>
+$\alpha = [a_0; a_1, \dots, a_n]$。</li>
+<li>若 $\alpha$ 是无理数，则序列无限延续，得到<strong>无限连分数</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>唯一性细节</strong>：有理数的连分数表示几乎唯一，只在末尾有歧义：<br>
+$[a_0; a_1, \dots, a_n] = [a_0; a_1, \dots, a_n-1, 1]$，若 $a_n &gt; 1$。<br>
+除此之外，表达方式唯一。</p>
+</blockquote>
+<hr>
+<h2 id="2-关键概念渐近分数">2. 关键概念：渐近分数<a hidden class="anchor" aria-hidden="true" href="#2-关键概念渐近分数">#</a></h2>
+<p>截断到第 $k$ 个部分商 $a_k$，得到<strong>第 $k$ 渐近分数</strong>：
+$$
+\frac{p_k}{q_k} = [a_0; a_1, \dots, a_k]
+$$
+这些分数以极特殊的方式逼近原来的实数 $\alpha$。</p>
+<h3 id="核心递推关系附证明">核心递推关系（附证明）<a hidden class="anchor" aria-hidden="true" href="#核心递推关系附证明">#</a></h3>
+<p>对连分数 $[a_0; a_1, a_2, \dots]$，定义：
+$$
+\begin{aligned}
+p_{-2} &amp;= 0, &amp; p_{-1} &amp;= 1, \
+q_{-2} &amp;= 1, &amp; q_{-1} &amp;= 0.
+\end{aligned}
+$$
+则对 $n \ge 0$，
+$$
+p_n = a_n p_{n-1} + p_{n-2}, \quad q_n = a_n q_{n-1} + q_{n-2}.
+$$
+并且 $\displaystyle \frac{p_n}{q_n} = [a_0; a_1, \dots, a_n]$。</p>
+<p><strong>证明</strong>（归纳法）<br>
+当 $n=0$：<br>
+$p_0 = a_0 \cdot p_{-1} + p_{-2} = a_0 \cdot 1 + 0 = a_0$<br>
+$q_0 = a_0 \cdot q_{-1} + q_{-2} = a_0 \cdot 0 + 1 = 1$<br>
+所以 $p_0/q_0 = a_0 = [a_0]$，成立。</p>
+<p>假设对 $n-1$ 成立，即<br>
+$[a_0; a_1, \dots, a_{n-1}] = p_{n-1}/q_{n-1}$，
+并且递推成立。现在看
+$$
+[a_0; a_1, \dots, a_{n-1}, a_n] = [a_0; a_1, \dots, a_{n-1} + 1/a_n]
+$$
+将其视为一个以 $a_{n-1} + 1/a_n$ 结尾的有限连分数，利用 $n-1$ 时的公式：
+$$
+\frac{ (a_{n-1} + 1/a_n) p_{n-2} + p_{n-3} }{ (a_{n-1} + 1/a_n) q_{n-2} + q_{n-3} }
+$$
+整理分子：
+$$
+a_{n-1} p_{n-2} + p_{n-3} + \frac{1}{a_n} p_{n-2} = p_{n-1} + \frac{p_{n-2}}{a_n}
+$$
+同样分母为 $q_{n-1} + q_{n-2}/a_n$。所以整体等于
+$$
+\frac{a_n p_{n-1} + p_{n-2}}{a_n q_{n-1} + q_{n-2}} = \frac{p_n}{q_n}.
+$$
+归纳成立。 ∎</p>
+<p>这个递推是连分数理论的基石。它保证了 $p_n, q_n$ 增长非常快，且渐近分数之间满足大量恒等式。</p>
+<hr>
+<h2 id="3-最佳有理逼近性质">3. 最佳有理逼近性质<a hidden class="anchor" aria-hidden="true" href="#3-最佳有理逼近性质">#</a></h2>
+<p>这是连分数最深刻、最实用的特点。</p>
+<p><strong>定理1（最佳逼近）</strong><br>
+如果 $\left| \alpha - \frac{p}{q} \right| &lt; \frac{1}{2q^2}$，那么 $\frac{p}{q}$ 一定是 $\alpha$ 的某个渐近分数。</p>
+<p><strong>定理2（中间分数之外的更强性质）</strong><br>
+在分母不超过 $q_n$ 的所有有理数中，渐近分数 $\frac{p_n}{q_n}$ 到 $\alpha$ 的距离最近。<br>
+精确地说，对任何 $0 &lt; q \le q_n$ 且 $\frac{p}{q} \neq \frac{p_n}{q_n}$，都有
+$$
+|\alpha - \frac{p_n}{q_n}| &lt; |\alpha - \frac{p}{q}|.
+$$</p>
+<p><strong>证明（选出最具代表性的）</strong><br>
+我们先证明一个关键估计：
+$$
+\left| \alpha - \frac{p_n}{q_n} \right| &lt; \frac{1}{q_n q_{n+1}}.
+$$
+利用相邻渐近分数的差：
+$$
+\frac{p_{n+1}}{q_{n+1}} - \frac{p_n}{q_n} = \frac{(-1)^n}{q_n q_{n+1}}
+$$
+（这一点从递推式可以导出，下面会证）。<br>
+而 $\alpha$ 位于 $\frac{p_n}{q_n}$ 与 $\frac{p_{n+1}}{q_{n+1}}$ 之间（对于简单连分数，渐近分数左右交替逼近），所以
+$$
+\left| \alpha - \frac{p_n}{q_n} \right| &lt; \left| \frac{p_{n+1}}{q_{n+1}} - \frac{p_n}{q_n} \right| = \frac{1}{q_n q_{n+1}} \le \frac{1}{q_n^2}.
+$$
+这就得到了 $1/q_n^2$ 的界限。</p>
+<p><strong>为什么这是最优的？</strong><br>
+假设存在有理数 $a/b$ 使得 $b \le q_n$ 且
+$$
+\left| \alpha - \frac{a}{b} \right| \le \left| \alpha - \frac{p_n}{q_n} \right|.
+$$
+可以用连分数的交错逼近性质和中介分数证明这必然推出矛盾，最终得出必须 $a/b = p_n/q_n$。这就是 Hurwitz 定理的基础：对任意无理数 $\alpha$，存在无穷多个有理数 $p/q$ 使得 $|\alpha - p/q| &lt; 1/(\sqrt{5}q^2)$，且常数 $\sqrt{5}$ 最优，而渐近分数正是提供这样逼近的序列。</p>
+<p>这类证明的完整版较长，但精髓就是：连分数产生的分母增长速度恰好与逼近精度完美匹配。</p>
+<hr>
+<h2 id="4-实数的连分数分类与周期性质">4. 实数的连分数分类与周期性质<a hidden class="anchor" aria-hidden="true" href="#4-实数的连分数分类与周期性质">#</a></h2>
+<h3 id="有限--有理数">有限 ⇔ 有理数<a hidden class="anchor" aria-hidden="true" href="#有限--有理数">#</a></h3>
+<p>欧几里得算法本质上就是求连分数：对有理数 $a/b$，<br>
+$a = a_0 b + r_1$，然后 $b / r_1$ 继续，正好得到有限序列。因此<strong>有理数 = 有限连分数</strong>。</p>
+<h3 id="周期连分数--二次无理数拉格朗日定理">周期连分数 ⇔ 二次无理数（拉格朗日定理）<a hidden class="anchor" aria-hidden="true" href="#周期连分数--二次无理数拉格朗日定理">#</a></h3>
+<p>一个实数 $\alpha$ 是二次无理数（即有理系数二次方程的根）<strong>当且仅当</strong>它的连分数展开最终周期。</p>
+<p><strong>证明概要</strong>（←方向，即二次无理数⇒周期）：<br>
+设 $\alpha$ 是整系数二次方程 $A\alpha^2 + B\alpha + C = 0$ 的根，判别式非平方数。<br>
+其完全商 $\alpha_n$ 满足一个变换：
+$$
+\alpha = \frac{p_{n-1} \alpha_n + p_{n-2}}{q_{n-1} \alpha_n + q_{n-2}}.
+$$
+代入二次方程可得 $\alpha_n$ 也满足某个具有相同判别式的二次方程。由于该类方程整系数有界，$\alpha_n$ 只能取有限多个值，因此必重复，从而出现周期。逆方向（周期⇒二次无理数）则直接展开循环部分求解即可。 ∎</p>
+<p>这个定理表明，连分数将无理数的“代数复杂度”直接编码为序列的周期结构。</p>
+<hr>
+<h2 id="5-误差与收敛速度">5. 误差与收敛速度<a hidden class="anchor" aria-hidden="true" href="#5-误差与收敛速度">#</a></h2>
+<p>相邻渐近分数之差：
+$$
+p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}
+$$
+这也容易从递推式归纳得出。由它立刻有：
+$$
+\frac{p_n}{q_n} - \frac{p_{n-1}}{q_{n-1}} = \frac{(-1)^{n-1}}{q_{n-1} q_n}.
+$$
+所以渐近分数严格地向 $\alpha$ 交替逼近。进一步可推出：
+$$
+\left| \alpha - \frac{p_{n-1}}{q_{n-1}} \right| &gt; \left| \alpha - \frac{p_n}{q_n} \right|
+$$
+并不总成立，但每次“好”的部分商越大，逼近改善越多。尤其黄金比例 $\varphi = [1;1,1,\dots]$ 部分商全1，逼近最慢，是“最无理的数”。</p>
+<hr>
+<h2 id="6-一句话概括精髓">6. 一句话概括精髓<a hidden class="anchor" aria-hidden="true" href="#6-一句话概括精髓">#</a></h2>
+<p><strong>连分数是把实数的“整数骨架”抽取出来的一串指令，它产出的渐近分数，是所有分母受限情况下对实数的最佳有理逼近。</strong></p>
+<hr>
+<h2 id="7-使用场景">7. 使用场景<a hidden class="anchor" aria-hidden="true" href="#7-使用场景">#</a></h2>
+<ul>
+<li><strong>Pell方程 $x^2 - D y^2 = 1$</strong>：$\sqrt{D}$ 的连分数周期给出了基本解。</li>
+<li><strong>密码学（RSA低解密指数攻击）</strong>：Wiener 用 $\frac{e}{N}$ 的连分数渐近分数破解 $d &lt; N^{1/4}$。</li>
+<li><strong>日历设计</strong>：太阳年约 365.2422 天，连分数给出渐近分数 365, 365+1/4(闰年), 365+8/33, … 决定闰年规则。</li>
+<li><strong>音乐律制</strong>：纯五度 $\log_2 3/2$ 的连分数渐近给出五度相生律、十二平均律等。</li>
+<li><strong>分数近似与计算</strong>：在 OI 中，当你需要用分数精确表示或逼近浮点数时，连分数可给出既约分数且分母最小。</li>
+<li><strong>整数分解（连分数分解法）</strong>：利用 $\sqrt{kn}$ 的连分数寻找同余式平方。</li>
+</ul>
+<hr>
+<h2 id="8-它揭示了什么数学结构">8. 它揭示了什么数学结构<a hidden class="anchor" aria-hidden="true" href="#8-它揭示了什么数学结构">#</a></h2>
+<p>连分数揭示了实数集合与<strong>整数序列空间</strong>（本质上是 $\mathbb{Z} \times \mathbb{N}^\infty$）之间的一种深刻同构（有限序列对应有理数）。在拓扑和测度层面，它引出了<strong>高斯映射</strong>的动力系统；在数论层面，它提供了<strong>最佳逼近网格</strong>——Stern-Brocot 树就是连分数的二叉树形式。</p>
+<p>更抽象地看，连分数体现了 <strong>$\mathrm{SL}(2,\mathbb{Z})$ 在实数上的作用</strong>。每个矩阵
+$$
+\begin{pmatrix} p_n &amp; p_{n-1} \ q_n &amp; q_{n-1} \end{pmatrix}
+$$
+将无穷远点映射为渐近分数。连分数算法等价于对该矩阵的欧几里得分解。因此，这条整数序列刻画了实数在模群作用下的轨道，<strong>它为无理数赋予了一种“整数坐标”，将连续的混沌装进离散的规则之中</strong>。</p>
+<p>第8点的核心在于：连分数远不止是一个计算技巧，它通过<strong>整数序列</strong>、<strong>矩阵</strong>、<strong>动力系统</strong>和<strong>二叉树</strong>这几样东西，建立起了连续世界与离散世界之间的深刻同构。下面我把它拆解成几个层次，并给出必要的证明细节。</p>
+<hr>
+<h2 id="81-实数-longleftrightarrow-整数序列一种坐标化">8.1 实数 $\longleftrightarrow$ 整数序列：一种“坐标化”<a hidden class="anchor" aria-hidden="true" href="#81-实数-longleftrightarrow-整数序列一种坐标化">#</a></h2>
+<p>连分数算法给了我们一个映射：
+$$
+\alpha \mapsto (a_0; a_1, a_2, \ldots)
+$$
+其中 $a_0 \in \mathbb{Z}$，其余 $a_i \in \mathbb{N}_{&gt;0}$。<br>
+这个映射是：</p>
+<ul>
+<li><strong>单射</strong>：不同实数产生不同序列（除去末尾为1的有限序列歧义）。</li>
+<li><strong>满射（到特定空间）</strong>：任意有限序列给出有理数，任意无限序列给出无理数。</li>
+</ul>
+<p>这意味着，<strong>全体无理数</strong>就等价于全体<strong>无穷正整数序列</strong> $\mathbb{N}_{&gt;0}^\infty$，而有理数等价于有限序列。<br>
+这相当于为每个实数赋予了一组“整数坐标”，就像连续信号被展开成了一串离散指令。逼近一个实数，只需要截断这个序列即可——<strong>渐近分数就是“前k个坐标读出的值”</strong>。</p>
+<hr>
+<h2 id="82-高斯映射动力系统的视角">8.2 高斯映射：动力系统的视角<a hidden class="anchor" aria-hidden="true" href="#82-高斯映射动力系统的视角">#</a></h2>
+<p>定义高斯映射 $T: [0,1) \to [0,1)$：
+$$
+T(x) = \left{ \frac{1}{x} \right} = \frac{1}{x} - \left\lfloor \frac{1}{x} \right\rfloor \quad (x \neq 0), \quad T(0)=0.
+$$
+则连分数展开与 $T$ 的迭代直接对应：
+$$
+a_0 = \lfloor \alpha \rfloor, \quad x_0 = {\alpha},
+$$
+$$
+a_n = \left\lfloor \frac{1}{T^{n-1}(x_0)} \right\rfloor, \quad T^n(x_0) = \left{ \frac{1}{T^{n-1}(x_0)} \right}.
+$$
+这里 $\alpha_n = a_n + T^n(x_0)$。于是<strong>连分数序列就是高斯映射的一个轨道（整数部分记录）</strong>。</p>
+<p>高斯映射有一个著名的<strong>不变测度</strong>：
+$$
+\mu(A) = \frac{1}{\ln 2} \int_A \frac{dx}{1+x}.
+$$
+它是遍历的，这解释了为什么几乎所有无理数的连分数系数的几何平均会趋近于一个常数（欣钦常数）。动力系统结构告诉我们：<strong>连分数编码的，正是数在“高斯动力系统”下的符号动力学</strong>。</p>
+<hr>
+<h2 id="83-mathrmgl2mathbbz-矩阵作用线性化">8.3 $\mathrm{GL}(2,\mathbb{Z})$ 矩阵作用：线性化<a hidden class="anchor" aria-hidden="true" href="#83-mathrmgl2mathbbz-矩阵作用线性化">#</a></h2>
+<p>定义矩阵：
+$$
+M_n = \begin{pmatrix}
+p_n &amp; p_{n-1} \
+q_n &amp; q_{n-1}
+\end{pmatrix}.
+$$
+由递推 $p_n = a_n p_{n-1} + p_{n-2},\ q_n = a_n q_{n-1} + q_{n-2}$，立即得到
+$$
+M_n = M_{n-1} \begin{pmatrix}
+a_n &amp; 1 \
+1 &amp; 0
+\end{pmatrix}, \quad
+M_{-1} = \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix},
+$$
+并且 $\det(M_n) = (-1)^{n-1}$。因此每个 $M_n \in \mathrm{GL}(2,\mathbb{Z})$。</p>
+<p>把实数 $\alpha$ 与完全商 $\alpha_n$ 联系起来的关系：
+$$
+\alpha = \frac{p_{n-1} \alpha_n + p_{n-2}}{q_{n-1} \alpha_n + q_{n-2}}
+$$
+恰好可以写成：
+$$
+\begin{pmatrix} \alpha \ 1 \end{pmatrix} \propto M_{n-1} \begin{pmatrix} \alpha_n \ 1 \end{pmatrix}.
+$$
+这揭示了连分数就是<strong>作用于上半平面（或实数）的分式线性变换</strong>的矩阵连乘积。</p>
+<p>特别地，如果我们只看整数序列，它等价于将矩阵 $\begin{pmatrix} a &amp; b \ c &amp; d \end{pmatrix}$ 分解为生成元 $S = \begin{pmatrix} 1 &amp; 1 \ 0 &amp; 1 \end{pmatrix}$ 和 $T = \begin{pmatrix} 0 &amp; 1 \ 1 &amp; 0 \end{pmatrix}$ 的乘积（欧几里得算法）。<strong>连分数就是 $\mathrm{SL}(2,\mathbb{Z})$ 中元素的“欧几里得约化”或“单词表示”</strong>。群作用下的轨道，正是所有渐近分数构成的逼近网格。</p>
+<hr>
+<h2 id="84-stern-brocot-树二叉树结构">8.4 Stern-Brocot 树：二叉树结构<a hidden class="anchor" aria-hidden="true" href="#84-stern-brocot-树二叉树结构">#</a></h2>
+<p>把所有既约正分数按照下面方式排成二叉树：</p>
+<ul>
+<li>根是 $\frac{1}{1}$；</li>
+<li>每个节点 $\frac{a}{b}$ 的左孩子是 $\frac{a}{a+b}$，右孩子是 $\frac{a+b}{b}$。</li>
+</ul>
+<p>这棵树包含了所有正有理数，且每个有理数只出现一次。</p>
+<p>连分数与这棵树的关系极为漂亮：<br>
+给定一个连分数展开 $[a_0; a_1, a_2, \dots]$，可以在 Stern-Brocot 树上找到对应的路径。方法：</p>
+<ul>
+<li>从 $\frac{1}{0}$ 和 $\frac{0}{1}$ 开始（作为“左边界”和“右边界”，分别视为 $-\infty$ 和 $+\infty$ 的表示）。</li>
+<li>沿树移动：$a_0$ 决定了从边界开始的转向次数（例如向右 $a_0$ 次），然后交替方向，每次转向次数等于接下来的部分商 $a_i$。最终达到目标有理数。</li>
+</ul>
+<p>这样，渐近分数恰好是路径上的“拐点”。该树完整反映了最佳逼近的网格结构，因为<strong>有理数与所有区间套二分对应，而连分数提供了每个有理数到达的精确导航指令</strong>。</p>
+<hr>
+<h2 id="85-连续与离散之间的同构">8.5 连续与离散之间的“同构”<a hidden class="anchor" aria-hidden="true" href="#85-连续与离散之间的同构">#</a></h2>
+<p>总结来说，连分数揭示了如下结构对应：</p>
+<table>
+  <thead>
+      <tr>
+          <th>连续世界（实数）</th>
+          <th>离散世界（整数序列）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>实数 $\alpha$</td>
+          <td>序列 $(a_0, a_1, a_2, \dots)$</td>
+      </tr>
+      <tr>
+          <td>无理数</td>
+          <td>无限序列</td>
+      </tr>
+      <tr>
+          <td>有理数</td>
+          <td>有限序列</td>
+      </tr>
+      <tr>
+          <td>逼近精度</td>
+          <td>序列截断</td>
+      </tr>
+      <tr>
+          <td>最佳有理逼近</td>
+          <td>渐近分数（矩阵连乘截断）</td>
+      </tr>
+      <tr>
+          <td>分式线性变换轨道</td>
+          <td>$\mathrm{GL}(2,\mathbb{Z})$ 矩阵单词</td>
+      </tr>
+      <tr>
+          <td>高斯动力系统轨道</td>
+          <td>符号序列</td>
+      </tr>
+      <tr>
+          <td>数轴上全序</td>
+          <td>Stern-Brocot 二叉树路径</td>
+      </tr>
+  </tbody>
+</table>
+<p>正是这个对应，赋予了无理数一种“整数坐标”——将原本连续且看似混沌的无理数，分解为一系列整数的指令。<br>
+所有的逼近理论，只是这个结构的一个自然推论：<strong>一个好的逼近，无非是在离散序列中选择一个前缀</strong>。连分数从本质上说，是把实数的连续混沌装进了离散的规则之中，并且这个规则是唯一且最优的。</p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/tricks/">Tricks</a></li>
+      <li><a href="http://localhost:1313/tags/maths/">Maths</a></li>
+      <li><a href="http://localhost:1313/tags/continued-fraction-theory/">Continued Fraction Theory</a></li>
+      <li><a href="http://localhost:1313/tags/number-theory/">Number Theory</a></li>
+      <li><a href="http://localhost:1313/tags/tree/">Tree</a></li>
+      <li><a href="http://localhost:1313/tags/approximation/">Approximation</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Inftopia</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script src="https://utteranc.es/client.js"
+  repo="lg-cr/blog-comments"
+  issue-term="pathname"
+  theme="github-dark"
+  crossorigin="anonymous"
+  async>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tricks on Inftopia</title>
+    <link>http://localhost:1313/tags/tricks/</link>
+    <description>Recent content in Tricks on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 28 Apr 2026 23:19:48 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/tricks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Continued Fraction Theory</title>
+      <link>http://localhost:1313/posts/continued-fraction-theory/</link>
+      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
+      <guid>http://localhost:1313/posts/continued-fraction-theory/</guid>
+      <description>&lt;p&gt;这个东西本质上是用离散的东西去拟合和逼近实数。本质上是整数序列与实数的对应。是用来逼近的，拥有非常良好的性质。&lt;/p&gt;
+&lt;p&gt;这个东西用我的话来说的话，连分数本身通过截断可以用来近似，而且很好的性质是他是最优有理近似。而且他与这个数本身的性质有着非同寻常的关系，他们在本质上同源。以及他实际上和欧几里得算法是亲戚，本质上都是对东西进行数论上的分解，只不过这个连分数把范围扩大了，扩大到实数，而且还拥有众多其他性质。还有一个点就是他还有另一个出现的形式就是通过若干次分子加分母或者分母加分子也就是 Stern-Brocot 树的形式出现，我感觉这种方式更好出 oi 题。&lt;/p&gt;
+&lt;p&gt;例题：&lt;a href=&#34;http://localhost:1313/posts/Square%20Resistance%20Value&#34;&gt;Square Resistance Value&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;贴上 DeepSeek 的讲解：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;连分数是一个被严重低估的数学工具。它用&lt;strong&gt;一串整数&lt;/strong&gt;编码一个实数，并且这串整数直接给出了该实数的&lt;strong&gt;最佳有理逼近序列&lt;/strong&gt;。下面我从定义开始，逐步推进到关键性质、证明，最后给出你想要的概括。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-什么是连分数&#34;&gt;1. 什么是连分数&lt;/h2&gt;
+&lt;p&gt;一种最常用的形式是&lt;strong&gt;简单连分数&lt;/strong&gt;（Simple Continued Fraction）：&lt;/p&gt;
+&lt;p&gt;对于实数 $\alpha$，令&lt;br&gt;
+$$
+\alpha_0 = \alpha, \quad a_0 = \lfloor \alpha_0 \rfloor
+$$&lt;br&gt;
+然后递归定义：&lt;br&gt;
+如果 $\alpha_n$ 不是整数，则&lt;br&gt;
+$$
+\alpha_{n+1} = \frac{1}{\alpha_n - a_n}, \quad a_{n+1} = \lfloor \alpha_{n+1} \rfloor
+$$&lt;br&gt;
+这样会得到一个&lt;strong&gt;可能终止&lt;/strong&gt;的整数序列 $a_0, a_1, a_2, \dots$，记作&lt;br&gt;
+$$
+\alpha = [a_0; a_1, a_2, a_3, \dots]
+$$&lt;br&gt;
+其含义是：
+$$
+\alpha = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \ddots}}}
+$$&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

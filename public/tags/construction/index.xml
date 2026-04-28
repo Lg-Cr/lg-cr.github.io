@@ -6,8 +6,21 @@
     <description>Recent content in Construction on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 26 Apr 2026 22:16:41 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2026 23:12:23 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/construction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Square Resistance Value</title>
+      <link>http://localhost:1313/posts/square-resistance-value/</link>
+      <pubDate>Tue, 28 Apr 2026 23:12:23 +0800</pubDate>
+      <guid>http://localhost:1313/posts/square-resistance-value/</guid>
+      <description>&lt;p&gt;很清奇的构造题，以前似乎从来没见过逼近这一块的构造，而且这还是逼近无理数，我说实话开始有点懵。&lt;/p&gt;
+&lt;p&gt;这个题你如果事先知道连分数理论的话应该是相当简单的。&lt;/p&gt;
+&lt;p&gt;首先串联是电阻相加，并联是电阻的倒数相加再倒数。&lt;/p&gt;
+&lt;p&gt;然后一个很厉害的放缩就是你考虑每次在原电路上串联或者并联一个电阻。然后这个时候你发现他会让分子加上分母或者分母加上分子。&lt;/p&gt;
+&lt;p&gt;这就是 Stern-Brocot 树啊，然后你发现把整个连分数理论套上去基本上就做完了，你直接在 Stern-Brocot 树上二分，然后很容易通过连分数理论证明精度是足够的。&lt;/p&gt;
+&lt;p&gt;这个题其实就是科技题吧，学会科技就好做了。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/posts/Continued%20Fraction%20Theory&#34;&gt;Continued Fraction Theory&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>星图重绘</title>
       <link>http://localhost:1313/posts/%E6%98%9F%E5%9B%BE%E9%87%8D%E7%BB%98/</link>

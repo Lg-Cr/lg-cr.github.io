@@ -6,13 +6,62 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 26 Apr 2026 22:16:41 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2026 23:19:48 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Approximation</title>
+      <link>http://localhost:1313/tags/approximation/</link>
+      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/approximation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Continued Fraction Theory</title>
+      <link>http://localhost:1313/tags/continued-fraction-theory/</link>
+      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/continued-fraction-theory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Maths</title>
+      <link>http://localhost:1313/tags/maths/</link>
+      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/maths/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Number Theory</title>
+      <link>http://localhost:1313/tags/number-theory/</link>
+      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/number-theory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tree</title>
+      <link>http://localhost:1313/tags/tree/</link>
+      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/tree/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tricks</title>
+      <link>http://localhost:1313/tags/tricks/</link>
+      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
+      <guid>http://localhost:1313/tags/tricks/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Construction</title>
       <link>http://localhost:1313/tags/construction/</link>
-      <pubDate>Sun, 26 Apr 2026 22:16:41 +0800</pubDate>
+      <pubDate>Tue, 28 Apr 2026 23:12:23 +0800</pubDate>
       <guid>http://localhost:1313/tags/construction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Solutions</title>
+      <link>http://localhost:1313/tags/solutions/</link>
+      <pubDate>Tue, 28 Apr 2026 23:12:23 +0800</pubDate>
+      <guid>http://localhost:1313/tags/solutions/</guid>
       <description></description>
     </item>
     <item>
@@ -48,13 +97,6 @@
       <link>http://localhost:1313/tags/odt/</link>
       <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
       <guid>http://localhost:1313/tags/odt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Solutions</title>
-      <link>http://localhost:1313/tags/solutions/</link>
-      <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
-      <guid>http://localhost:1313/tags/solutions/</guid>
       <description></description>
     </item>
     <item>
