@@ -6,8 +6,27 @@
     <description>Recent content in Number Theory on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 Apr 2026 23:19:48 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2026 22:39:06 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/number-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Distinct GCDs (Hard Version)</title>
+      <link>http://localhost:1313/posts/distinct-gcds-hard-version/</link>
+      <pubDate>Thu, 30 Apr 2026 22:39:06 +0800</pubDate>
+      <guid>http://localhost:1313/posts/distinct-gcds-hard-version/</guid>
+      <description>&lt;p&gt;看错题了，我一开始没看到要求最小化那个不同种类数，但我也做出来了。&lt;/p&gt;
+&lt;p&gt;我想的就是研究这个性质，首先设原序列是 $a$，gcd 序列是 $b$，然后你发现我们一定要求 $lcm(b_i,b_{i+1})=a_{i+1}$。&lt;/p&gt;
+&lt;p&gt;然后呢你找 $b$，然后你发现如果 $p|b_{i-1},p|b_{i+1}$ 于是 $p|b_i$，$(b_{i-1},b_{i+1})|b_i$。&lt;/p&gt;
+&lt;p&gt;然后你发现这个是充要条件，然后一个构造就是 1 n/2, 2, n / 2 + 1&amp;hellip;..。&lt;/p&gt;
+&lt;p&gt;然而这样没有限制最小化不同种类数，但无论如何这个性质还是蛮厉害的。&lt;/p&gt;
+&lt;p&gt;然后回到正题，你发现你看错题了。&lt;/p&gt;
+&lt;p&gt;然后我们想着这个既然要最小是吧，那我们就直接想一下最小是多少，显然是不能小于 $k$ 满足 $k$ 个点的图的欧拉路径长度等于 $n$。&lt;/p&gt;
+&lt;p&gt;然后你试图构造发现你不会构造。&lt;/p&gt;
+&lt;p&gt;你乱搞一波，然后发现 easy version 可以 $2^i3^{m-i}$。&lt;/p&gt;
+&lt;p&gt;然后你发现你如法炮制，$2^{i}3^{m-i}5^{j}7^{k-j}$。&lt;/p&gt;
+&lt;p&gt;然而你发现你这个对应交换 $i,j$ 也会被判为相同。&lt;/p&gt;
+&lt;p&gt;然后你发现你还剩了蛮多位置。然后变成 $2^{i+j}3^{i}5^{m-i}7^{j}11^{k-j}$ 即可。&lt;/p&gt;
+&lt;p&gt;注意欧拉路径写法，不要像我一样 wa 十几发。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Continued Fraction Theory</title>
       <link>http://localhost:1313/posts/continued-fraction-theory/</link>
@@ -15,7 +34,7 @@
       <guid>http://localhost:1313/posts/continued-fraction-theory/</guid>
       <description>&lt;p&gt;这个东西本质上是用离散的东西去拟合和逼近实数。本质上是整数序列与实数的对应。是用来逼近的，拥有非常良好的性质。&lt;/p&gt;
 &lt;p&gt;这个东西用我的话来说的话，连分数本身通过截断可以用来近似，而且很好的性质是他是最优有理近似。而且他与这个数本身的性质有着非同寻常的关系，他们在本质上同源。以及他实际上和欧几里得算法是亲戚，本质上都是对东西进行数论上的分解，只不过这个连分数把范围扩大了，扩大到实数，而且还拥有众多其他性质。还有一个点就是他还有另一个出现的形式就是通过若干次分子加分母或者分母加分子也就是 Stern-Brocot 树的形式出现，我感觉这种方式更好出 oi 题。&lt;/p&gt;
-&lt;p&gt;例题：&lt;a href=&#34;http://localhost:1313/posts/Square%20Resistance%20Value&#34;&gt;Square Resistance Value&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;例题：&lt;a href=&#34;http://localhost:1313/posts/Square-Resistance-Value&#34;&gt;Square Resistance Value&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;贴上 DeepSeek 的讲解：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;连分数是一个被严重低估的数学工具。它用&lt;strong&gt;一串整数&lt;/strong&gt;编码一个实数，并且这串整数直接给出了该实数的&lt;strong&gt;最佳有理逼近序列&lt;/strong&gt;。下面我从定义开始，逐步推进到关键性质、证明，最后给出你想要的概括。&lt;/p&gt;

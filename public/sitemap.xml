@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/construction/</loc>
+    <lastmod>2026-04-30T22:39:06+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/distinct-gcds-hard-version/</loc>
+    <lastmod>2026-04-30T22:39:06+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-04-30T22:39:06+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/number-theory/</loc>
+    <lastmod>2026-04-30T22:39:06+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-04-30T22:39:06+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/solutions/</loc>
+    <lastmod>2026-04-30T22:39:06+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-04-30T22:39:06+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/approximation/</loc>
     <lastmod>2026-04-28T23:19:48+08:00</lastmod>
   </url><url>
@@ -11,19 +32,7 @@
     <loc>http://localhost:1313/tags/continued-fraction-theory/</loc>
     <lastmod>2026-04-28T23:19:48+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-04-28T23:19:48+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/maths/</loc>
-    <lastmod>2026-04-28T23:19:48+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/number-theory/</loc>
-    <lastmod>2026-04-28T23:19:48+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-04-28T23:19:48+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2026-04-28T23:19:48+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/tree/</loc>
@@ -31,12 +40,6 @@
   </url><url>
     <loc>http://localhost:1313/tags/tricks/</loc>
     <lastmod>2026-04-28T23:19:48+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/construction/</loc>
-    <lastmod>2026-04-28T23:12:23+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/solutions/</loc>
-    <lastmod>2026-04-28T23:12:23+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/square-resistance-value/</loc>
     <lastmod>2026-04-28T23:12:23+08:00</lastmod>
