@@ -6,8 +6,42 @@
     <description>Recent content in Solutions on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Apr 2026 22:39:06 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2026 23:41:21 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/solutions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>排序大师</title>
+      <link>http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/</link>
+      <pubDate>Fri, 01 May 2026 23:41:21 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/</guid>
+      <description>&lt;p&gt;厉害厉害厉害！&lt;/p&gt;
+&lt;p&gt;就是在面对这类的排列的题目，尤其是排序类，一个非常重要的方向就是从图理论出发。&lt;/p&gt;
+&lt;p&gt;非常经典的就是 $i\to p_i$ 建边，然后每次交换就是可以合并两个环或者拆开两个环，目标是 $n$ 个自环。&lt;/p&gt;
+&lt;p&gt;然而在这里你发现首先你这样连会导致 $O(n)$ 个边的变动，不可取，我们希望有常数级别的边的变动。&lt;/p&gt;
+&lt;p&gt;然后一个 native 的想法是你考虑 $p_i\to p_{i+1}$。于是我们得到了一个下界，大概是与目标图的不同边的数量除以 $4$ 向上取整。&lt;/p&gt;
+&lt;p&gt;但我们很容易发现这个下界相当的松，构造十分的困难况且我们还能举出反例，我们需要一个紧一些的下界，而且另一个原因是，这个链的形状我们实在是不太好刻画，这个链的信息实际上蛮多的，这也是导致下界很松的原因之一。&lt;/p&gt;
+&lt;p&gt;我们想要的是环，最好是数个数，但正常的方法不行了，怎么办？&lt;/p&gt;
+&lt;p&gt;这个题目牛逼的来了，他指出：我们可以 $p_i + 1\ to p_{i+1}$。&lt;/p&gt;
+&lt;p&gt;注意这个是在排列前后添了 $0,n+1$ 的情况下。&lt;/p&gt;
+&lt;p&gt;我们发现他本质上来讲，是把一条链，进行了错位，把链变成了自环。&lt;/p&gt;
+&lt;p&gt;其根本思想在于，我们可以通过改变连边方式本身来改变图的性质。&lt;/p&gt;
+&lt;p&gt;这确乎是一个范式的突破。我们的图理论与排列理论相结合，不再拘泥于那一种的连边方式，而是我们可以尝试多种的，不同的，适配每个题目性质的连边方式，这是前所未有的。&lt;/p&gt;
+&lt;p&gt;我做这个题目的时候就卡在我根本没有向这个地方想，被这个集体无意识给禁锢住了。&lt;/p&gt;
+&lt;p&gt;一个顺畅的思考路径应该是想到 native 的想法后想到这个链化为自环然后做完。&lt;/p&gt;
+&lt;p&gt;这个连边方式跟这个题目的性质有什么适配性呢？这还得从 $i\to p_i$ 说起。&lt;/p&gt;
+&lt;p&gt;我们说到，这个东西最大的问题在于，他需要更改 $O(n)$ 个，而其根本是他是对段进行操作。&lt;/p&gt;
+&lt;p&gt;然后我们自然地想到这个我们要把段转化为单点，自然是使用差分。这是差分思想的一种灵活运用。&lt;/p&gt;
+&lt;p&gt;我们发现我们可以让每个连边关联于他前后的东西，我们最好是希望在进行一系列操作之后，中间的影响恰好被抵消掉了，我们不用管。&lt;/p&gt;
+&lt;p&gt;然后我们想着要把 $p_i$ 和 $p_{i+1}$ 关联起来，既然如此，我们 $p_i\to p_{i+1}$ 如何？&lt;/p&gt;
+&lt;p&gt;这就诞生了我们的链。&lt;/p&gt;
+&lt;p&gt;但我们想要的是环啊，于是我们就把他挪一下，让&lt;strong&gt;最终图&lt;/strong&gt;全是自环。&lt;/p&gt;
+&lt;p&gt;我们注意到，&lt;strong&gt;原图是不重要的，最终图是重要的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;然后变成了 $p_i + 1\to p_{i+1}$。&lt;/p&gt;
+&lt;p&gt;然后我们发现这个题已经做完了一大半。&lt;/p&gt;
+&lt;p&gt;我们发现我们每个操作本质上相当于交换对应的两个对这个出边，自然也就是最多多出现两个自环，且奇偶性一定不会变。&lt;/p&gt;
+&lt;p&gt;我们发现这个下界紧得多，我们试图构造。&lt;/p&gt;
+&lt;p&gt;我们发现我们本质上就是要每次多两个自环，也就是多两个 $x\to x+1$,$y\to y+1$。&lt;/p&gt;
+&lt;p&gt;然后我们不难这样构造：我们找到第一个前面有比他大的东西的 $x$，再找 $x$ 前面最大的 $y$，然后你发现 $x-1$ 在 $y$ 前面，$y+1$ 在 $x$ 后边，然后我们按顺序这样拼一下，把 $x-1\to x$ 拼起来，$y\to y+1$ 拼起来即可，不难发现在没排序的情况下总是能找到的。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Distinct GCDs (Hard Version)</title>
       <link>http://localhost:1313/posts/distinct-gcds-hard-version/</link>

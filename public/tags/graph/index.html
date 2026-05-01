@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Archives | Inftopia</title>
+<title>Graph | Inftopia</title>
 <meta name="keywords" content="">
-<meta name="description" content="archives">
+<meta name="description" content="">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/archives/">
+<link rel="canonical" href="http://localhost:1313/tags/graph/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,7 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/archives/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/graph/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/graph/">
 <noscript>
     <style>
         #theme-toggle,
@@ -112,7 +113,7 @@
         <ul id="menu" class="menu">
             <li>
                 <a href="http://localhost:1313/archives/" title="Archives">
-                    <span class="active">Archives</span>
+                    <span>Archives</span>
                 </a>
             </li>
             <li>
@@ -133,107 +134,52 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-
+<main class="main"> 
 <header class="page-header">
   <h1>
-    Archives
+    Graph
   </h1>
 </header>
-<div class="archive-year">
-  <h2 class="archive-year-header" id="2026">
-    <a class="archive-header-link" href="#2026">2026</a>
-    <sup class="archive-count">&nbsp;11</sup>
-  </h2>
-  <div class="archive-month">
-    <h3 class="archive-month-header" id="2026-May">
-      <a class="archive-header-link" href="#2026-May">May</a>
-      <sup class="archive-count">&nbsp;3</sup>
-    </h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">排序大师
-        </h3>
-        <div class="archive-meta"><span title='2026-05-01 23:41:21 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to 排序大师" href="http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">这样吗&hellip;&hellip;滚吧
-        </h3>
-        <div class="archive-meta"><span title='2026-05-01 20:17:14 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to 这样吗......滚吧" href="http://localhost:1313/posts/%E8%BF%99%E6%A0%B7%E5%90%97......%E6%BB%9A%E5%90%A7/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Balancing Network
-        </h3>
-        <div class="archive-meta"><span title='2026-05-01 15:16:29 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Balancing Network" href="http://localhost:1313/posts/balancing-network/"></a>
-      </div>
-    </div>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">排序大师
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>厉害厉害厉害！
+就是在面对这类的排列的题目，尤其是排序类，一个非常重要的方向就是从图理论出发。
+非常经典的就是 $i\to p_i$ 建边，然后每次交换就是可以合并两个环或者拆开两个环，目标是 $n$ 个自环。
+然而在这里你发现首先你这样连会导致 $O(n)$ 个边的变动，不可取，我们希望有常数级别的边的变动。
+然后一个 native 的想法是你考虑 $p_i\to p_{i&#43;1}$。于是我们得到了一个下界，大概是与目标图的不同边的数量除以 $4$ 向上取整。
+但我们很容易发现这个下界相当的松，构造十分的困难况且我们还能举出反例，我们需要一个紧一些的下界，而且另一个原因是，这个链的形状我们实在是不太好刻画，这个链的信息实际上蛮多的，这也是导致下界很松的原因之一。
+我们想要的是环，最好是数个数，但正常的方法不行了，怎么办？
+这个题目牛逼的来了，他指出：我们可以 $p_i &#43; 1\ to p_{i&#43;1}$。
+注意这个是在排列前后添了 $0,n&#43;1$ 的情况下。
+我们发现他本质上来讲，是把一条链，进行了错位，把链变成了自环。
+其根本思想在于，我们可以通过改变连边方式本身来改变图的性质。
+这确乎是一个范式的突破。我们的图理论与排列理论相结合，不再拘泥于那一种的连边方式，而是我们可以尝试多种的，不同的，适配每个题目性质的连边方式，这是前所未有的。
+我做这个题目的时候就卡在我根本没有向这个地方想，被这个集体无意识给禁锢住了。
+一个顺畅的思考路径应该是想到 native 的想法后想到这个链化为自环然后做完。
+这个连边方式跟这个题目的性质有什么适配性呢？这还得从 $i\to p_i$ 说起。
+我们说到，这个东西最大的问题在于，他需要更改 $O(n)$ 个，而其根本是他是对段进行操作。
+然后我们自然地想到这个我们要把段转化为单点，自然是使用差分。这是差分思想的一种灵活运用。
+我们发现我们可以让每个连边关联于他前后的东西，我们最好是希望在进行一系列操作之后，中间的影响恰好被抵消掉了，我们不用管。
+然后我们想着要把 $p_i$ 和 $p_{i&#43;1}$ 关联起来，既然如此，我们 $p_i\to p_{i&#43;1}$ 如何？
+这就诞生了我们的链。
+但我们想要的是环啊，于是我们就把他挪一下，让最终图全是自环。
+我们注意到，原图是不重要的，最终图是重要的。
+然后变成了 $p_i &#43; 1\to p_{i&#43;1}$。
+然后我们发现这个题已经做完了一大半。
+我们发现我们每个操作本质上相当于交换对应的两个对这个出边，自然也就是最多多出现两个自环，且奇偶性一定不会变。
+我们发现这个下界紧得多，我们试图构造。
+我们发现我们本质上就是要每次多两个自环，也就是多两个 $x\to x&#43;1$,$y\to y&#43;1$。
+然后我们不难这样构造：我们找到第一个前面有比他大的东西的 $x$，再找 $x$ 前面最大的 $y$，然后你发现 $x-1$ 在 $y$ 前面，$y&#43;1$ 在 $x$ 后边，然后我们按顺序这样拼一下，把 $x-1\to x$ 拼起来，$y\to y&#43;1$ 拼起来即可，不难发现在没排序的情况下总是能找到的。
+...</p>
   </div>
-  <div class="archive-month">
-    <h3 class="archive-month-header" id="2026-April">
-      <a class="archive-header-link" href="#2026-April">April</a>
-      <sup class="archive-count">&nbsp;8</sup>
-    </h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Distinct GCDs (Hard Version)
-        </h3>
-        <div class="archive-meta"><span title='2026-04-30 22:39:06 +0800 CST'>April 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Distinct GCDs (Hard Version)" href="http://localhost:1313/posts/distinct-gcds-hard-version/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Continued Fraction Theory
-        </h3>
-        <div class="archive-meta"><span title='2026-04-28 23:19:48 +0800 CST'>April 28, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Continued Fraction Theory" href="http://localhost:1313/posts/continued-fraction-theory/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Square Resistance Value
-        </h3>
-        <div class="archive-meta"><span title='2026-04-28 23:12:23 +0800 CST'>April 28, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Square Resistance Value" href="http://localhost:1313/posts/square-resistance-value/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">星图重绘
-        </h3>
-        <div class="archive-meta"><span title='2026-04-26 22:16:41 +0800 CST'>April 26, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to 星图重绘" href="http://localhost:1313/posts/%E6%98%9F%E5%9B%BE%E9%87%8D%E7%BB%98/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Construction of Highway
-          <span class="entry-hint" title="Draft">
-            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" fill="currentColor">
-              <path
-                d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-            </svg>
-          </span>
-        </h3>
-        <div class="archive-meta"><span title='2026-04-20 22:57:49 +0800 CST'>April 20, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Construction of Highway" href="http://localhost:1313/posts/construction-of-highway/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">古明地枣的袜子
-        </h3>
-        <div class="archive-meta"><span title='2026-04-19 20:13:21 +0800 CST'>April 19, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to 古明地枣的袜子" href="http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">P4384 QOJ2994 [八省联考 2018] 制胡窜
-        </h3>
-        <div class="archive-meta"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to P4384 QOJ2994 [八省联考 2018] 制胡窜" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title entry-hint-parent">Hello World
-        </h3>
-        <div class="archive-meta"><span title='2026-04-17 19:03:14 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></div>
-        <a class="entry-link" aria-label="post link to Hello World" href="http://localhost:1313/posts/hello-world/"></a>
-      </div>
-    </div>
-  </div>
-</div>
+  <footer class="entry-footer"><span title='2026-05-01 23:41:21 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 排序大师" href="http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/"></a>
+</article>
     </main>
     
 <footer class="footer">
