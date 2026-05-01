@@ -6,8 +6,15 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 May 2026 15:16:29 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2026 20:17:14 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pearls</title>
+      <link>http://localhost:1313/tags/pearls/</link>
+      <pubDate>Fri, 01 May 2026 20:17:14 +0800</pubDate>
+      <guid>http://localhost:1313/tags/pearls/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Construction</title>
       <link>http://localhost:1313/tags/construction/</link>
