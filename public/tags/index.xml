@@ -6,13 +6,20 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Apr 2026 22:39:06 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2026 15:16:29 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Construction</title>
       <link>http://localhost:1313/tags/construction/</link>
-      <pubDate>Thu, 30 Apr 2026 22:39:06 +0800</pubDate>
+      <pubDate>Fri, 01 May 2026 15:16:29 +0800</pubDate>
       <guid>http://localhost:1313/tags/construction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Solution</title>
+      <link>http://localhost:1313/tags/solution/</link>
+      <pubDate>Fri, 01 May 2026 15:16:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/solution/</guid>
       <description></description>
     </item>
     <item>
@@ -69,13 +76,6 @@
       <link>http://localhost:1313/tags/graph-euler-theorem/</link>
       <pubDate>Sun, 26 Apr 2026 22:16:41 +0800</pubDate>
       <guid>http://localhost:1313/tags/graph-euler-theorem/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Solution</title>
-      <link>http://localhost:1313/tags/solution/</link>
-      <pubDate>Sun, 26 Apr 2026 22:16:41 +0800</pubDate>
-      <guid>http://localhost:1313/tags/solution/</guid>
       <description></description>
     </item>
     <item>
