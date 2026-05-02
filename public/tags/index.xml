@@ -6,27 +6,41 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 02 May 2026 16:02:28 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 20:40:42 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Construction</title>
-      <link>http://localhost:1313/tags/construction/</link>
-      <pubDate>Sat, 02 May 2026 16:02:28 +0800</pubDate>
-      <guid>http://localhost:1313/tags/construction/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Solutions</title>
-      <link>http://localhost:1313/tags/solutions/</link>
-      <pubDate>Sat, 02 May 2026 16:02:28 +0800</pubDate>
-      <guid>http://localhost:1313/tags/solutions/</guid>
+      <title>Flow</title>
+      <link>http://localhost:1313/tags/flow/</link>
+      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
+      <guid>http://localhost:1313/tags/flow/</guid>
       <description></description>
     </item>
     <item>
       <title>Graph</title>
       <link>http://localhost:1313/tags/graph/</link>
-      <pubDate>Fri, 01 May 2026 23:41:21 +0800</pubDate>
+      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
       <guid>http://localhost:1313/tags/graph/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MCMF</title>
+      <link>http://localhost:1313/tags/mcmf/</link>
+      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
+      <guid>http://localhost:1313/tags/mcmf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Solutions</title>
+      <link>http://localhost:1313/tags/solutions/</link>
+      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
+      <guid>http://localhost:1313/tags/solutions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Construction</title>
+      <link>http://localhost:1313/tags/construction/</link>
+      <pubDate>Sat, 02 May 2026 16:02:28 +0800</pubDate>
+      <guid>http://localhost:1313/tags/construction/</guid>
       <description></description>
     </item>
     <item>

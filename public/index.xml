@@ -6,8 +6,27 @@
     <description>Recent content on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 02 May 2026 16:02:28 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 20:40:42 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boxes and Balls</title>
+      <link>http://localhost:1313/posts/boxes-and-balls/</link>
+      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
+      <guid>http://localhost:1313/posts/boxes-and-balls/</guid>
+      <description>&lt;p&gt;很厉害的题目。&lt;/p&gt;
+&lt;p&gt;首先我们知道他是网络流。&lt;/p&gt;
+&lt;p&gt;怎么流呢。&lt;/p&gt;
+&lt;p&gt;其实最重要的呢，是这个条件如何刻画。&lt;/p&gt;
+&lt;p&gt;我们要把这个条件转化为什么东西来进行这个刻画。&lt;/p&gt;
+&lt;p&gt;一个 native 的想法是，你列成一个矩阵分别是当前阶段的这些位置和当前时间，然后像网格图一样穿起来。&lt;/p&gt;
+&lt;p&gt;但你发现这样是完全不可行滴！因为你根本不知道每个位置现在是什么数。&lt;/p&gt;
+&lt;p&gt;然后我们发现一个重要的观察，你要么是从上一个同一个数那里继承，然后就一直从那个时候一直霸占这个位置，要么呢就是现在开始，踢掉一个并放进去。&lt;/p&gt;
+&lt;p&gt;还有就是，你发现关心这个具体是哪个位置放的是哪个数是十分愚蠢的，我们发现他只是一个霸占的过程，在你霸占的过程中呢你可以直接看作这个位置消失了，那你根本不需要知道哪个位置放的是哪个数，你只要知道有多少个位置被霸占即可。&lt;/p&gt;
+&lt;p&gt;然后你发现你变成了，给一堆区间，然后你可以选一些区间（即霸占他们）并获得一些受益，但同一个时间不能选很多区间。&lt;/p&gt;
+&lt;p&gt;然后这个就是经典模型，从 $1$ 到 $n$ 穿起来即可，容量为 $m-1$，代价为 $0$，然后在旁边接一些边，容量为 $1$ 费用为 $-w$，可以把这个流量引到旁边去表示你用了这个区间。&lt;/p&gt;
+&lt;p&gt;注意我们同时只能有 $m-1$ 个被霸占，因为你每次还要放一个数进去。&lt;/p&gt;
+&lt;p&gt;注意 $s,t$ 可能重合，有可能会死循环，注意特判或者多拉一条边。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Constructing a Matrix</title>
       <link>http://localhost:1313/posts/constructing-a-matrix/</link>
