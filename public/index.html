@@ -172,6 +172,43 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Constructing a Matrix
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>十分厉害的题目。
+我自己其实是想到了一个方法，但感觉十分的模糊，并不是很会实现，于是大学习了水球老师的做法。
+我自己的方法：
+首先啊这个行和列显然是可以随便调换的，所以我们把行按照 a 小到大排序。
+我们核心思想是每一行的这个每个颜色都一定是连续的，不可能出项两个颜色相同的连续段在同一行。
+然后我们第一行按顺序直接填。
+从第二行开始像扫描线一样。我们可以在块与块的交界处出现新块，部分覆盖块但不能严格包含（即两边都超过）原来的块。
+然后你发现对于竖向的 b 最小的就是块动的最少的，b 最大的就是块更替最频繁的。
+这个你可以通过对 b 做差分得到，但实现我并不会实现。
+接下来讲水球的做法。
+这个是另一条路线。
+我们考虑一个一个把数填进去。
+于是我们立马得到了结论：如果一行内有与他颜色相同的但列内没有就只会增加列，如果行列都有则不会改变，如果行列都没有则都会加。
+然后我们就非常 clear 了。
+我们考虑直接填，每次看剩的 $a,b$ 来填。
+然而我们发现我们如果剩一些空格就很难办了。
+于是我们先想下如果有空格怎么办。
+我们肯定希望我们填空格根本不影响任何的 $a,b$。
+那我们直接给每行每列都来一个普适的空格值，填在对角线上。
+好的接下来我们肯定贪心地先把 $a,b$ 都有的消耗掉即可，这个是好做的，你直接用全新的颜色即可。
+接下来剩一些单独的 $a,b$，我们直接使用对应行内用过但列内没用过的。
+怎么选呢，你发现首先普适色肯定不能选，我们实际上可以在对应行内用过的颜色里随便选一个，因为其他的我们都填的是全新色，而我们没填当前格所以列里面肯定不会有我们用的这个色。
+实现上我们可以在全新色阶段直接给对应的行和列贴上一个标记色即可。
+这样是好做的。
+这个题目告诉我们碰壁了就换路线。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-02 16:02:28 +0800 CST'>May 2, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Constructing a Matrix" href="http://localhost:1313/posts/constructing-a-matrix/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">排序大师
     </h2>
   </header>
@@ -481,29 +518,6 @@ Continued Fraction Theory
   </div>
   <footer class="entry-footer"><span title='2026-04-19 20:13:21 +0800 CST'>April 19, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to 古明地枣的袜子" href="http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">P4384 QOJ2994 [八省联考 2018] 制胡窜
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>看到子串出现类直接套上一个 SAM。
-然后非常套路地使用线段树合并来维护子树的 endpos。
-我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。
-我们考虑正难则反，考虑多少种会把所有插到。
-然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。
-这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。
-我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。
-二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个右下角的，阶梯状面积，其中凹点在 $x=y$ 上，且凹点的 $x$ 就是点的位置。
-然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。
-我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。
-你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 pushup 的时候算一下两边的贡献然后额外把少算的贡献算上即可。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to P4384 QOJ2994 [八省联考 2018] 制胡窜" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

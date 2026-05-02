@@ -143,6 +143,43 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Constructing a Matrix
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>十分厉害的题目。
+我自己其实是想到了一个方法，但感觉十分的模糊，并不是很会实现，于是大学习了水球老师的做法。
+我自己的方法：
+首先啊这个行和列显然是可以随便调换的，所以我们把行按照 a 小到大排序。
+我们核心思想是每一行的这个每个颜色都一定是连续的，不可能出项两个颜色相同的连续段在同一行。
+然后我们第一行按顺序直接填。
+从第二行开始像扫描线一样。我们可以在块与块的交界处出现新块，部分覆盖块但不能严格包含（即两边都超过）原来的块。
+然后你发现对于竖向的 b 最小的就是块动的最少的，b 最大的就是块更替最频繁的。
+这个你可以通过对 b 做差分得到，但实现我并不会实现。
+接下来讲水球的做法。
+这个是另一条路线。
+我们考虑一个一个把数填进去。
+于是我们立马得到了结论：如果一行内有与他颜色相同的但列内没有就只会增加列，如果行列都有则不会改变，如果行列都没有则都会加。
+然后我们就非常 clear 了。
+我们考虑直接填，每次看剩的 $a,b$ 来填。
+然而我们发现我们如果剩一些空格就很难办了。
+于是我们先想下如果有空格怎么办。
+我们肯定希望我们填空格根本不影响任何的 $a,b$。
+那我们直接给每行每列都来一个普适的空格值，填在对角线上。
+好的接下来我们肯定贪心地先把 $a,b$ 都有的消耗掉即可，这个是好做的，你直接用全新的颜色即可。
+接下来剩一些单独的 $a,b$，我们直接使用对应行内用过但列内没用过的。
+怎么选呢，你发现首先普适色肯定不能选，我们实际上可以在对应行内用过的颜色里随便选一个，因为其他的我们都填的是全新色，而我们没填当前格所以列里面肯定不会有我们用的这个色。
+实现上我们可以在全新色阶段直接给对应的行和列贴上一个标记色即可。
+这样是好做的。
+这个题目告诉我们碰壁了就换路线。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-02 16:02:28 +0800 CST'>May 2, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Constructing a Matrix" href="http://localhost:1313/posts/constructing-a-matrix/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">排序大师
     </h2>
   </header>
@@ -179,6 +216,34 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-01 23:41:21 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to 排序大师" href="http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Balancing Network
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>又一个神仙构造题。
+对于第一个小问，相对是简单的。
+首先 $O(nm)$ 是唐的，你枚举结尾然后暴力跑。
+一个 native 的想法是你考虑找一棵树然后换根，然而你发现你并找不出来一棵这样的树。
+然后你考虑奇怪的方法，我们发现这个是可达性，然后试图使用 bitset 然后发现做完了。
+你直接每次按顺序用 bitset 模拟即可。
+对于第二个小问，有点困难。
+一个 native 的想法是你考虑钦定两个终点，然后画在图上需要你做一个割出来把点割成两边，但实际上这很困难。
+另一个 native 的想法是你直接考虑钦定一个线从头到尾一点不动，其他的方向尽量远离这条线，这实际上大部分情况下是可以的，但完全图会出问题。
+然后我们参考一下题解。
+首先 $n=2$ 爆了。
+你发现你还是从后往前，不过是类似于把一股线编织起来，然后呢你记录这个每个线最终到哪里，以及每个终点汇聚了多少线。
+然后你就很神奇的，你直接瞎搞，直到你发现如果你再把这根线会进去（因为你是从后向前，所以他合并的是一个根在右边的树，最左边的线头都只有一根）会直接导致答案合法，然后你就临时抱佛脚把这个方向转一下。
+结果你突然发现这样是对的，因为这个不可能两个线头都是 $n-1$。
+然后就很神奇的做完了这个题。
+这么看来其实这个不合法的条件是相当松的，不过因为这个题目本身的原因，这个解空间的形状奇特，导致找到一个普适的方法变得困难。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-01 15:16:29 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Balancing Network" href="http://localhost:1313/posts/balancing-network/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -223,6 +288,44 @@ Continued Fraction Theory
   </div>
   <footer class="entry-footer"><span title='2026-04-28 23:12:23 +0800 CST'>April 28, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Square Resistance Value" href="http://localhost:1313/posts/square-resistance-value/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">星图重绘
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>神啦兄弟神啦。
+逆天构造拼尽全力无法战胜。
+明明想出了所有的结论，却仍然不会构造。
+我们称左上右下为 A 区，左下右上为 B 区。
+结论 1: 一个三角形可以被放入矩形当且仅当没有连续上升或连续下降。换个说法就是有 2 个点的两条边在不同区。
+这个显然，手玩即可。
+结论 2: 一定不会有一个点被包含在三角形内。
+如果这样的话可以通过把原来那个三角形删了并通过手玩发现至少获得两个三角形，一定更优。
+结论 3: 答案图一定不会有两个分开的三角形连通块。
+如果 P 和 Q 在横坐标或者纵坐标上有交叉，那直接去交叉的那个点，然后在另一侧取两侧的两个外围点组成三角形就联通了。
+如果整个 P 在 Q 左下角，那取 P 的一个点然后取一条132形三角形（一个多边形一定有逆序对）然后再把其包含的点像 2 一样塞进去即可。
+结论 4: 一个点如果周围被三角形挤满，那一定四个象限都有边。
+假设没有，那就有一边是不符合条件的三角形。
+结论 5：一个多边形的坨坨子里面不会有空。
+这个十分大便，你就分讨吧，然后会发现这个是对的。
+结论 6：前缀最大值最小值后缀最大值最小值一定在边界上。
+因为你不可能在里面啊，你在里面与 4 矛盾，然而又不能在里面空出来，这样与 5 矛盾。
+然后呢一个 native 的想法是增量构造，你直接把能连的都连上。
+然后你如果是 acm 赛制你一发交上去然后你发现你通过了。
+但我们是 oier 不是 acmer 我们不能这样，我们不能瞎猜，得有理有据的推。
+然后你发现推不出来。
+好的。然后这个逆天构造干了个事情。他宣称答案就是以前缀最大值前缀最小值后缀最大值后缀最小值为边界组成的坨坨子，并且内部通过单调栈来进行分配。
+这实际上就是增量构造构造出来的东西。但这个东西十分的吓人，你哪知道这个为什么是最优的，感觉一眼看上去是完全没有这个道理的。
+然而你发现你不知道一个叫作平面图欧拉定理的东东：$V&#43;F=E&#43;1$（此处 F 不包括最外面那个平面）。
+其实是忘了。
+然后你发现我们直接构造出来的东西的这个三角形数算一下为这个 $2V-P-2$。$P$ 为边界个数。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-26 22:16:41 +0800 CST'>April 26, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 星图重绘" href="http://localhost:1313/posts/%E6%98%9F%E5%9B%BE%E9%87%8D%E7%BB%98/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 

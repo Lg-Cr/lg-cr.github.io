@@ -2,7 +2,7 @@
 date = '2026-05-01T15:16:29+08:00'
 draft = false
 title = 'Balancing Network'
-tags = ['Solution', 'Construction']
+tags = ['Solutions', 'Construction']
 +++
 
 又一个神仙构造题。

@@ -6,8 +6,39 @@
     <description>Recent content in Posts on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 May 2026 23:41:21 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 16:02:28 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Constructing a Matrix</title>
+      <link>http://localhost:1313/posts/constructing-a-matrix/</link>
+      <pubDate>Sat, 02 May 2026 16:02:28 +0800</pubDate>
+      <guid>http://localhost:1313/posts/constructing-a-matrix/</guid>
+      <description>&lt;p&gt;十分厉害的题目。&lt;/p&gt;
+&lt;p&gt;我自己其实是想到了一个方法，但感觉十分的模糊，并不是很会实现，于是大学习了水球老师的做法。&lt;/p&gt;
+&lt;p&gt;我自己的方法：&lt;/p&gt;
+&lt;p&gt;首先啊这个行和列显然是可以随便调换的，所以我们把行按照 a 小到大排序。&lt;/p&gt;
+&lt;p&gt;我们核心思想是每一行的这个每个颜色都一定是连续的，不可能出项两个颜色相同的连续段在同一行。&lt;/p&gt;
+&lt;p&gt;然后我们第一行按顺序直接填。&lt;/p&gt;
+&lt;p&gt;从第二行开始像扫描线一样。我们可以在块与块的交界处出现新块，部分覆盖块但不能严格包含（即两边都超过）原来的块。&lt;/p&gt;
+&lt;p&gt;然后你发现对于竖向的 b 最小的就是块动的最少的，b 最大的就是块更替最频繁的。&lt;/p&gt;
+&lt;p&gt;这个你可以通过对 b 做差分得到，但实现我并不会实现。&lt;/p&gt;
+&lt;p&gt;接下来讲水球的做法。&lt;/p&gt;
+&lt;p&gt;这个是另一条路线。&lt;/p&gt;
+&lt;p&gt;我们考虑一个一个把数填进去。&lt;/p&gt;
+&lt;p&gt;于是我们立马得到了结论：如果一行内有与他颜色相同的但列内没有就只会增加列，如果行列都有则不会改变，如果行列都没有则都会加。&lt;/p&gt;
+&lt;p&gt;然后我们就非常 clear 了。&lt;/p&gt;
+&lt;p&gt;我们考虑直接填，每次看剩的 $a,b$ 来填。&lt;/p&gt;
+&lt;p&gt;然而我们发现我们如果剩一些空格就很难办了。&lt;/p&gt;
+&lt;p&gt;于是我们先想下如果有空格怎么办。&lt;/p&gt;
+&lt;p&gt;我们肯定希望我们填空格根本不影响任何的 $a,b$。&lt;/p&gt;
+&lt;p&gt;那我们直接给每行每列都来一个普适的空格值，填在对角线上。&lt;/p&gt;
+&lt;p&gt;好的接下来我们肯定贪心地先把 $a,b$ 都有的消耗掉即可，这个是好做的，你直接用全新的颜色即可。&lt;/p&gt;
+&lt;p&gt;接下来剩一些单独的 $a,b$，我们直接使用对应行内用过但列内没用过的。&lt;/p&gt;
+&lt;p&gt;怎么选呢，你发现首先普适色肯定不能选，我们实际上可以在对应行内用过的颜色里随便选一个，因为其他的我们都填的是全新色，而我们没填当前格所以列里面肯定不会有我们用的这个色。&lt;/p&gt;
+&lt;p&gt;实现上我们可以在全新色阶段直接给对应的行和列贴上一个标记色即可。&lt;/p&gt;
+&lt;p&gt;这样是好做的。&lt;/p&gt;
+&lt;p&gt;这个题目告诉我们碰壁了就换路线。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>排序大师</title>
       <link>http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/</link>
