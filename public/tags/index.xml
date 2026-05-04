@@ -6,34 +6,62 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 02 May 2026 20:40:42 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 23:32:34 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Flow</title>
-      <link>http://localhost:1313/tags/flow/</link>
-      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
-      <guid>http://localhost:1313/tags/flow/</guid>
+      <title>Counting</title>
+      <link>http://localhost:1313/tags/counting/</link>
+      <pubDate>Mon, 04 May 2026 23:32:34 +0800</pubDate>
+      <guid>http://localhost:1313/tags/counting/</guid>
       <description></description>
     </item>
     <item>
       <title>Graph</title>
       <link>http://localhost:1313/tags/graph/</link>
-      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
+      <pubDate>Mon, 04 May 2026 23:32:34 +0800</pubDate>
       <guid>http://localhost:1313/tags/graph/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>MCMF</title>
-      <link>http://localhost:1313/tags/mcmf/</link>
-      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
-      <guid>http://localhost:1313/tags/mcmf/</guid>
       <description></description>
     </item>
     <item>
       <title>Solutions</title>
       <link>http://localhost:1313/tags/solutions/</link>
-      <pubDate>Sat, 02 May 2026 20:40:42 +0800</pubDate>
+      <pubDate>Mon, 04 May 2026 23:32:34 +0800</pubDate>
       <guid>http://localhost:1313/tags/solutions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>VCC</title>
+      <link>http://localhost:1313/tags/vcc/</link>
+      <pubDate>Mon, 04 May 2026 23:32:34 +0800</pubDate>
+      <guid>http://localhost:1313/tags/vcc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tree</title>
+      <link>http://localhost:1313/tags/tree/</link>
+      <pubDate>Mon, 04 May 2026 23:23:05 +0800</pubDate>
+      <guid>http://localhost:1313/tags/tree/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Series-Parallel</title>
+      <link>http://localhost:1313/tags/series-parallel/</link>
+      <pubDate>Mon, 04 May 2026 23:16:14 +0800</pubDate>
+      <guid>http://localhost:1313/tags/series-parallel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flow</title>
+      <link>http://localhost:1313/tags/flow/</link>
+      <pubDate>Mon, 04 May 2026 23:14:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/flow/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MCMF</title>
+      <link>http://localhost:1313/tags/mcmf/</link>
+      <pubDate>Mon, 04 May 2026 23:14:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/mcmf/</guid>
       <description></description>
     </item>
     <item>
@@ -83,13 +111,6 @@
       <link>http://localhost:1313/tags/maths/</link>
       <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
       <guid>http://localhost:1313/tags/maths/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tree</title>
-      <link>http://localhost:1313/tags/tree/</link>
-      <pubDate>Tue, 28 Apr 2026 23:19:48 +0800</pubDate>
-      <guid>http://localhost:1313/tags/tree/</guid>
       <description></description>
     </item>
     <item>

@@ -6,8 +6,22 @@
     <description>Recent content in Tree on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 Apr 2026 23:19:48 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 23:23:05 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/tree/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blue and Red Tree</title>
+      <link>http://localhost:1313/posts/blue-and-red-tree/</link>
+      <pubDate>Mon, 04 May 2026 23:23:05 +0800</pubDate>
+      <guid>http://localhost:1313/posts/blue-and-red-tree/</guid>
+      <description>&lt;p&gt;怪物题目。&lt;/p&gt;
+&lt;p&gt;我一直在想正着做，然后就爆了。&lt;/p&gt;
+&lt;p&gt;我们考虑反着做。&lt;/p&gt;
+&lt;p&gt;首先你解放一条边，显然这条边一定得是红蓝边重合。&lt;/p&gt;
+&lt;p&gt;然后你解放倒数第二条边，然后你发现他一定得是红蓝边分别连接了两个相同的这个解放块。&lt;/p&gt;
+&lt;p&gt;然后你发现你相当于是合并解放块的过程。&lt;/p&gt;
+&lt;p&gt;然后你干脆啊，直接就给他启发式合并，把整个块变成一个点，然后他就相当于要求红蓝边是重边。&lt;/p&gt;
+&lt;p&gt;显然因为两个是树，所以呢你根本不用区分哪个是红边哪个是蓝边，直接找重边即可，因为树不可能有重边。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Continued Fraction Theory</title>
       <link>http://localhost:1313/posts/continued-fraction-theory/</link>

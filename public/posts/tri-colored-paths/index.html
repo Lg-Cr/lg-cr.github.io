@@ -5,11 +5,23 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>MCMF | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>Tri Colored Paths | Inftopia</title>
+<meta name="keywords" content="Solutions, Graph, VCC, Counting">
+<meta name="description" content="非常非常厉害厉害的题目，总算是自己做出来了个厉害题。
+首先显然正难则反。
+嗯。我们一个想法呢，是说，我们可以按点分类，分成 A 点：连接 1 2 的点，B 点：1 3, C 点：2 3, X 点：1 2 3, O 点：无。
+然后呢，我们想一下啊，我们发现我们只要把 ABC 中不同的两个点，连起来，然后就一定是一条合法路径。
+当然这个有 corner case，就是如果是个三元环，那就爆了。
+为什么呢？因为两点都连有不同的两种颜色，所以满足。
+所以似乎这个如果有 ABC 点的话，那只能有这一种，换句话来说只能有两种颜色。
+好的，然后 X 点同理，你发现，这个如果有 X 点似乎其他必须得是 O 点。
+然后你写完发现样例过不了。
+为啥呢，因为 corner case。
+然后你很容易发现，我们如果是 X 点的情况，因为 corner case，我们如果两个不同颜色的边连到了同一个点双里，那就爆了，因为会形成一条路。
+然后另一种情况就是，你根本没有 X 点，你可能是有一堆奇奇怪怪的三元环（如样例 1），他因为俩点接到同一个点上了，所以爆了。
+然后你怎么着一下，然后就把这个情况全部判掉，然后就过了。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/tags/mcmf/">
+<link rel="canonical" href="http://localhost:1313/posts/tri-colored-paths/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +30,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/mcmf/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/mcmf/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/tri-colored-paths/">
 <noscript>
     <style>
         #theme-toggle,
@@ -82,7 +93,7 @@
   });">
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -134,53 +145,44 @@
         </ul>
     </nav>
 </header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    MCMF
-  </h1>
-</header>
+<main class="main">
 
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Cost Performance Flow
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>唐唐题。
-考虑直接开导！
-我们很容易发现我们画在图像上，我们一定是优先节省这个费用最大的东西。
-然后我们把每次增广的这个流过去的流量与每流一次的代价啥的都算出来。
-然后直接贪心即可。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 23:14:00 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Cost Performance Flow" href="http://localhost:1313/posts/cost-performance-flow/"></a>
-</article>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Tri Colored Paths
+    </h1>
+    <div class="post-meta"><span title='2026-05-04 23:32:34 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
 
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Boxes and Balls
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>很厉害的题目。
-首先我们知道他是网络流。
-怎么流呢。
-其实最重要的呢，是这个条件如何刻画。
-我们要把这个条件转化为什么东西来进行这个刻画。
-一个 native 的想法是，你列成一个矩阵分别是当前阶段的这些位置和当前时间，然后像网格图一样穿起来。
-但你发现这样是完全不可行滴！因为你根本不知道每个位置现在是什么数。
-然后我们发现一个重要的观察，你要么是从上一个同一个数那里继承，然后就一直从那个时候一直霸占这个位置，要么呢就是现在开始，踢掉一个并放进去。
-还有就是，你发现关心这个具体是哪个位置放的是哪个数是十分愚蠢的，我们发现他只是一个霸占的过程，在你霸占的过程中呢你可以直接看作这个位置消失了，那你根本不需要知道哪个位置放的是哪个数，你只要知道有多少个位置被霸占即可。
-然后你发现你变成了，给一堆区间，然后你可以选一些区间（即霸占他们）并获得一些受益，但同一个时间不能选很多区间。
-然后这个就是经典模型，从 $1$ 到 $n$ 穿起来即可，容量为 $m-1$，代价为 $0$，然后在旁边接一些边，容量为 $1$ 费用为 $-w$，可以把这个流量引到旁边去表示你用了这个区间。
-注意我们同时只能有 $m-1$ 个被霸占，因为你每次还要放一个数进去。
-注意 $s,t$ 可能重合，有可能会死循环，注意特判或者多拉一条边。
-</p>
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>非常非常厉害厉害的题目，总算是自己做出来了个厉害题。</p>
+<p>首先显然正难则反。</p>
+<p>嗯。我们一个想法呢，是说，我们可以按点分类，分成 A 点：连接 1 2 的点，B 点：1 3, C 点：2 3, X 点：1 2 3, O 点：无。</p>
+<p>然后呢，我们想一下啊，我们发现我们只要把 ABC 中不同的两个点，连起来，然后就一定是一条合法路径。</p>
+<p>当然这个有 corner case，就是如果是个三元环，那就爆了。</p>
+<p>为什么呢？因为两点都连有不同的两种颜色，所以满足。</p>
+<p>所以似乎这个如果有 ABC 点的话，那只能有这一种，换句话来说只能有两种颜色。</p>
+<p>好的，然后 X 点同理，你发现，这个如果有 X 点似乎其他必须得是 O 点。</p>
+<p>然后你写完发现样例过不了。</p>
+<p>为啥呢，因为 corner case。</p>
+<p>然后你很容易发现，我们如果是 X 点的情况，因为 corner case，我们如果两个不同颜色的边连到了同一个点双里，那就爆了，因为会形成一条路。</p>
+<p>然后另一种情况就是，你根本没有 X 点，你可能是有一堆奇奇怪怪的三元环（如样例 1），他因为俩点接到同一个点上了，所以爆了。</p>
+<p>然后你怎么着一下，然后就把这个情况全部判掉，然后就过了。</p>
+
+
   </div>
-  <footer class="entry-footer"><span title='2026-05-02 20:40:42 +0800 CST'>May 2, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Boxes and Balls" href="http://localhost:1313/posts/boxes-and-balls/"></a>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/graph/">Graph</a></li>
+      <li><a href="http://localhost:1313/tags/vcc/">VCC</a></li>
+      <li><a href="http://localhost:1313/tags/counting/">Counting</a></li>
+    </ul>
+  </footer>
 </article>
     </main>
     
@@ -268,6 +270,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

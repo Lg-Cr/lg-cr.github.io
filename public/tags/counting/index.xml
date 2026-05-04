@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Counting on Inftopia</title>
+    <link>http://localhost:1313/tags/counting/</link>
+    <description>Recent content in Counting on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 04 May 2026 23:32:34 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/counting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tri Colored Paths</title>
+      <link>http://localhost:1313/posts/tri-colored-paths/</link>
+      <pubDate>Mon, 04 May 2026 23:32:34 +0800</pubDate>
+      <guid>http://localhost:1313/posts/tri-colored-paths/</guid>
+      <description>&lt;p&gt;非常非常厉害厉害的题目，总算是自己做出来了个厉害题。&lt;/p&gt;
+&lt;p&gt;首先显然正难则反。&lt;/p&gt;
+&lt;p&gt;嗯。我们一个想法呢，是说，我们可以按点分类，分成 A 点：连接 1 2 的点，B 点：1 3, C 点：2 3, X 点：1 2 3, O 点：无。&lt;/p&gt;
+&lt;p&gt;然后呢，我们想一下啊，我们发现我们只要把 ABC 中不同的两个点，连起来，然后就一定是一条合法路径。&lt;/p&gt;
+&lt;p&gt;当然这个有 corner case，就是如果是个三元环，那就爆了。&lt;/p&gt;
+&lt;p&gt;为什么呢？因为两点都连有不同的两种颜色，所以满足。&lt;/p&gt;
+&lt;p&gt;所以似乎这个如果有 ABC 点的话，那只能有这一种，换句话来说只能有两种颜色。&lt;/p&gt;
+&lt;p&gt;好的，然后 X 点同理，你发现，这个如果有 X 点似乎其他必须得是 O 点。&lt;/p&gt;
+&lt;p&gt;然后你写完发现样例过不了。&lt;/p&gt;
+&lt;p&gt;为啥呢，因为 corner case。&lt;/p&gt;
+&lt;p&gt;然后你很容易发现，我们如果是 X 点的情况，因为 corner case，我们如果两个不同颜色的边连到了同一个点双里，那就爆了，因为会形成一条路。&lt;/p&gt;
+&lt;p&gt;然后另一种情况就是，你根本没有 X 点，你可能是有一堆奇奇怪怪的三元环（如样例 1），他因为俩点接到同一个点上了，所以爆了。&lt;/p&gt;
+&lt;p&gt;然后你怎么着一下，然后就把这个情况全部判掉，然后就过了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

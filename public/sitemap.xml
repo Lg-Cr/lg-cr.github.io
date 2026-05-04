@@ -2,28 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/boxes-and-balls/</loc>
-    <lastmod>2026-05-02T20:40:42+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/flow/</loc>
-    <lastmod>2026-05-02T20:40:42+08:00</lastmod>
+    <loc>http://localhost:1313/tags/counting/</loc>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/graph/</loc>
-    <lastmod>2026-05-02T20:40:42+08:00</lastmod>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-05-02T20:40:42+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/mcmf/</loc>
-    <lastmod>2026-05-02T20:40:42+08:00</lastmod>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-05-02T20:40:42+08:00</lastmod>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/solutions/</loc>
-    <lastmod>2026-05-02T20:40:42+08:00</lastmod>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/tri-colored-paths/</loc>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/vcc/</loc>
+    <lastmod>2026-05-04T23:32:34+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/blue-and-red-tree/</loc>
+    <lastmod>2026-05-04T23:23:05+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/tree/</loc>
+    <lastmod>2026-05-04T23:23:05+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/school-road/</loc>
+    <lastmod>2026-05-04T23:16:14+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/series-parallel/</loc>
+    <lastmod>2026-05-04T23:16:14+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/cost-performance-flow/</loc>
+    <lastmod>2026-05-04T23:14:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/flow/</loc>
+    <lastmod>2026-05-04T23:14:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/mcmf/</loc>
+    <lastmod>2026-05-04T23:14:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/boxes-and-balls/</loc>
     <lastmod>2026-05-02T20:40:42+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/constructing-a-matrix/</loc>
@@ -63,9 +87,6 @@
     <lastmod>2026-04-28T23:19:48+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/maths/</loc>
-    <lastmod>2026-04-28T23:19:48+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/tree/</loc>
     <lastmod>2026-04-28T23:19:48+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/tricks/</loc>

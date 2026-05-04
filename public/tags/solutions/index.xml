@@ -6,8 +6,73 @@
     <description>Recent content in Solutions on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 02 May 2026 20:40:42 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 23:32:34 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/solutions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tri Colored Paths</title>
+      <link>http://localhost:1313/posts/tri-colored-paths/</link>
+      <pubDate>Mon, 04 May 2026 23:32:34 +0800</pubDate>
+      <guid>http://localhost:1313/posts/tri-colored-paths/</guid>
+      <description>&lt;p&gt;非常非常厉害厉害的题目，总算是自己做出来了个厉害题。&lt;/p&gt;
+&lt;p&gt;首先显然正难则反。&lt;/p&gt;
+&lt;p&gt;嗯。我们一个想法呢，是说，我们可以按点分类，分成 A 点：连接 1 2 的点，B 点：1 3, C 点：2 3, X 点：1 2 3, O 点：无。&lt;/p&gt;
+&lt;p&gt;然后呢，我们想一下啊，我们发现我们只要把 ABC 中不同的两个点，连起来，然后就一定是一条合法路径。&lt;/p&gt;
+&lt;p&gt;当然这个有 corner case，就是如果是个三元环，那就爆了。&lt;/p&gt;
+&lt;p&gt;为什么呢？因为两点都连有不同的两种颜色，所以满足。&lt;/p&gt;
+&lt;p&gt;所以似乎这个如果有 ABC 点的话，那只能有这一种，换句话来说只能有两种颜色。&lt;/p&gt;
+&lt;p&gt;好的，然后 X 点同理，你发现，这个如果有 X 点似乎其他必须得是 O 点。&lt;/p&gt;
+&lt;p&gt;然后你写完发现样例过不了。&lt;/p&gt;
+&lt;p&gt;为啥呢，因为 corner case。&lt;/p&gt;
+&lt;p&gt;然后你很容易发现，我们如果是 X 点的情况，因为 corner case，我们如果两个不同颜色的边连到了同一个点双里，那就爆了，因为会形成一条路。&lt;/p&gt;
+&lt;p&gt;然后另一种情况就是，你根本没有 X 点，你可能是有一堆奇奇怪怪的三元环（如样例 1），他因为俩点接到同一个点上了，所以爆了。&lt;/p&gt;
+&lt;p&gt;然后你怎么着一下，然后就把这个情况全部判掉，然后就过了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Blue and Red Tree</title>
+      <link>http://localhost:1313/posts/blue-and-red-tree/</link>
+      <pubDate>Mon, 04 May 2026 23:23:05 +0800</pubDate>
+      <guid>http://localhost:1313/posts/blue-and-red-tree/</guid>
+      <description>&lt;p&gt;怪物题目。&lt;/p&gt;
+&lt;p&gt;我一直在想正着做，然后就爆了。&lt;/p&gt;
+&lt;p&gt;我们考虑反着做。&lt;/p&gt;
+&lt;p&gt;首先你解放一条边，显然这条边一定得是红蓝边重合。&lt;/p&gt;
+&lt;p&gt;然后你解放倒数第二条边，然后你发现他一定得是红蓝边分别连接了两个相同的这个解放块。&lt;/p&gt;
+&lt;p&gt;然后你发现你相当于是合并解放块的过程。&lt;/p&gt;
+&lt;p&gt;然后你干脆啊，直接就给他启发式合并，把整个块变成一个点，然后他就相当于要求红蓝边是重边。&lt;/p&gt;
+&lt;p&gt;显然因为两个是树，所以呢你根本不用区分哪个是红边哪个是蓝边，直接找重边即可，因为树不可能有重边。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>School Road</title>
+      <link>http://localhost:1313/posts/school-road/</link>
+      <pubDate>Mon, 04 May 2026 23:16:14 +0800</pubDate>
+      <guid>http://localhost:1313/posts/school-road/</guid>
+      <description>&lt;p&gt;广义串并联好题。&lt;/p&gt;
+&lt;p&gt;首先我们看到 $m \le n + 13$ 这个就是广义串并联。&lt;/p&gt;
+&lt;p&gt;其次，对于这种东西，我们可以把点双搞出来，这个简单路径的限制如果是难点可以用点双解决。&lt;/p&gt;
+&lt;p&gt;首先肯定不可能出点双再进来。&lt;/p&gt;
+&lt;p&gt;你考虑我们发现如果 $1$ 和 $n$ 不在一个点双以内，那我们直接就连一条 $1,n,L$ 的路径显然不会更改答案。&lt;/p&gt;
+&lt;p&gt;所以我们直接考虑它点双。&lt;/p&gt;
+&lt;p&gt;好的然后我们既然用的是这个广义串并联，我们就要考虑 $K_4$。&lt;/p&gt;
+&lt;p&gt;然后你发现，如果有这个 $K_4$ 就一定存在 $&amp;gt;L$ 的路径。&lt;/p&gt;
+&lt;p&gt;然后我们知道他是广义串并联，然后我们缩图即可。&lt;/p&gt;
+&lt;p&gt;而且注意到 $1$ 和 $n$ 是可以不缩的，如果不缩导致不行说明也是不行的（类似 $K_4$ 的分析）&lt;/p&gt;
+&lt;p&gt;重边显然是要 check 边长短。&lt;/p&gt;
+&lt;p&gt;二度点显然把两个长度加起来即可。&lt;/p&gt;
+&lt;p&gt;这个告诉我们的就是说这个 VCC 非常的好用在简单路径中。&lt;/p&gt;
+&lt;p&gt;以及这个广义串并联看到部分分就要想到。&lt;/p&gt;
+&lt;p&gt;或者更本质的来说，你如果是要搞类似这种就是一排排过去，长得跟毛细血管一样的，那就是可以试试广义串并联。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cost Performance Flow</title>
+      <link>http://localhost:1313/posts/cost-performance-flow/</link>
+      <pubDate>Mon, 04 May 2026 23:14:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/cost-performance-flow/</guid>
+      <description>&lt;p&gt;唐唐题。&lt;/p&gt;
+&lt;p&gt;考虑直接开导！&lt;/p&gt;
+&lt;p&gt;我们很容易发现我们画在图像上，我们一定是优先节省这个费用最大的东西。&lt;/p&gt;
+&lt;p&gt;然后我们把每次增广的这个流过去的流量与每流一次的代价啥的都算出来。&lt;/p&gt;
+&lt;p&gt;然后直接贪心即可。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Boxes and Balls</title>
       <link>http://localhost:1313/posts/boxes-and-balls/</link>

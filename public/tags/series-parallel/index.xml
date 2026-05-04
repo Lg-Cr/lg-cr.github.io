@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Series-Parallel on Inftopia</title>
+    <link>http://localhost:1313/tags/series-parallel/</link>
+    <description>Recent content in Series-Parallel on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 04 May 2026 23:16:14 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/series-parallel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>School Road</title>
+      <link>http://localhost:1313/posts/school-road/</link>
+      <pubDate>Mon, 04 May 2026 23:16:14 +0800</pubDate>
+      <guid>http://localhost:1313/posts/school-road/</guid>
+      <description>&lt;p&gt;广义串并联好题。&lt;/p&gt;
+&lt;p&gt;首先我们看到 $m \le n + 13$ 这个就是广义串并联。&lt;/p&gt;
+&lt;p&gt;其次，对于这种东西，我们可以把点双搞出来，这个简单路径的限制如果是难点可以用点双解决。&lt;/p&gt;
+&lt;p&gt;首先肯定不可能出点双再进来。&lt;/p&gt;
+&lt;p&gt;你考虑我们发现如果 $1$ 和 $n$ 不在一个点双以内，那我们直接就连一条 $1,n,L$ 的路径显然不会更改答案。&lt;/p&gt;
+&lt;p&gt;所以我们直接考虑它点双。&lt;/p&gt;
+&lt;p&gt;好的然后我们既然用的是这个广义串并联，我们就要考虑 $K_4$。&lt;/p&gt;
+&lt;p&gt;然后你发现，如果有这个 $K_4$ 就一定存在 $&amp;gt;L$ 的路径。&lt;/p&gt;
+&lt;p&gt;然后我们知道他是广义串并联，然后我们缩图即可。&lt;/p&gt;
+&lt;p&gt;而且注意到 $1$ 和 $n$ 是可以不缩的，如果不缩导致不行说明也是不行的（类似 $K_4$ 的分析）&lt;/p&gt;
+&lt;p&gt;重边显然是要 check 边长短。&lt;/p&gt;
+&lt;p&gt;二度点显然把两个长度加起来即可。&lt;/p&gt;
+&lt;p&gt;这个告诉我们的就是说这个 VCC 非常的好用在简单路径中。&lt;/p&gt;
+&lt;p&gt;以及这个广义串并联看到部分分就要想到。&lt;/p&gt;
+&lt;p&gt;或者更本质的来说，你如果是要搞类似这种就是一排排过去，长得跟毛细血管一样的，那就是可以试试广义串并联。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
