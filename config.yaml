@@ -43,7 +43,7 @@ params:
   hasCJKLanguage: true
   homeInfoParams:
     Title: "Inftress"
-    Content: "The end of this world, and the girl who crossed the sea."
+    Content: "To realize..."
   utterances:
     enable: true
     repo: "lg-cr/blog-comments"
