@@ -6,8 +6,48 @@
     <description>Recent content on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 May 2026 23:32:34 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 May 2026 22:48:39 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cactus Meets Torus</title>
+      <link>http://localhost:1313/posts/cactus-meets-torus/</link>
+      <pubDate>Tue, 05 May 2026 22:48:39 +0800</pubDate>
+      <guid>http://localhost:1313/posts/cactus-meets-torus/</guid>
+      <description>&lt;p&gt;如果前面的是怪物题，那这个是克苏鲁题，不可名状，只能感性理解。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;什么逆天东西啊喂！&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;首先我们得先看懂题，注意 Torus 指的不是球，他实际上你硬要画出来是一个&amp;hellip;甜甜圈。&lt;/p&gt;
+&lt;p&gt;但我们还是在矩形纸上考虑问题吧，不然太难描述了。&lt;/p&gt;
+&lt;p&gt;我们可以把他假想成，一个无限延伸的平面，上下左右都复制当前纸，这样直观一点。&lt;/p&gt;
+&lt;p&gt;好的，我们想象一下，一个环可以长什么样。&lt;/p&gt;
+&lt;p&gt;他首先不能在纸上是一个圆对吧这样切了就爆了。&lt;/p&gt;
+&lt;p&gt;他能是怎么样的？他肯定至少要能穿过边界对吧，然后呢他这个要求联通，等价于说你要按照这个环切了之后呢，存在一个连通块，满足他进行在 $x$ 和 $y$ 上都进行类似 mod 的操作重叠在一起后覆盖了整个矩形。&lt;/p&gt;
+&lt;p&gt;或者本质一点，他应该是，所有的连通块，全等？？？&lt;/p&gt;
+&lt;p&gt;我感觉是这样的。&lt;/p&gt;
+&lt;p&gt;然后我们发现他实际上画在这个无限平面上呢，是类似一堆这个同一个方向的线，类似平行，但是可能扭来扭去。&lt;/p&gt;
+&lt;p&gt;显然我们可以在无限平面上任意平移这个我们考虑的矩形。&lt;/p&gt;
+&lt;p&gt;然后显然我们根据拓扑原理，你是直的是弯的的是根本不重要的，你只要交点结构一样即可。&lt;/p&gt;
+&lt;p&gt;你交点的这个位置是不重要的，重要的是你交点在整个图形中的层次与地位。&lt;/p&gt;
+&lt;p&gt;然后你发现就非常多的画环的方式都是等价的，比如一个横线是一个等价类，一个竖线是一个等价类，一个对角线也是一个等价类。他们的特点都是可以通过连续地平移矩阵，或者连续地扰动这个路径得到同一个地方。&lt;/p&gt;
+&lt;p&gt;然后我们有一个非常重要的感性理解，就是其实像比如说无论是横的啊，竖的啊，对角线的啊，还是缠两圈的对角线啊，甚至自己跟自己交错的神秘斜线。他们本质相同。我们都可以通过旋转和缩放我们所观测的这个矩形来发现，比如一个对角线，你给他转一下再缩放一下，对角线就变为竖线了。&lt;strong&gt;因此我们可以选择最简单的横线和竖线思考问题。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;然后我们可以开始思考问题了。&lt;del&gt;是的现在才开始思考问题。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;我们注意到，如果等价类 $\ge 3$ 个，那他们必定共点。&lt;/p&gt;
+&lt;p&gt;不然因为你不能边相交，三个拓扑上方向不同的一定会围出我们不想要的环。&lt;/p&gt;
+&lt;p&gt;然后我们发现这等价于仙人掌上所有环共点。&lt;/p&gt;
+&lt;p&gt;我们试图构造，发现这是好构造的，你就钦定一个中心点，然后向外辐射即可。&lt;/p&gt;
+&lt;p&gt;只要满足这个条件就是 Yes。&lt;/p&gt;
+&lt;p&gt;显然剩下的树你随便挂在一边即可。&lt;/p&gt;
+&lt;p&gt;如果等价类 $=2$ 个，那他们要么共点，要么其中一个等价类只有一个环，且与其他所有的环相交。&lt;/p&gt;
+&lt;p&gt;理由同理，如果共点的话我们在第一个情况就算过了，不用管。&lt;/p&gt;
+&lt;p&gt;如果是一个等价类只有一个环，且与其他所有的环相交，这相当于一个川中间画了一横。&lt;/p&gt;
+&lt;p&gt;然后这个东西你发现你可以看成是，仙人掌上的所有其他环都挂在一个特定的环上。&lt;/p&gt;
+&lt;p&gt;这个也是好判的，你记 $i$ 在 $c_i$ 个环里，你只要看 $\sum c_i = sz+cnt-1$ 即可。&lt;/p&gt;
+&lt;p&gt;然后如果只有一个等价类，我们发现他一定得是一堆竖线，然后一个横线段（不是横直线）贯穿。&lt;/p&gt;
+&lt;p&gt;这等价于所有的环都挂在一条链上，你建出圆方树进行简单的树形 DP 即可。&lt;/p&gt;
+&lt;p&gt;然后我们终于理解完了这个题目。但也只是理解，至于证明？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们伟大的信息学，不需要证明。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     <item>
       <title>Tri Colored Paths</title>
       <link>http://localhost:1313/posts/tri-colored-paths/</link>
