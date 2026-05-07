@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>全对最大流 | Inftopia</title>
+<meta name="keywords" content="Solutions, Graph, Dual Graph, Flow, MST">
+<meta name="description" content="牛牛题。
+先讲我自己想到的部分。
+首先最大流肯定不好做，做最小割。
+然后显然有最小割树。
+但现在问题出在如何求最小割上。
+一个很大的问题是，你求最小割至少都要考虑所有的即一定是 $\Omega(n)$。
+然而如果这样时间复杂度就已经爆了。
+我一直的思路都是用数据结构扫描线啊啥的维护发现很难做。（也许可以做？我好像看到有人用 DS，有可能是把不同的步骤在 DS 上合在一起吧。）
+
+然后题解做了个很厉害的事情，他说：平面图我们要想到对偶图。
+好的我们考虑他的对偶图。
+我们考虑我们求一次最小割，是在做什么事情。
+我们发现在对偶图上就是把 $s$ 和 $t$ 伸两条射线出去，然后做对偶图，就是上下两个无限平面的最短路。
+如果只是想到这里，我们只是得到了一个 $\Omega(n\log n)$ 的算法，但其实无论如何，这已经优于我们的朴素 DS 了（而且我们的朴素 DS 很难写）。
+我们想一下我们的根本诉求是什么，我们的根本诉求是，把这个最小割树转化为其他东西，而不是直接求最小割（因为这样一定会爆）。
+但若是我们继续想。我们递归之后做的是什么呢，我们做的其实是把左右分成两半，然后对于左边，就把右边整个缩为一个点，右边同理。
+我们首先就是想到，我们无论怎么分，实际上最多只有 $n$ 个无限平面，我们干脆提前分好，然后我们发现我们变成了是选两个无限平面使得最短路最短。
+实际上这就是在树上找最近的两个叶子。
+我们试图继续用这种找两个的方式选，然后我们想到我们既然不要这两个点，那我们把这俩合起来。我们看其他最小的两个叶子。
+Creatively，我们发现我们在做 kruskal。
+然后我们不想做 kruskal。
+面对 MST 最好用的就是 boruvka。
+然后我们使用 boruvka。
+我们如何找树上每个叶子最近的不同块的叶子呢。
+我们可以使用 DP，从下到上做一遍，从上到下做一遍，记录最小次小即可。
+然后我们就建出来了合并无限平面的树。
+但我们要得是最小割树。
+于是我们再对偶回去即可。
+
+就这个题最本质的 idea 是，你可以“发现你在做一个经典问题然后换一种解法”。比如把 kruskal 换成 boruvka。
+这仍然是灵活迁用，更本质的来说，这是把方法之间建立活的联想连接，而不是感觉连接。这对发散性思维有很高的要求。、
+然后其他一些重要的是平面图用对偶图。
+还有就是提前处理的思想，把无限平面分成 $n$ 个也可能是一个卡点。
+还有呢，就是一个贯彻思想的做法。比如你第一下找的是最近叶子，那你肯定也希望接下来也是最近叶子。
+透过现象看本质。">
+<meta name="author" content="Inftress">
+<link rel="canonical" href="http://localhost:1313/posts/%E5%85%A8%E5%AF%B9%E6%9C%80%E5%A4%A7%E6%B5%81/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E5%85%A8%E5%AF%B9%E6%9C%80%E5%A4%A7%E6%B5%81/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });">
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Inftopia (Alt + H)">Inftopia</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      全对最大流
+    </h1>
+    <div class="post-meta"><span title='2026-05-07 22:36:29 +0800 CST'>May 7, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>牛牛题。</p>
+<p>先讲我自己想到的部分。</p>
+<p>首先最大流肯定不好做，做最小割。</p>
+<p>然后显然有最小割树。</p>
+<p>但现在问题出在如何求最小割上。</p>
+<p>一个很大的问题是，你求最小割至少都要考虑所有的即一定是 $\Omega(n)$。</p>
+<p>然而如果这样时间复杂度就已经爆了。</p>
+<p>我一直的思路都是用数据结构扫描线啊啥的维护发现很难做。（也许可以做？我好像看到有人用 DS，有可能是把不同的步骤在 DS 上合在一起吧。）</p>
+<hr>
+<p>然后题解做了个很厉害的事情，他说：<strong>平面图我们要想到对偶图</strong>。</p>
+<p>好的我们考虑他的对偶图。</p>
+<p>我们考虑我们求一次最小割，是在做什么事情。</p>
+<p>我们发现在对偶图上就是把 $s$ 和 $t$ 伸两条射线出去，然后做对偶图，就是上下两个无限平面的最短路。</p>
+<p>如果只是想到这里，我们只是得到了一个 $\Omega(n\log n)$ 的算法，但其实无论如何，这已经优于我们的朴素 DS 了（而且我们的朴素 DS 很难写）。</p>
+<p>我们想一下我们的根本诉求是什么，我们的根本诉求是，把这个最小割树转化为其他东西，而不是直接求最小割（因为这样一定会爆）。</p>
+<p>但若是我们继续想。我们递归之后做的是什么呢，我们做的其实是把左右分成两半，然后对于左边，就把右边整个缩为一个点，右边同理。</p>
+<p>我们首先就是想到，我们无论怎么分，实际上最多只有 $n$ 个无限平面，我们干脆提前分好，然后我们发现我们变成了是选两个无限平面使得最短路最短。</p>
+<p>实际上这就是在树上找最近的两个叶子。</p>
+<p>我们试图继续用这种找两个的方式选，然后我们想到我们既然不要这两个点，那我们把这俩合起来。我们看其他最小的两个叶子。</p>
+<p>Creatively，我们发现我们在做 kruskal。</p>
+<p>然后我们不想做 kruskal。</p>
+<p>面对 MST 最好用的就是 boruvka。</p>
+<p>然后我们使用 boruvka。</p>
+<p>我们如何找树上每个叶子最近的不同块的叶子呢。</p>
+<p>我们可以使用 DP，从下到上做一遍，从上到下做一遍，记录最小次小即可。</p>
+<p>然后我们就建出来了合并无限平面的树。</p>
+<p>但我们要得是最小割树。</p>
+<p>于是我们再对偶回去即可。</p>
+<hr>
+<p>就这个题最本质的 idea 是，你可以“发现你在做一个经典问题然后换一种解法”。比如把 kruskal 换成 boruvka。</p>
+<p>这仍然是灵活迁用，更本质的来说，这是把方法之间建立活的联想连接，而不是感觉连接。这对发散性思维有很高的要求。、</p>
+<p>然后其他一些重要的是平面图用对偶图。</p>
+<p>还有就是提前处理的思想，把无限平面分成 $n$ 个也可能是一个卡点。</p>
+<p>还有呢，就是一个贯彻思想的做法。比如你第一下找的是最近叶子，那你肯定也希望接下来也是最近叶子。</p>
+<p><strong>透过现象看本质</strong>。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/graph/">Graph</a></li>
+      <li><a href="http://localhost:1313/tags/dual-graph/">Dual Graph</a></li>
+      <li><a href="http://localhost:1313/tags/flow/">Flow</a></li>
+      <li><a href="http://localhost:1313/tags/mst/">MST</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Inftopia</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script src="https://utteranc.es/client.js"
+  repo="lg-cr/blog-comments"
+  issue-term="pathname"
+  theme="github-dark"
+  crossorigin="anonymous"
+  async>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

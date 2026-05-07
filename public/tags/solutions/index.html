@@ -143,6 +143,51 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">全对最大流
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>牛牛题。
+先讲我自己想到的部分。
+首先最大流肯定不好做，做最小割。
+然后显然有最小割树。
+但现在问题出在如何求最小割上。
+一个很大的问题是，你求最小割至少都要考虑所有的即一定是 $\Omega(n)$。
+然而如果这样时间复杂度就已经爆了。
+我一直的思路都是用数据结构扫描线啊啥的维护发现很难做。（也许可以做？我好像看到有人用 DS，有可能是把不同的步骤在 DS 上合在一起吧。）
+然后题解做了个很厉害的事情，他说：平面图我们要想到对偶图。
+好的我们考虑他的对偶图。
+我们考虑我们求一次最小割，是在做什么事情。
+我们发现在对偶图上就是把 $s$ 和 $t$ 伸两条射线出去，然后做对偶图，就是上下两个无限平面的最短路。
+如果只是想到这里，我们只是得到了一个 $\Omega(n\log n)$ 的算法，但其实无论如何，这已经优于我们的朴素 DS 了（而且我们的朴素 DS 很难写）。
+我们想一下我们的根本诉求是什么，我们的根本诉求是，把这个最小割树转化为其他东西，而不是直接求最小割（因为这样一定会爆）。
+但若是我们继续想。我们递归之后做的是什么呢，我们做的其实是把左右分成两半，然后对于左边，就把右边整个缩为一个点，右边同理。
+我们首先就是想到，我们无论怎么分，实际上最多只有 $n$ 个无限平面，我们干脆提前分好，然后我们发现我们变成了是选两个无限平面使得最短路最短。
+实际上这就是在树上找最近的两个叶子。
+我们试图继续用这种找两个的方式选，然后我们想到我们既然不要这两个点，那我们把这俩合起来。我们看其他最小的两个叶子。
+Creatively，我们发现我们在做 kruskal。
+然后我们不想做 kruskal。
+面对 MST 最好用的就是 boruvka。
+然后我们使用 boruvka。
+我们如何找树上每个叶子最近的不同块的叶子呢。
+我们可以使用 DP，从下到上做一遍，从上到下做一遍，记录最小次小即可。
+然后我们就建出来了合并无限平面的树。
+但我们要得是最小割树。
+于是我们再对偶回去即可。
+就这个题最本质的 idea 是，你可以“发现你在做一个经典问题然后换一种解法”。比如把 kruskal 换成 boruvka。
+这仍然是灵活迁用，更本质的来说，这是把方法之间建立活的联想连接，而不是感觉连接。这对发散性思维有很高的要求。、
+然后其他一些重要的是平面图用对偶图。
+还有就是提前处理的思想，把无限平面分成 $n$ 个也可能是一个卡点。
+还有呢，就是一个贯彻思想的做法。比如你第一下找的是最近叶子，那你肯定也希望接下来也是最近叶子。
+透过现象看本质。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-07 22:36:29 +0800 CST'>May 7, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 全对最大流" href="http://localhost:1313/posts/%E5%85%A8%E5%AF%B9%E6%9C%80%E5%A4%A7%E6%B5%81/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Cactus Meets Torus
     </h2>
   </header>
@@ -155,6 +200,8 @@
 好的，我们想象一下，一个环可以长什么样。
 他首先不能在纸上是一个圆对吧这样切了就爆了。
 他能是怎么样的？他肯定至少要能穿过边界对吧，然后呢他这个要求联通，等价于说你要按照这个环切了之后呢，存在一个连通块，满足他进行在 $x$ 和 $y$ 上都进行类似 mod 的操作重叠在一起后覆盖了整个矩形。
+或者本质一点，他应该是，所有的连通块，全等？？？
+我感觉是这样的。
 然后我们发现他实际上画在这个无限平面上呢，是类似一堆这个同一个方向的线，类似平行，但是可能扭来扭去。
 显然我们可以在无限平面上任意平移这个我们考虑的矩形。
 然后显然我们根据拓扑原理，你是直的是弯的的是根本不重要的，你只要交点结构一样即可。
@@ -400,31 +447,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-01 15:16:29 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Balancing Network" href="http://localhost:1313/posts/balancing-network/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Distinct GCDs (Hard Version)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>看错题了，我一开始没看到要求最小化那个不同种类数，但我也做出来了。
-我想的就是研究这个性质，首先设原序列是 $a$，gcd 序列是 $b$，然后你发现我们一定要求 $lcm(b_i,b_{i&#43;1})=a_{i&#43;1}$。
-然后呢你找 $b$，然后你发现如果 $p|b_{i-1},p|b_{i&#43;1}$ 于是 $p|b_i$，$(b_{i-1},b_{i&#43;1})|b_i$。
-然后你发现这个是充要条件，然后一个构造就是 1 n/2, 2, n / 2 &#43; 1…..。
-然而这样没有限制最小化不同种类数，但无论如何这个性质还是蛮厉害的。
-然后回到正题，你发现你看错题了。
-然后我们想着这个既然要最小是吧，那我们就直接想一下最小是多少，显然是不能小于 $k$ 满足 $k$ 个点的图的欧拉路径长度等于 $n$。
-然后你试图构造发现你不会构造。
-你乱搞一波，然后发现 easy version 可以 $2^i3^{m-i}$。
-然后你发现你如法炮制，$2^{i}3^{m-i}5^{j}7^{k-j}$。
-然而你发现你这个对应交换 $i,j$ 也会被判为相同。
-然后你发现你还剩了蛮多位置。然后变成 $2^{i&#43;j}3^{i}5^{m-i}7^{j}11^{k-j}$ 即可。
-注意欧拉路径写法，不要像我一样 wa 十几发。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-30 22:39:06 +0800 CST'>April 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Distinct GCDs (Hard Version)" href="http://localhost:1313/posts/distinct-gcds-hard-version/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

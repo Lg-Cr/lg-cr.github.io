@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 05 May 2026 22:48:39 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 23:00:39 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pearls</title>
+      <link>http://localhost:1313/tags/pearls/</link>
+      <pubDate>Thu, 07 May 2026 23:00:39 +0800</pubDate>
+      <guid>http://localhost:1313/tags/pearls/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dual Graph</title>
+      <link>http://localhost:1313/tags/dual-graph/</link>
+      <pubDate>Thu, 07 May 2026 22:36:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/dual-graph/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flow</title>
+      <link>http://localhost:1313/tags/flow/</link>
+      <pubDate>Thu, 07 May 2026 22:36:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/flow/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graph</title>
+      <link>http://localhost:1313/tags/graph/</link>
+      <pubDate>Thu, 07 May 2026 22:36:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/graph/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MST</title>
+      <link>http://localhost:1313/tags/mst/</link>
+      <pubDate>Thu, 07 May 2026 22:36:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/mst/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Solutions</title>
+      <link>http://localhost:1313/tags/solutions/</link>
+      <pubDate>Thu, 07 May 2026 22:36:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/solutions/</guid>
+      <description></description>
+    </item>
     <item>
       <title>BCT</title>
       <link>http://localhost:1313/tags/bct/</link>
@@ -20,20 +62,6 @@
       <link>http://localhost:1313/tags/cactus/</link>
       <pubDate>Tue, 05 May 2026 22:48:39 +0800</pubDate>
       <guid>http://localhost:1313/tags/cactus/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Graph</title>
-      <link>http://localhost:1313/tags/graph/</link>
-      <pubDate>Tue, 05 May 2026 22:48:39 +0800</pubDate>
-      <guid>http://localhost:1313/tags/graph/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Solutions</title>
-      <link>http://localhost:1313/tags/solutions/</link>
-      <pubDate>Tue, 05 May 2026 22:48:39 +0800</pubDate>
-      <guid>http://localhost:1313/tags/solutions/</guid>
       <description></description>
     </item>
     <item>
@@ -79,13 +107,6 @@
       <description></description>
     </item>
     <item>
-      <title>Flow</title>
-      <link>http://localhost:1313/tags/flow/</link>
-      <pubDate>Mon, 04 May 2026 23:14:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/flow/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>MCMF</title>
       <link>http://localhost:1313/tags/mcmf/</link>
       <pubDate>Mon, 04 May 2026 23:14:00 +0800</pubDate>
@@ -104,13 +125,6 @@
       <link>http://localhost:1313/tags/permutation/</link>
       <pubDate>Fri, 01 May 2026 23:41:21 +0800</pubDate>
       <guid>http://localhost:1313/tags/permutation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pearls</title>
-      <link>http://localhost:1313/tags/pearls/</link>
-      <pubDate>Fri, 01 May 2026 20:17:14 +0800</pubDate>
-      <guid>http://localhost:1313/tags/pearls/</guid>
       <description></description>
     </item>
     <item>
