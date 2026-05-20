@@ -143,6 +143,31 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Yearning for Yonder 2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>自己想出来了。
+他这个 $p_1$ 和 $p_n$ 的限制本质上是因为一个排列和其颠倒过来的是不可区分的，因此我们只要最后判一下即可，之前完全不需要考虑这个条件。
+首先他既然说 randomness 那我们就 random。
+然后我们看到 $\mod 3$ 我们应该要向同余类的方向想。
+然后我们如何获得同余类？这个是好做的，对于每个点，随机取一个点，query 一下，选到同余类的点的概率为 $\cfrac{1}{3}$，因此我们期望 $3n$ 次获得同余类。
+然而我们并不知道同余类哪个是 $0,1,2$ 然而其实我们只要知道循环的方向即可。然后我们发现循环的方向都不需要知道，因为循环方向变了就是排列翻转了，我们随便指定一个方向。
+然后我们发现我们已经可以比较大小了，如果 $x,y$ 不在一个同余类里，则可以比较但同余类内部无法比较。
+我们相当于要做这个排序。而排序本质上是用子结构堆起来。（不管是什么排序）
+然而我们发现如果在当前子结构中有两个相同同余类的点对其他所有的结果都相同我们根本没法区分。
+但其实我们根本不用区分，我们把这些东西打包起来，要用的时候拿我们当前的值对这些东西依次问一遍。
+然后我们感觉一下我们发现这个期望并不会增加多少的询问次数。因为一个很大的连续同同余类的段的出现概率指数下降。
+然后我们其中一个想法是使用插入排序，每次二分大概位置，然后暴力扫描，使用平衡树即可，但实现难度有点高。
+另一个想法是，我们使用归并排序。我们每次在归并的时候，如果遇到大包就把他们两两问一遍，这个明显容易的多。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-18 21:42:43 +0800 CST'>May 18, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Yearning for Yonder 2" href="http://localhost:1313/posts/yearning-for-yonder-2/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">全对最大流
     </h2>
   </header>
@@ -419,34 +444,6 @@ Creatively，我们发现我们在做 kruskal。
   </div>
   <footer class="entry-footer"><span title='2026-05-01 23:41:21 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to 排序大师" href="http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Balancing Network
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>又一个神仙构造题。
-对于第一个小问，相对是简单的。
-首先 $O(nm)$ 是唐的，你枚举结尾然后暴力跑。
-一个 native 的想法是你考虑找一棵树然后换根，然而你发现你并找不出来一棵这样的树。
-然后你考虑奇怪的方法，我们发现这个是可达性，然后试图使用 bitset 然后发现做完了。
-你直接每次按顺序用 bitset 模拟即可。
-对于第二个小问，有点困难。
-一个 native 的想法是你考虑钦定两个终点，然后画在图上需要你做一个割出来把点割成两边，但实际上这很困难。
-另一个 native 的想法是你直接考虑钦定一个线从头到尾一点不动，其他的方向尽量远离这条线，这实际上大部分情况下是可以的，但完全图会出问题。
-然后我们参考一下题解。
-首先 $n=2$ 爆了。
-你发现你还是从后往前，不过是类似于把一股线编织起来，然后呢你记录这个每个线最终到哪里，以及每个终点汇聚了多少线。
-然后你就很神奇的，你直接瞎搞，直到你发现如果你再把这根线会进去（因为你是从后向前，所以他合并的是一个根在右边的树，最左边的线头都只有一根）会直接导致答案合法，然后你就临时抱佛脚把这个方向转一下。
-结果你突然发现这样是对的，因为这个不可能两个线头都是 $n-1$。
-然后就很神奇的做完了这个题。
-这么看来其实这个不合法的条件是相当松的，不过因为这个题目本身的原因，这个解空间的形状奇特，导致找到一个普适的方法变得困难。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-01 15:16:29 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Balancing Network" href="http://localhost:1313/posts/balancing-network/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
