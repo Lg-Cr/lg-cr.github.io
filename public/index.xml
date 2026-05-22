@@ -6,8 +6,94 @@
     <description>Recent content on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 18 May 2026 21:42:43 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 22:35:45 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Permutation and Minimum</title>
+      <link>http://localhost:1313/posts/permutation-and-minimum/</link>
+      <pubDate>Thu, 21 May 2026 22:35:45 +0800</pubDate>
+      <guid>http://localhost:1313/posts/permutation-and-minimum/</guid>
+      <description>&lt;p&gt;首先我们发现其实这个东西是可以分类讨论的。&lt;/p&gt;
+&lt;p&gt;对于 $(2i-1,2i)$ 这样的二元组讨论。&lt;/p&gt;
+&lt;p&gt;若两者都不是 $-1$ 则直接跳过。（甚至可以直接离散化掉）&lt;/p&gt;
+&lt;p&gt;若两者都是 $-1$ 则可以放在一起算。具体来讲，我们可以数一共有多少个这样的二元组，然后我们只要算全是 $-1$ 的答案，然后再乘上把这些二元组去掉之后的答案即可。（因为对于其他的二元组确定的情况下，实际上的方案数总是相同的）&lt;/p&gt;
+&lt;p&gt;比如有 $k$ 个二元组，然后你考虑钦定哪些数作为二元组中的更小值，然后再排列一下。钦定的方案数为 $Catalan(k)$。因为注意到你本质上要求对于任意前缀，选的作为最小值的个数 $\ge$ 作为最大值的个数。然后排列即为 $k!$，即答案为 $Catalan(k)k!$。&lt;/p&gt;
+&lt;p&gt;现在我们只要专心考虑恰好有一个 $-1$ 的即可。&lt;/p&gt;
+&lt;p&gt;我们先考虑简单的情况，假设整个排列都是一个 $-1$ 和一个非 $-1$。&lt;/p&gt;
+&lt;p&gt;然后这个时候开始 DP。&lt;/p&gt;
+&lt;p&gt;我们发现这个顺序根本不重要，我们只要给他们染色然后配对即可。最终再乘上阶乘。&lt;/p&gt;
+&lt;p&gt;我们如法炮制，还是按值域排在一起，发现我们可以从大到小做。&lt;/p&gt;
+&lt;p&gt;我们称已经被填入的为白点，我们要填的是黑点。&lt;/p&gt;
+&lt;p&gt;设 $f_{i,j,k}$ 为当前处理了值域在 $[i,n]$ 内的东西，其中钦定 $j$ 个 $[1,i)$ 中的黑点，$k$ 个 $[i,n]$ 内的黑点已经被预留了。&lt;/p&gt;
+&lt;p&gt;然后直接转移即可。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;调半天过不了样例。&lt;/p&gt;
+&lt;p&gt;问题在于，实际上你不能在 dp 的时候简单地只看你留了几个来考虑这个 $(-1,-1)$ 二元组，你要把他放进去算，因为实际上这个预留与实际上还是有一些区别的，因为你可能可以填上这个东西。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>论思考</title>
+      <link>http://localhost:1313/posts/%E8%AE%BA%E6%80%9D%E8%80%83/</link>
+      <pubDate>Thu, 21 May 2026 18:31:04 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E8%AE%BA%E6%80%9D%E8%80%83/</guid>
+      <description>&lt;p&gt;如何思考？在如今这个阶段没有良好的思维习惯恐怕是举步维艰。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用记录工具，例如在电脑上进行 markdown 打字。这样应该可以显著提升思维的深度。&lt;/li&gt;
+&lt;li&gt;别躺床上想题！这样很容易变懒散。不想动。&lt;/li&gt;
+&lt;li&gt;排除干扰，尤其忌讳思考一半打断，这会消除思考的惯性。使你注意力涣散。&lt;/li&gt;
+&lt;li&gt;思考的时候要试着去从本质上，从抽象上看问题，越本质越好。这样能排除 corner case 的影响，使整个问题变得形式简洁，容易被一次性处理。&lt;/li&gt;
+&lt;li&gt;主动出击而非守株待兔。
+&lt;ol&gt;
+&lt;li&gt;主动打表&lt;/li&gt;
+&lt;li&gt;主动猜结论&lt;/li&gt;
+&lt;li&gt;主动尝试方向&lt;/li&gt;
+&lt;li&gt;主动手玩样例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;在记录了目前思路之后如果没有头绪。不妨回头看你想到的思路，试着想想如果反过来会怎么样，推敲每一步是否有其他道路。这可能会发现你一些错误的惯性所带来的疏忽。&lt;/li&gt;
+&lt;li&gt;放平心态，心如止水。不要急。就算快想出来了也要严格验证。不然容易最后临门一脚踢歪了。&lt;/li&gt;
+&lt;li&gt;思考时应该要试图在不同事物间建立联系。把他们连成一个整体。&lt;/li&gt;
+&lt;li&gt;善用潜意识，想不出来可以先换题，过会儿再想。&lt;/li&gt;
+&lt;li&gt;有危机感！不要懒散。&lt;/li&gt;
+&lt;li&gt;要坚信这个题目是想的出来的。&lt;/li&gt;
+&lt;li&gt;当你发现你走的很深的时候立马掉头。不能一条路走到黑。&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>AtCoder Quality Problem</title>
+      <link>http://localhost:1313/posts/atcoder-quality-problem/</link>
+      <pubDate>Thu, 21 May 2026 18:04:02 +0800</pubDate>
+      <guid>http://localhost:1313/posts/atcoder-quality-problem/</guid>
+      <description>&lt;p&gt;我意识到了我做 DP 的严重问题。我非常习惯于说去推结论和性质，结果迟迟没有开始试图设计状态。对 DP 理解的非常的不深刻。在推性质的时候应该主动像 DP 上靠。而不是先推再说。要主动地设计状态，尝试几种经典的状态设计。然后试图找出关系。或者是先找出&lt;strong&gt;子结构&lt;/strong&gt;之间的联系。&lt;/p&gt;
+&lt;p&gt;DP 的本质就是子结构。要主动洞察这个题目有哪些子结构，以及他们之间的良好性质，而不是仅靠“发现”。&lt;/p&gt;
+&lt;p&gt;我觉得我设计暴力 DP 这件事比 DP 优化更困难。因为我并没有养成这种良好的思维习惯。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;开始正题。&lt;/p&gt;
+&lt;p&gt;这个题目首先就是我们 feel 一下这个题目。&lt;/p&gt;
+&lt;p&gt;一个 native 的想法是考虑从小到大以 popcnt 为层推进。然后呢你其实可以把他看成一个金字塔。然后你想一下，比如说你当前先把单个元素染个色。然后对于横跨的，怎么办？实际上对于这些横跨的不能随便染色，反例：RBBR 13 24 R 14 23 B 然后就炸了。&lt;/p&gt;
+&lt;p&gt;然后呢我就摆了，也许是畏惧吧。&lt;/p&gt;
+&lt;p&gt;你其实可以推进一步，你思考为什么会炸。&lt;/p&gt;
+&lt;p&gt;因为 R 和 B 的并都是 S。&lt;/p&gt;
+&lt;p&gt;然后显然 R 和 B 的并不能都不是 S。&lt;/p&gt;
+&lt;p&gt;然后如果 S 是 R 那一定是 R 的并是 S。反过来同理。&lt;/p&gt;
+&lt;p&gt;实际上现在你可以直接开始试图设计状态了。&lt;/p&gt;
+&lt;p&gt;比如你很经典地你设 $f_{S,0/1}$ 为 $S$ 内染色，然后颜色为 $0/1$。然后这个时候你想怎么转移。&lt;/p&gt;
+&lt;p&gt;你发现你好转移啊，你找这个并不是当前颜色的并。然后你发现其实这个并一定得是对应的 $f$ 然后你直接转移即可。&lt;/p&gt;
+&lt;p&gt;优化用脚优化。你直接一个一个加即可，套路。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Third Grace</title>
+      <link>http://localhost:1313/posts/the-third-grace/</link>
+      <pubDate>Wed, 20 May 2026 22:27:29 +0800</pubDate>
+      <guid>http://localhost:1313/posts/the-third-grace/</guid>
+      <description>&lt;p&gt;观察 1: 这个区间其实跟左端点的关系不大，跟右端点关系更大。&lt;/p&gt;
+&lt;p&gt;于是我们可以想到从左到右考虑，于是乎我们发现了一个 $O(n^2)$ 的做法。&lt;/p&gt;
+&lt;p&gt;我们设我们当前决策了是否要激活 $[1,i]$ 且激活了 $i$ 的最大代价为 $f_i$。&lt;/p&gt;
+&lt;p&gt;然后转移就是枚举 $j &amp;lt; i$，然后减去多于代价，加上新的。&lt;/p&gt;
+&lt;p&gt;我们考虑优化他。&lt;/p&gt;
+&lt;p&gt;首先新的贡献是跟 $j$ 无关的。&lt;/p&gt;
+&lt;p&gt;然后剩下的呢，我们考虑我们往右扫。维护右端点在 $i$ 右边的区间。然后你把他们的左端点放在线段树里，你每删除一个线段，就在对应的区间内将线段树减一。然后相当于要区间 $y_i$ 加，区间 $x_iy_i$ 最小值。然后你发现这是 KTT 板子。&lt;/p&gt;
+&lt;p&gt;做完了。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Yearning for Yonder 2</title>
       <link>http://localhost:1313/posts/yearning-for-yonder-2/</link>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Set on Inftopia</title>
+    <link>http://localhost:1313/tags/set/</link>
+    <description>Recent content in Set on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 21 May 2026 18:04:02 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/set/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AtCoder Quality Problem</title>
+      <link>http://localhost:1313/posts/atcoder-quality-problem/</link>
+      <pubDate>Thu, 21 May 2026 18:04:02 +0800</pubDate>
+      <guid>http://localhost:1313/posts/atcoder-quality-problem/</guid>
+      <description>&lt;p&gt;我意识到了我做 DP 的严重问题。我非常习惯于说去推结论和性质，结果迟迟没有开始试图设计状态。对 DP 理解的非常的不深刻。在推性质的时候应该主动像 DP 上靠。而不是先推再说。要主动地设计状态，尝试几种经典的状态设计。然后试图找出关系。或者是先找出&lt;strong&gt;子结构&lt;/strong&gt;之间的联系。&lt;/p&gt;
+&lt;p&gt;DP 的本质就是子结构。要主动洞察这个题目有哪些子结构，以及他们之间的良好性质，而不是仅靠“发现”。&lt;/p&gt;
+&lt;p&gt;我觉得我设计暴力 DP 这件事比 DP 优化更困难。因为我并没有养成这种良好的思维习惯。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;开始正题。&lt;/p&gt;
+&lt;p&gt;这个题目首先就是我们 feel 一下这个题目。&lt;/p&gt;
+&lt;p&gt;一个 native 的想法是考虑从小到大以 popcnt 为层推进。然后呢你其实可以把他看成一个金字塔。然后你想一下，比如说你当前先把单个元素染个色。然后对于横跨的，怎么办？实际上对于这些横跨的不能随便染色，反例：RBBR 13 24 R 14 23 B 然后就炸了。&lt;/p&gt;
+&lt;p&gt;然后呢我就摆了，也许是畏惧吧。&lt;/p&gt;
+&lt;p&gt;你其实可以推进一步，你思考为什么会炸。&lt;/p&gt;
+&lt;p&gt;因为 R 和 B 的并都是 S。&lt;/p&gt;
+&lt;p&gt;然后显然 R 和 B 的并不能都不是 S。&lt;/p&gt;
+&lt;p&gt;然后如果 S 是 R 那一定是 R 的并是 S。反过来同理。&lt;/p&gt;
+&lt;p&gt;实际上现在你可以直接开始试图设计状态了。&lt;/p&gt;
+&lt;p&gt;比如你很经典地你设 $f_{S,0/1}$ 为 $S$ 内染色，然后颜色为 $0/1$。然后这个时候你想怎么转移。&lt;/p&gt;
+&lt;p&gt;你发现你好转移啊，你找这个并不是当前颜色的并。然后你发现其实这个并一定得是对应的 $f$ 然后你直接转移即可。&lt;/p&gt;
+&lt;p&gt;优化用脚优化。你直接一个一个加即可，套路。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

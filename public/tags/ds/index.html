@@ -143,6 +143,26 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">The Third Grace
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>观察 1: 这个区间其实跟左端点的关系不大，跟右端点关系更大。
+于是我们可以想到从左到右考虑，于是乎我们发现了一个 $O(n^2)$ 的做法。
+我们设我们当前决策了是否要激活 $[1,i]$ 且激活了 $i$ 的最大代价为 $f_i$。
+然后转移就是枚举 $j &lt; i$，然后减去多于代价，加上新的。
+我们考虑优化他。
+首先新的贡献是跟 $j$ 无关的。
+然后剩下的呢，我们考虑我们往右扫。维护右端点在 $i$ 右边的区间。然后你把他们的左端点放在线段树里，你每删除一个线段，就在对应的区间内将线段树减一。然后相当于要区间 $y_i$ 加，区间 $x_iy_i$ 最小值。然后你发现这是 KTT 板子。
+做完了。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-20 22:27:29 +0800 CST'>May 20, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to The Third Grace" href="http://localhost:1313/posts/the-third-grace/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Construction of Highway
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">

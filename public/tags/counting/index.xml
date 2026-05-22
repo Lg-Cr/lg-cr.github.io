@@ -6,8 +6,30 @@
     <description>Recent content in Counting on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 May 2026 23:32:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 22:35:45 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/counting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Permutation and Minimum</title>
+      <link>http://localhost:1313/posts/permutation-and-minimum/</link>
+      <pubDate>Thu, 21 May 2026 22:35:45 +0800</pubDate>
+      <guid>http://localhost:1313/posts/permutation-and-minimum/</guid>
+      <description>&lt;p&gt;首先我们发现其实这个东西是可以分类讨论的。&lt;/p&gt;
+&lt;p&gt;对于 $(2i-1,2i)$ 这样的二元组讨论。&lt;/p&gt;
+&lt;p&gt;若两者都不是 $-1$ 则直接跳过。（甚至可以直接离散化掉）&lt;/p&gt;
+&lt;p&gt;若两者都是 $-1$ 则可以放在一起算。具体来讲，我们可以数一共有多少个这样的二元组，然后我们只要算全是 $-1$ 的答案，然后再乘上把这些二元组去掉之后的答案即可。（因为对于其他的二元组确定的情况下，实际上的方案数总是相同的）&lt;/p&gt;
+&lt;p&gt;比如有 $k$ 个二元组，然后你考虑钦定哪些数作为二元组中的更小值，然后再排列一下。钦定的方案数为 $Catalan(k)$。因为注意到你本质上要求对于任意前缀，选的作为最小值的个数 $\ge$ 作为最大值的个数。然后排列即为 $k!$，即答案为 $Catalan(k)k!$。&lt;/p&gt;
+&lt;p&gt;现在我们只要专心考虑恰好有一个 $-1$ 的即可。&lt;/p&gt;
+&lt;p&gt;我们先考虑简单的情况，假设整个排列都是一个 $-1$ 和一个非 $-1$。&lt;/p&gt;
+&lt;p&gt;然后这个时候开始 DP。&lt;/p&gt;
+&lt;p&gt;我们发现这个顺序根本不重要，我们只要给他们染色然后配对即可。最终再乘上阶乘。&lt;/p&gt;
+&lt;p&gt;我们如法炮制，还是按值域排在一起，发现我们可以从大到小做。&lt;/p&gt;
+&lt;p&gt;我们称已经被填入的为白点，我们要填的是黑点。&lt;/p&gt;
+&lt;p&gt;设 $f_{i,j,k}$ 为当前处理了值域在 $[i,n]$ 内的东西，其中钦定 $j$ 个 $[1,i)$ 中的黑点，$k$ 个 $[i,n]$ 内的黑点已经被预留了。&lt;/p&gt;
+&lt;p&gt;然后直接转移即可。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;调半天过不了样例。&lt;/p&gt;
+&lt;p&gt;问题在于，实际上你不能在 dp 的时候简单地只看你留了几个来考虑这个 $(-1,-1)$ 二元组，你要把他放进去算，因为实际上这个预留与实际上还是有一些区别的，因为你可能可以填上这个东西。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Tri Colored Paths</title>
       <link>http://localhost:1313/posts/tri-colored-paths/</link>

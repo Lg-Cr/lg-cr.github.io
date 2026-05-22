@@ -143,6 +143,93 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Permutation and Minimum
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>首先我们发现其实这个东西是可以分类讨论的。
+对于 $(2i-1,2i)$ 这样的二元组讨论。
+若两者都不是 $-1$ 则直接跳过。（甚至可以直接离散化掉）
+若两者都是 $-1$ 则可以放在一起算。具体来讲，我们可以数一共有多少个这样的二元组，然后我们只要算全是 $-1$ 的答案，然后再乘上把这些二元组去掉之后的答案即可。（因为对于其他的二元组确定的情况下，实际上的方案数总是相同的）
+比如有 $k$ 个二元组，然后你考虑钦定哪些数作为二元组中的更小值，然后再排列一下。钦定的方案数为 $Catalan(k)$。因为注意到你本质上要求对于任意前缀，选的作为最小值的个数 $\ge$ 作为最大值的个数。然后排列即为 $k!$，即答案为 $Catalan(k)k!$。
+现在我们只要专心考虑恰好有一个 $-1$ 的即可。
+我们先考虑简单的情况，假设整个排列都是一个 $-1$ 和一个非 $-1$。
+然后这个时候开始 DP。
+我们发现这个顺序根本不重要，我们只要给他们染色然后配对即可。最终再乘上阶乘。
+我们如法炮制，还是按值域排在一起，发现我们可以从大到小做。
+我们称已经被填入的为白点，我们要填的是黑点。
+设 $f_{i,j,k}$ 为当前处理了值域在 $[i,n]$ 内的东西，其中钦定 $j$ 个 $[1,i)$ 中的黑点，$k$ 个 $[i,n]$ 内的黑点已经被预留了。
+然后直接转移即可。
+调半天过不了样例。
+问题在于，实际上你不能在 dp 的时候简单地只看你留了几个来考虑这个 $(-1,-1)$ 二元组，你要把他放进去算，因为实际上这个预留与实际上还是有一些区别的，因为你可能可以填上这个东西。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-21 22:35:45 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Permutation and Minimum" href="http://localhost:1313/posts/permutation-and-minimum/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">论思考
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>如何思考？在如今这个阶段没有良好的思维习惯恐怕是举步维艰。
+使用记录工具，例如在电脑上进行 markdown 打字。这样应该可以显著提升思维的深度。 别躺床上想题！这样很容易变懒散。不想动。 排除干扰，尤其忌讳思考一半打断，这会消除思考的惯性。使你注意力涣散。 思考的时候要试着去从本质上，从抽象上看问题，越本质越好。这样能排除 corner case 的影响，使整个问题变得形式简洁，容易被一次性处理。 主动出击而非守株待兔。 主动打表 主动猜结论 主动尝试方向 主动手玩样例 在记录了目前思路之后如果没有头绪。不妨回头看你想到的思路，试着想想如果反过来会怎么样，推敲每一步是否有其他道路。这可能会发现你一些错误的惯性所带来的疏忽。 放平心态，心如止水。不要急。就算快想出来了也要严格验证。不然容易最后临门一脚踢歪了。 思考时应该要试图在不同事物间建立联系。把他们连成一个整体。 善用潜意识，想不出来可以先换题，过会儿再想。 有危机感！不要懒散。 要坚信这个题目是想的出来的。 当你发现你走的很深的时候立马掉头。不能一条路走到黑。 </p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-21 18:31:04 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 论思考" href="http://localhost:1313/posts/%E8%AE%BA%E6%80%9D%E8%80%83/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AtCoder Quality Problem
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>我意识到了我做 DP 的严重问题。我非常习惯于说去推结论和性质，结果迟迟没有开始试图设计状态。对 DP 理解的非常的不深刻。在推性质的时候应该主动像 DP 上靠。而不是先推再说。要主动地设计状态，尝试几种经典的状态设计。然后试图找出关系。或者是先找出子结构之间的联系。
+DP 的本质就是子结构。要主动洞察这个题目有哪些子结构，以及他们之间的良好性质，而不是仅靠“发现”。
+我觉得我设计暴力 DP 这件事比 DP 优化更困难。因为我并没有养成这种良好的思维习惯。
+开始正题。
+这个题目首先就是我们 feel 一下这个题目。
+一个 native 的想法是考虑从小到大以 popcnt 为层推进。然后呢你其实可以把他看成一个金字塔。然后你想一下，比如说你当前先把单个元素染个色。然后对于横跨的，怎么办？实际上对于这些横跨的不能随便染色，反例：RBBR 13 24 R 14 23 B 然后就炸了。
+然后呢我就摆了，也许是畏惧吧。
+你其实可以推进一步，你思考为什么会炸。
+因为 R 和 B 的并都是 S。
+然后显然 R 和 B 的并不能都不是 S。
+然后如果 S 是 R 那一定是 R 的并是 S。反过来同理。
+实际上现在你可以直接开始试图设计状态了。
+比如你很经典地你设 $f_{S,0/1}$ 为 $S$ 内染色，然后颜色为 $0/1$。然后这个时候你想怎么转移。
+你发现你好转移啊，你找这个并不是当前颜色的并。然后你发现其实这个并一定得是对应的 $f$ 然后你直接转移即可。
+优化用脚优化。你直接一个一个加即可，套路。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-21 18:04:02 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to AtCoder Quality Problem" href="http://localhost:1313/posts/atcoder-quality-problem/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">The Third Grace
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>观察 1: 这个区间其实跟左端点的关系不大，跟右端点关系更大。
+于是我们可以想到从左到右考虑，于是乎我们发现了一个 $O(n^2)$ 的做法。
+我们设我们当前决策了是否要激活 $[1,i]$ 且激活了 $i$ 的最大代价为 $f_i$。
+然后转移就是枚举 $j &lt; i$，然后减去多于代价，加上新的。
+我们考虑优化他。
+首先新的贡献是跟 $j$ 无关的。
+然后剩下的呢，我们考虑我们往右扫。维护右端点在 $i$ 右边的区间。然后你把他们的左端点放在线段树里，你每删除一个线段，就在对应的区间内将线段树减一。然后相当于要区间 $y_i$ 加，区间 $x_iy_i$ 最小值。然后你发现这是 KTT 板子。
+做完了。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-20 22:27:29 +0800 CST'>May 20, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to The Third Grace" href="http://localhost:1313/posts/the-third-grace/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Yearning for Yonder 2
     </h2>
   </header>
@@ -337,112 +424,6 @@ Creatively，我们发现我们在做 kruskal。
   </div>
   <footer class="entry-footer"><span title='2026-05-04 23:23:05 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Blue and Red Tree" href="http://localhost:1313/posts/blue-and-red-tree/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">School Road
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>广义串并联好题。
-首先我们看到 $m \le n &#43; 13$ 这个就是广义串并联。
-其次，对于这种东西，我们可以把点双搞出来，这个简单路径的限制如果是难点可以用点双解决。
-首先肯定不可能出点双再进来。
-你考虑我们发现如果 $1$ 和 $n$ 不在一个点双以内，那我们直接就连一条 $1,n,L$ 的路径显然不会更改答案。
-所以我们直接考虑它点双。
-好的然后我们既然用的是这个广义串并联，我们就要考虑 $K_4$。
-然后你发现，如果有这个 $K_4$ 就一定存在 $&gt;L$ 的路径。
-然后我们知道他是广义串并联，然后我们缩图即可。
-而且注意到 $1$ 和 $n$ 是可以不缩的，如果不缩导致不行说明也是不行的（类似 $K_4$ 的分析）
-重边显然是要 check 边长短。
-二度点显然把两个长度加起来即可。
-这个告诉我们的就是说这个 VCC 非常的好用在简单路径中。
-以及这个广义串并联看到部分分就要想到。
-或者更本质的来说，你如果是要搞类似这种就是一排排过去，长得跟毛细血管一样的，那就是可以试试广义串并联。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 23:16:14 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to School Road" href="http://localhost:1313/posts/school-road/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Cost Performance Flow
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>唐唐题。
-考虑直接开导！
-我们很容易发现我们画在图像上，我们一定是优先节省这个费用最大的东西。
-然后我们把每次增广的这个流过去的流量与每流一次的代价啥的都算出来。
-然后直接贪心即可。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 23:14:00 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Cost Performance Flow" href="http://localhost:1313/posts/cost-performance-flow/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Boxes and Balls
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>很厉害的题目。
-首先我们知道他是网络流。
-怎么流呢。
-其实最重要的呢，是这个条件如何刻画。
-我们要把这个条件转化为什么东西来进行这个刻画。
-一个 native 的想法是，你列成一个矩阵分别是当前阶段的这些位置和当前时间，然后像网格图一样穿起来。
-但你发现这样是完全不可行滴！因为你根本不知道每个位置现在是什么数。
-然后我们发现一个重要的观察，你要么是从上一个同一个数那里继承，然后就一直从那个时候一直霸占这个位置，要么呢就是现在开始，踢掉一个并放进去。
-还有就是，你发现关心这个具体是哪个位置放的是哪个数是十分愚蠢的，我们发现他只是一个霸占的过程，在你霸占的过程中呢你可以直接看作这个位置消失了，那你根本不需要知道哪个位置放的是哪个数，你只要知道有多少个位置被霸占即可。
-然后你发现你变成了，给一堆区间，然后你可以选一些区间（即霸占他们）并获得一些受益，但同一个时间不能选很多区间。
-然后这个就是经典模型，从 $1$ 到 $n$ 穿起来即可，容量为 $m-1$，代价为 $0$，然后在旁边接一些边，容量为 $1$ 费用为 $-w$，可以把这个流量引到旁边去表示你用了这个区间。
-注意我们同时只能有 $m-1$ 个被霸占，因为你每次还要放一个数进去。
-注意 $s,t$ 可能重合，有可能会死循环，注意特判或者多拉一条边。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 20:40:42 +0800 CST'>May 2, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Boxes and Balls" href="http://localhost:1313/posts/boxes-and-balls/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Constructing a Matrix
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>十分厉害的题目。
-我自己其实是想到了一个方法，但感觉十分的模糊，并不是很会实现，于是大学习了水球老师的做法。
-我自己的方法：
-首先啊这个行和列显然是可以随便调换的，所以我们把行按照 a 小到大排序。
-我们核心思想是每一行的这个每个颜色都一定是连续的，不可能出项两个颜色相同的连续段在同一行。
-然后我们第一行按顺序直接填。
-从第二行开始像扫描线一样。我们可以在块与块的交界处出现新块，部分覆盖块但不能严格包含（即两边都超过）原来的块。
-然后你发现对于竖向的 b 最小的就是块动的最少的，b 最大的就是块更替最频繁的。
-这个你可以通过对 b 做差分得到，但实现我并不会实现。
-接下来讲水球的做法。
-这个是另一条路线。
-我们考虑一个一个把数填进去。
-于是我们立马得到了结论：如果一行内有与他颜色相同的但列内没有就只会增加列，如果行列都有则不会改变，如果行列都没有则都会加。
-然后我们就非常 clear 了。
-我们考虑直接填，每次看剩的 $a,b$ 来填。
-然而我们发现我们如果剩一些空格就很难办了。
-于是我们先想下如果有空格怎么办。
-我们肯定希望我们填空格根本不影响任何的 $a,b$。
-那我们直接给每行每列都来一个普适的空格值，填在对角线上。
-好的接下来我们肯定贪心地先把 $a,b$ 都有的消耗掉即可，这个是好做的，你直接用全新的颜色即可。
-接下来剩一些单独的 $a,b$，我们直接使用对应行内用过但列内没用过的。
-怎么选呢，你发现首先普适色肯定不能选，我们实际上可以在对应行内用过的颜色里随便选一个，因为其他的我们都填的是全新色，而我们没填当前格所以列里面肯定不会有我们用的这个色。
-实现上我们可以在全新色阶段直接给对应的行和列贴上一个标记色即可。
-这样是好做的。
-这个题目告诉我们碰壁了就换路线。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 16:02:28 +0800 CST'>May 2, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Constructing a Matrix" href="http://localhost:1313/posts/constructing-a-matrix/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>KTT on Inftopia</title>
+    <link>http://localhost:1313/tags/ktt/</link>
+    <description>Recent content in KTT on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 20 May 2026 22:27:29 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ktt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Third Grace</title>
+      <link>http://localhost:1313/posts/the-third-grace/</link>
+      <pubDate>Wed, 20 May 2026 22:27:29 +0800</pubDate>
+      <guid>http://localhost:1313/posts/the-third-grace/</guid>
+      <description>&lt;p&gt;观察 1: 这个区间其实跟左端点的关系不大，跟右端点关系更大。&lt;/p&gt;
+&lt;p&gt;于是我们可以想到从左到右考虑，于是乎我们发现了一个 $O(n^2)$ 的做法。&lt;/p&gt;
+&lt;p&gt;我们设我们当前决策了是否要激活 $[1,i]$ 且激活了 $i$ 的最大代价为 $f_i$。&lt;/p&gt;
+&lt;p&gt;然后转移就是枚举 $j &amp;lt; i$，然后减去多于代价，加上新的。&lt;/p&gt;
+&lt;p&gt;我们考虑优化他。&lt;/p&gt;
+&lt;p&gt;首先新的贡献是跟 $j$ 无关的。&lt;/p&gt;
+&lt;p&gt;然后剩下的呢，我们考虑我们往右扫。维护右端点在 $i$ 右边的区间。然后你把他们的左端点放在线段树里，你每删除一个线段，就在对应的区间内将线段树减一。然后相当于要区间 $y_i$ 加，区间 $x_iy_i$ 最小值。然后你发现这是 KTT 板子。&lt;/p&gt;
+&lt;p&gt;做完了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

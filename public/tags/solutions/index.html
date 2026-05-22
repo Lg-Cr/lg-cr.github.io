@@ -143,6 +143,60 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Permutation and Minimum
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>首先我们发现其实这个东西是可以分类讨论的。
+对于 $(2i-1,2i)$ 这样的二元组讨论。
+若两者都不是 $-1$ 则直接跳过。（甚至可以直接离散化掉）
+若两者都是 $-1$ 则可以放在一起算。具体来讲，我们可以数一共有多少个这样的二元组，然后我们只要算全是 $-1$ 的答案，然后再乘上把这些二元组去掉之后的答案即可。（因为对于其他的二元组确定的情况下，实际上的方案数总是相同的）
+比如有 $k$ 个二元组，然后你考虑钦定哪些数作为二元组中的更小值，然后再排列一下。钦定的方案数为 $Catalan(k)$。因为注意到你本质上要求对于任意前缀，选的作为最小值的个数 $\ge$ 作为最大值的个数。然后排列即为 $k!$，即答案为 $Catalan(k)k!$。
+现在我们只要专心考虑恰好有一个 $-1$ 的即可。
+我们先考虑简单的情况，假设整个排列都是一个 $-1$ 和一个非 $-1$。
+然后这个时候开始 DP。
+我们发现这个顺序根本不重要，我们只要给他们染色然后配对即可。最终再乘上阶乘。
+我们如法炮制，还是按值域排在一起，发现我们可以从大到小做。
+我们称已经被填入的为白点，我们要填的是黑点。
+设 $f_{i,j,k}$ 为当前处理了值域在 $[i,n]$ 内的东西，其中钦定 $j$ 个 $[1,i)$ 中的黑点，$k$ 个 $[i,n]$ 内的黑点已经被预留了。
+然后直接转移即可。
+调半天过不了样例。
+问题在于，实际上你不能在 dp 的时候简单地只看你留了几个来考虑这个 $(-1,-1)$ 二元组，你要把他放进去算，因为实际上这个预留与实际上还是有一些区别的，因为你可能可以填上这个东西。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-21 22:35:45 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Permutation and Minimum" href="http://localhost:1313/posts/permutation-and-minimum/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AtCoder Quality Problem
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>我意识到了我做 DP 的严重问题。我非常习惯于说去推结论和性质，结果迟迟没有开始试图设计状态。对 DP 理解的非常的不深刻。在推性质的时候应该主动像 DP 上靠。而不是先推再说。要主动地设计状态，尝试几种经典的状态设计。然后试图找出关系。或者是先找出子结构之间的联系。
+DP 的本质就是子结构。要主动洞察这个题目有哪些子结构，以及他们之间的良好性质，而不是仅靠“发现”。
+我觉得我设计暴力 DP 这件事比 DP 优化更困难。因为我并没有养成这种良好的思维习惯。
+开始正题。
+这个题目首先就是我们 feel 一下这个题目。
+一个 native 的想法是考虑从小到大以 popcnt 为层推进。然后呢你其实可以把他看成一个金字塔。然后你想一下，比如说你当前先把单个元素染个色。然后对于横跨的，怎么办？实际上对于这些横跨的不能随便染色，反例：RBBR 13 24 R 14 23 B 然后就炸了。
+然后呢我就摆了，也许是畏惧吧。
+你其实可以推进一步，你思考为什么会炸。
+因为 R 和 B 的并都是 S。
+然后显然 R 和 B 的并不能都不是 S。
+然后如果 S 是 R 那一定是 R 的并是 S。反过来同理。
+实际上现在你可以直接开始试图设计状态了。
+比如你很经典地你设 $f_{S,0/1}$ 为 $S$ 内染色，然后颜色为 $0/1$。然后这个时候你想怎么转移。
+你发现你好转移啊，你找这个并不是当前颜色的并。然后你发现其实这个并一定得是对应的 $f$ 然后你直接转移即可。
+优化用脚优化。你直接一个一个加即可，套路。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-21 18:04:02 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to AtCoder Quality Problem" href="http://localhost:1313/posts/atcoder-quality-problem/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Yearning for Yonder 2
     </h2>
   </header>
@@ -367,83 +421,6 @@ Creatively，我们发现我们在做 kruskal。
   </div>
   <footer class="entry-footer"><span title='2026-05-02 20:40:42 +0800 CST'>May 2, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Boxes and Balls" href="http://localhost:1313/posts/boxes-and-balls/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Constructing a Matrix
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>十分厉害的题目。
-我自己其实是想到了一个方法，但感觉十分的模糊，并不是很会实现，于是大学习了水球老师的做法。
-我自己的方法：
-首先啊这个行和列显然是可以随便调换的，所以我们把行按照 a 小到大排序。
-我们核心思想是每一行的这个每个颜色都一定是连续的，不可能出项两个颜色相同的连续段在同一行。
-然后我们第一行按顺序直接填。
-从第二行开始像扫描线一样。我们可以在块与块的交界处出现新块，部分覆盖块但不能严格包含（即两边都超过）原来的块。
-然后你发现对于竖向的 b 最小的就是块动的最少的，b 最大的就是块更替最频繁的。
-这个你可以通过对 b 做差分得到，但实现我并不会实现。
-接下来讲水球的做法。
-这个是另一条路线。
-我们考虑一个一个把数填进去。
-于是我们立马得到了结论：如果一行内有与他颜色相同的但列内没有就只会增加列，如果行列都有则不会改变，如果行列都没有则都会加。
-然后我们就非常 clear 了。
-我们考虑直接填，每次看剩的 $a,b$ 来填。
-然而我们发现我们如果剩一些空格就很难办了。
-于是我们先想下如果有空格怎么办。
-我们肯定希望我们填空格根本不影响任何的 $a,b$。
-那我们直接给每行每列都来一个普适的空格值，填在对角线上。
-好的接下来我们肯定贪心地先把 $a,b$ 都有的消耗掉即可，这个是好做的，你直接用全新的颜色即可。
-接下来剩一些单独的 $a,b$，我们直接使用对应行内用过但列内没用过的。
-怎么选呢，你发现首先普适色肯定不能选，我们实际上可以在对应行内用过的颜色里随便选一个，因为其他的我们都填的是全新色，而我们没填当前格所以列里面肯定不会有我们用的这个色。
-实现上我们可以在全新色阶段直接给对应的行和列贴上一个标记色即可。
-这样是好做的。
-这个题目告诉我们碰壁了就换路线。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 16:02:28 +0800 CST'>May 2, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Constructing a Matrix" href="http://localhost:1313/posts/constructing-a-matrix/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">排序大师
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>厉害厉害厉害！
-就是在面对这类的排列的题目，尤其是排序类，一个非常重要的方向就是从图理论出发。
-非常经典的就是 $i\to p_i$ 建边，然后每次交换就是可以合并两个环或者拆开两个环，目标是 $n$ 个自环。
-然而在这里你发现首先你这样连会导致 $O(n)$ 个边的变动，不可取，我们希望有常数级别的边的变动。
-然后一个 native 的想法是你考虑 $p_i\to p_{i&#43;1}$。于是我们得到了一个下界，大概是与目标图的不同边的数量除以 $4$ 向上取整。
-但我们很容易发现这个下界相当的松，构造十分的困难况且我们还能举出反例，我们需要一个紧一些的下界，而且另一个原因是，这个链的形状我们实在是不太好刻画，这个链的信息实际上蛮多的，这也是导致下界很松的原因之一。
-我们想要的是环，最好是数个数，但正常的方法不行了，怎么办？
-这个题目牛逼的来了，他指出：我们可以 $p_i &#43; 1\ to p_{i&#43;1}$。
-注意这个是在排列前后添了 $0,n&#43;1$ 的情况下。
-我们发现他本质上来讲，是把一条链，进行了错位，把链变成了自环。
-其根本思想在于，我们可以通过改变连边方式本身来改变图的性质。
-这确乎是一个范式的突破。我们的图理论与排列理论相结合，不再拘泥于那一种的连边方式，而是我们可以尝试多种的，不同的，适配每个题目性质的连边方式，这是前所未有的。
-我做这个题目的时候就卡在我根本没有向这个地方想，被这个集体无意识给禁锢住了。
-一个顺畅的思考路径应该是想到 native 的想法后想到这个链化为自环然后做完。
-这个连边方式跟这个题目的性质有什么适配性呢？这还得从 $i\to p_i$ 说起。
-我们说到，这个东西最大的问题在于，他需要更改 $O(n)$ 个，而其根本是他是对段进行操作。
-然后我们自然地想到这个我们要把段转化为单点，自然是使用差分。这是差分思想的一种灵活运用。
-我们发现我们可以让每个连边关联于他前后的东西，我们最好是希望在进行一系列操作之后，中间的影响恰好被抵消掉了，我们不用管。
-然后我们想着要把 $p_i$ 和 $p_{i&#43;1}$ 关联起来，既然如此，我们 $p_i\to p_{i&#43;1}$ 如何？
-这就诞生了我们的链。
-但我们想要的是环啊，于是我们就把他挪一下，让最终图全是自环。
-我们注意到，原图是不重要的，最终图是重要的。
-然后变成了 $p_i &#43; 1\to p_{i&#43;1}$。
-然后我们发现这个题已经做完了一大半。
-我们发现我们每个操作本质上相当于交换对应的两个对这个出边，自然也就是最多多出现两个自环，且奇偶性一定不会变。
-我们发现这个下界紧得多，我们试图构造。
-我们发现我们本质上就是要每次多两个自环，也就是多两个 $x\to x&#43;1$,$y\to y&#43;1$。
-然后我们不难这样构造：我们找到第一个前面有比他大的东西的 $x$，再找 $x$ 前面最大的 $y$，然后你发现 $x-1$ 在 $y$ 前面，$y&#43;1$ 在 $x$ 后边，然后我们按顺序这样拼一下，把 $x-1\to x$ 拼起来，$y\to y&#43;1$ 拼起来即可，不难发现在没排序的情况下总是能找到的。
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-01 23:41:21 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to 排序大师" href="http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
