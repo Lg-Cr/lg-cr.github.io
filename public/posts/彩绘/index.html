@@ -5,11 +5,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Tags | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>彩绘 | Inftopia</title>
+<meta name="keywords" content="Solutions, Counting, DP">
+<meta name="description" content="简单题，但脑抽了。
+这个题目本质上就是让我们算这个每个位置的系数。（因为他可以通过类似哈希来检验你的系数，就算你有不算出系数的方法，那通过他的不同数据一定能唯一确定系数）
+好的我们很容易得到一个 $O(n^3)$ 的做法，设 $f_{i,j}$ 为第 $i$ 轮第 $j$ 个数的系数，然后枚举你当前选择哪一个。然后便是 $O(n^2)$ 的。你发现对每个 $f_{i,j}$ 他只从 $f_{i-1,j}$ 和 $f_{i-1,j-1}$ 转移过来。然后就方了。
+如何继续优化？显然你可以把每轮的除以 $i-1$ 和除以 $2$ 拎出来。然后你对着剩下的表进行干瞪。你通过瞎试发现他一定是 $\binom{i-1}{j-1}$ 的倍数。然后你对他除完之后的进行因式分解。然后发现除完之后是两个双阶乘的积。然后你就糊里糊涂地做完了，但并不知道这个组合意义。这不乏为一种方法但多少有点唐了。
+
+然后说正解，实际上你发现我糖丸了。你还可以继续拎。具体思想就还是考虑不变量以及图论建模。我们把他变成在自动机上走，然后你发现你每增加 $j$ 就会乘上固定贡献，每增加 $i-j$ 也会乘上固定贡献。于是我们发现这两个贡献与你走的路径无关，乘上的东西都是一定的。然后贡献就是两个双阶乘，而你的路径数就是 $\binom{i-1}{j-1}$。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/tags/">
+<link rel="canonical" href="http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +23,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/">
 <noscript>
     <style>
         #theme-toggle,
@@ -82,7 +86,7 @@
   });">
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -118,7 +122,7 @@
             </li>
             <li>
                 <a href="http://localhost:1313/tags/" title="Tags">
-                    <span class="active">Tags</span>
+                    <span>Tags</span>
                 </a>
             </li>
             <li>
@@ -135,129 +139,36 @@
     </nav>
 </header>
 <main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
-</header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="http://localhost:1313/tags/approximation/">Approximation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/bct/">BCT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/binary/">Binary <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/cactus/">Cactus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/chunking/">Chunking <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/construction/">Construction <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/continued-fraction-theory/">Continued Fraction Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/counting/">Counting <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dp/">DP <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ds/">DS <sup><strong><sup>5</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dual-graph/">Dual Graph <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/flow/">Flow <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph/">Graph <sup><strong><sup>8</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph-euler-theorem/">Graph Euler Theorem <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/interactive/">Interactive <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/kdt/">KDT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ktt/">KTT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/maths/">Maths <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mcmf/">MCMF <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mst/">MST <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/number-theory/">Number Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/odt/">ODT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/pearls/">Pearls <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/permutation/">Permutation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sam/">SAM <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/segtree/">SegTree <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/series-parallel/">Series-Parallel <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/set/">Set <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solutions/">Solutions <sup><strong><sup>22</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solving/">Solving <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sorting/">Sorting <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/strings/">Strings <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tb5/">TB5 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/topology/">Topology <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/torus/">Torus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tree/">Tree <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tricks/">Tricks <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/vcc/">VCC <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/%E6%A0%91%E5%89%96/">树剖 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      彩绘
+    </h1>
+    <div class="post-meta"><span title='2026-05-30 23:33:04 +0800 CST'>May 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>简单题，但脑抽了。</p>
+<p>这个题目本质上就是让我们算这个每个位置的系数。（因为他可以通过类似哈希来检验你的系数，就算你有不算出系数的方法，那通过他的不同数据一定能唯一确定系数）</p>
+<p>好的我们很容易得到一个 $O(n^3)$ 的做法，设 $f_{i,j}$ 为第 $i$ 轮第 $j$ 个数的系数，然后枚举你当前选择哪一个。然后便是 $O(n^2)$ 的。你发现对每个 $f_{i,j}$ 他只从 $f_{i-1,j}$ 和 $f_{i-1,j-1}$ 转移过来。然后就方了。</p>
+<p>如何继续优化？显然你可以把每轮的除以 $i-1$ 和除以 $2$ 拎出来。然后你对着剩下的表进行干瞪。你通过瞎试发现他一定是 $\binom{i-1}{j-1}$ 的倍数。然后你对他除完之后的进行因式分解。然后发现除完之后是两个双阶乘的积。然后你就糊里糊涂地做完了，但并不知道这个组合意义。这不乏为一种方法但多少有点唐了。</p>
+<hr>
+<p>然后说正解，实际上你发现我糖丸了。你还可以继续拎。具体思想就还是<strong>考虑不变量</strong>以及<strong>图论建模</strong>。我们把他变成在自动机上走，然后你发现你每增加 $j$ 就会乘上固定贡献，每增加 $i-j$ 也会乘上固定贡献。于是我们发现这两个贡献与你走的路径无关，乘上的东西都是一定的。然后贡献就是两个双阶乘，而你的路径数就是 $\binom{i-1}{j-1}$。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/counting/">Counting</a></li>
+      <li><a href="http://localhost:1313/tags/dp/">DP</a></li>
+    </ul>
+  </footer>
+</article>
     </main>
     
 <footer class="footer">
@@ -344,6 +255,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

@@ -6,8 +6,20 @@
     <description>Recent content in Counting on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 21 May 2026 22:35:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 23:33:04 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/counting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>彩绘</title>
+      <link>http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/</link>
+      <pubDate>Sat, 30 May 2026 23:33:04 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/</guid>
+      <description>&lt;p&gt;简单题，但脑抽了。&lt;/p&gt;
+&lt;p&gt;这个题目本质上就是让我们算这个每个位置的系数。（因为他可以通过类似哈希来检验你的系数，就算你有不算出系数的方法，那通过他的不同数据一定能唯一确定系数）&lt;/p&gt;
+&lt;p&gt;好的我们很容易得到一个 $O(n^3)$ 的做法，设 $f_{i,j}$ 为第 $i$ 轮第 $j$ 个数的系数，然后枚举你当前选择哪一个。然后便是 $O(n^2)$ 的。你发现对每个 $f_{i,j}$ 他只从 $f_{i-1,j}$ 和 $f_{i-1,j-1}$ 转移过来。然后就方了。&lt;/p&gt;
+&lt;p&gt;如何继续优化？显然你可以把每轮的除以 $i-1$ 和除以 $2$ 拎出来。然后你对着剩下的表进行干瞪。你通过瞎试发现他一定是 $\binom{i-1}{j-1}$ 的倍数。然后你对他除完之后的进行因式分解。然后发现除完之后是两个双阶乘的积。然后你就糊里糊涂地做完了，但并不知道这个组合意义。这不乏为一种方法但多少有点唐了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;然后说正解，实际上你发现我糖丸了。你还可以继续拎。具体思想就还是&lt;strong&gt;考虑不变量&lt;/strong&gt;以及&lt;strong&gt;图论建模&lt;/strong&gt;。我们把他变成在自动机上走，然后你发现你每增加 $j$ 就会乘上固定贡献，每增加 $i-j$ 也会乘上固定贡献。于是我们发现这两个贡献与你走的路径无关，乘上的东西都是一定的。然后贡献就是两个双阶乘，而你的路径数就是 $\binom{i-1}{j-1}$。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Permutation and Minimum</title>
       <link>http://localhost:1313/posts/permutation-and-minimum/</link>

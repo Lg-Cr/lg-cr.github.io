@@ -6,8 +6,54 @@
     <description>Recent content on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 21 May 2026 22:35:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 23:33:04 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>彩绘</title>
+      <link>http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/</link>
+      <pubDate>Sat, 30 May 2026 23:33:04 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/</guid>
+      <description>&lt;p&gt;简单题，但脑抽了。&lt;/p&gt;
+&lt;p&gt;这个题目本质上就是让我们算这个每个位置的系数。（因为他可以通过类似哈希来检验你的系数，就算你有不算出系数的方法，那通过他的不同数据一定能唯一确定系数）&lt;/p&gt;
+&lt;p&gt;好的我们很容易得到一个 $O(n^3)$ 的做法，设 $f_{i,j}$ 为第 $i$ 轮第 $j$ 个数的系数，然后枚举你当前选择哪一个。然后便是 $O(n^2)$ 的。你发现对每个 $f_{i,j}$ 他只从 $f_{i-1,j}$ 和 $f_{i-1,j-1}$ 转移过来。然后就方了。&lt;/p&gt;
+&lt;p&gt;如何继续优化？显然你可以把每轮的除以 $i-1$ 和除以 $2$ 拎出来。然后你对着剩下的表进行干瞪。你通过瞎试发现他一定是 $\binom{i-1}{j-1}$ 的倍数。然后你对他除完之后的进行因式分解。然后发现除完之后是两个双阶乘的积。然后你就糊里糊涂地做完了，但并不知道这个组合意义。这不乏为一种方法但多少有点唐了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;然后说正解，实际上你发现我糖丸了。你还可以继续拎。具体思想就还是&lt;strong&gt;考虑不变量&lt;/strong&gt;以及&lt;strong&gt;图论建模&lt;/strong&gt;。我们把他变成在自动机上走，然后你发现你每增加 $j$ 就会乘上固定贡献，每增加 $i-j$ 也会乘上固定贡献。于是我们发现这两个贡献与你走的路径无关，乘上的东西都是一定的。然后贡献就是两个双阶乘，而你的路径数就是 $\binom{i-1}{j-1}$。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sequence Growing Hard</title>
+      <link>http://localhost:1313/posts/sequence-growing-hard/</link>
+      <pubDate>Sat, 23 May 2026 20:07:48 +0800</pubDate>
+      <guid>http://localhost:1313/posts/sequence-growing-hard/</guid>
+      <description>&lt;p&gt;这是一个“分步”进行构造的过程，每一步关联不大。所以我们先研究每一步有什么性质。&lt;/p&gt;
+&lt;p&gt;假设你现在有长度为 $n$ 的序列，你需要在第 $i$ 个元素之后插入一个 $x$，字典序变大当且仅当？&lt;/p&gt;
+&lt;p&gt;你考查你插入后的序列，找到那个你插入的元素。其后面第一个第一个与前一个数字不同的数字比他前面的数字大，或者其后面的所有数字相等。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;好吧我错了。&lt;/p&gt;
+&lt;p&gt;考虑加元素是困难的，考虑删元素。&lt;/p&gt;
+&lt;p&gt;然后你发现对于一个连续段来讲你删任意一个都是等价的，所以我们钦定每次删最右边那个。&lt;/p&gt;
+&lt;p&gt;这相当于每次删 $a_i &amp;gt; a_{i+1}$ 的地方。这看起来容易多了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我错了，我好菜。&lt;/p&gt;
+&lt;p&gt;我们设 $f_{i,j}$ 为考虑长度为 $i$，值域为 $k$ 的。&lt;/p&gt;
+&lt;p&gt;我一直在试图一个一个加，结果发现还是做不了。&lt;/p&gt;
+&lt;p&gt;主要是你发现这个东西你还是要知道全局信息。&lt;/p&gt;
+&lt;p&gt;题解说：我们分治！&lt;/p&gt;
+&lt;p&gt;然后你直接枚举 $1$ 的出现位置和出现时间，然后分成前后两半。&lt;/p&gt;
+&lt;p&gt;做完了。&lt;/p&gt;
+&lt;p&gt;为什么我这么蠢啊。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Two Characters, Two Colors</title>
+      <link>http://localhost:1313/posts/two-characters-two-colors/</link>
+      <pubDate>Sat, 23 May 2026 10:38:36 +0800</pubDate>
+      <guid>http://localhost:1313/posts/two-characters-two-colors/</guid>
+      <description>&lt;p&gt;首先把如果 $b &amp;gt; r$ 那肯定选蓝，一定不劣。&lt;/p&gt;
+&lt;p&gt;然后我们就再把 $r-=b$ 然后就变成了你选一个子序列使得 $\sum r - 逆序对数$ 最大。&lt;/p&gt;
+&lt;p&gt;然后我们显然 DP 记录前面用了多少个 $0$。&lt;/p&gt;
+&lt;p&gt;$f_{i,j}$ 表示当前考虑了 $[1,i]$ 的下标，前面用了 $j$ 个 $1$。&lt;/p&gt;
+&lt;p&gt;然后转移显然好转移，考虑优化。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Permutation and Minimum</title>
       <link>http://localhost:1313/posts/permutation-and-minimum/</link>

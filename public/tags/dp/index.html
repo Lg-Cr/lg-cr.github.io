@@ -143,6 +143,67 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">彩绘
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简单题，但脑抽了。
+这个题目本质上就是让我们算这个每个位置的系数。（因为他可以通过类似哈希来检验你的系数，就算你有不算出系数的方法，那通过他的不同数据一定能唯一确定系数）
+好的我们很容易得到一个 $O(n^3)$ 的做法，设 $f_{i,j}$ 为第 $i$ 轮第 $j$ 个数的系数，然后枚举你当前选择哪一个。然后便是 $O(n^2)$ 的。你发现对每个 $f_{i,j}$ 他只从 $f_{i-1,j}$ 和 $f_{i-1,j-1}$ 转移过来。然后就方了。
+如何继续优化？显然你可以把每轮的除以 $i-1$ 和除以 $2$ 拎出来。然后你对着剩下的表进行干瞪。你通过瞎试发现他一定是 $\binom{i-1}{j-1}$ 的倍数。然后你对他除完之后的进行因式分解。然后发现除完之后是两个双阶乘的积。然后你就糊里糊涂地做完了，但并不知道这个组合意义。这不乏为一种方法但多少有点唐了。
+然后说正解，实际上你发现我糖丸了。你还可以继续拎。具体思想就还是考虑不变量以及图论建模。我们把他变成在自动机上走，然后你发现你每增加 $j$ 就会乘上固定贡献，每增加 $i-j$ 也会乘上固定贡献。于是我们发现这两个贡献与你走的路径无关，乘上的东西都是一定的。然后贡献就是两个双阶乘，而你的路径数就是 $\binom{i-1}{j-1}$。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-30 23:33:04 +0800 CST'>May 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 彩绘" href="http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Sequence Growing Hard
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>这是一个“分步”进行构造的过程，每一步关联不大。所以我们先研究每一步有什么性质。
+假设你现在有长度为 $n$ 的序列，你需要在第 $i$ 个元素之后插入一个 $x$，字典序变大当且仅当？
+你考查你插入后的序列，找到那个你插入的元素。其后面第一个第一个与前一个数字不同的数字比他前面的数字大，或者其后面的所有数字相等。
+好吧我错了。
+考虑加元素是困难的，考虑删元素。
+然后你发现对于一个连续段来讲你删任意一个都是等价的，所以我们钦定每次删最右边那个。
+这相当于每次删 $a_i &gt; a_{i&#43;1}$ 的地方。这看起来容易多了。
+我错了，我好菜。
+我们设 $f_{i,j}$ 为考虑长度为 $i$，值域为 $k$ 的。
+我一直在试图一个一个加，结果发现还是做不了。
+主要是你发现这个东西你还是要知道全局信息。
+题解说：我们分治！
+然后你直接枚举 $1$ 的出现位置和出现时间，然后分成前后两半。
+做完了。
+为什么我这么蠢啊。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-23 20:07:48 +0800 CST'>May 23, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Sequence Growing Hard" href="http://localhost:1313/posts/sequence-growing-hard/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Two Characters, Two Colors
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>首先把如果 $b &gt; r$ 那肯定选蓝，一定不劣。
+然后我们就再把 $r-=b$ 然后就变成了你选一个子序列使得 $\sum r - 逆序对数$ 最大。
+然后我们显然 DP 记录前面用了多少个 $0$。
+$f_{i,j}$ 表示当前考虑了 $[1,i]$ 的下标，前面用了 $j$ 个 $1$。
+然后转移显然好转移，考虑优化。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-23 10:38:36 +0800 CST'>May 23, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Two Characters, Two Colors" href="http://localhost:1313/posts/two-characters-two-colors/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Permutation and Minimum
     </h2>
   </header>
