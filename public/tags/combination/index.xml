@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Combination on Inftopia</title>
+    <link>http://localhost:1313/tags/combination/</link>
+    <description>Recent content in Combination on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 04 Jun 2026 19:46:13 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/combination/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sightseeing Plan</title>
+      <link>http://localhost:1313/posts/sightseeing-plan/</link>
+      <pubDate>Thu, 04 Jun 2026 19:46:13 +0800</pubDate>
+      <guid>http://localhost:1313/posts/sightseeing-plan/</guid>
+      <description>&lt;p&gt;有趣题。&lt;/p&gt;
+&lt;p&gt;首先答案相当于要求三个矩阵里枚举三个点，然后求 AB 的路径数乘上 BC 之间的路径数加起来。&lt;/p&gt;
+&lt;p&gt;然后这个东西呢，我们先考虑假如 A 和 B 都固定的情况，我们发现是一个矩形。&lt;/p&gt;
+&lt;p&gt;然后我们根据一个叫曲棍球棒恒等式的东西我们很容易写出其为：&lt;/p&gt;
+&lt;p&gt;$$
+f(x_r + 1, y_r + 1) + f(x_l, y_l) - f(x_r + 1, y_l) - f(x_l, y_r + 1);
+$$&lt;/p&gt;
+&lt;p&gt;然后我们就有平方做法了。&lt;/p&gt;
+&lt;p&gt;然后我们怎么继续优化？&lt;/p&gt;
+&lt;p&gt;我们首先发现这个式子是可以拆的，拆成十六个问题，每个问题相当于给起点和终点要求午饭点。&lt;/p&gt;
+&lt;p&gt;然后我们还是想着差分对吧，然后我们就把他差分成：午饭区域是一个以起点为左下角的长方形。&lt;/p&gt;
+&lt;p&gt;然后我们惊奇的发现我们可以枚举我们从哪个边界出这个矩形的，因为我们知道了这个之后我们可以方便算出有多少种方案，更重要的是——在经过固定边界的一条路径上的午饭点的数量是相同的，我们直接乘起来就可以了。&lt;/p&gt;
+&lt;p&gt;然后就大概是超大常数 $O(n)$。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

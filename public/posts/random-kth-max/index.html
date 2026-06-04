@@ -5,11 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Tags | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>Random Kth Max | Inftopia</title>
+<meta name="keywords" content="Solutions, DP, Counting">
+<meta name="description" content="简单题。
+首先看到这个题目第一眼就要想到结论：$n$ 个在 $[0,1]$ 间均匀随机的数的第 $k$ 小期望是 $\cfrac{k}{n &#43; 1}$。
+这个范围相当宽裕，我们只要给出一个 $O(\text{poly } n)$ 的即可
+然后我们考虑枚举答案所在区间，我们现在枚举到了 $[t - 1, t]$。
+然后我们想知道有多少个随机数落在这个区间里，多少个落在区间左，多少个落在区间右。我们如果知道这些我们可以直接通过那个结论算出对应的期望。
+然后我们就是想要知道在钦定了左中右的数量后有多大概率。
+我们可以使用二维背包，直接做即可。时间复杂度四次方。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/tags/">
+<link rel="canonical" href="http://localhost:1313/posts/random-kth-max/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +24,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/random-kth-max/">
 <noscript>
     <style>
         #theme-toggle,
@@ -82,7 +87,7 @@
   });">
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -118,7 +123,7 @@
             </li>
             <li>
                 <a href="http://localhost:1313/tags/" title="Tags">
-                    <span class="active">Tags</span>
+                    <span>Tags</span>
                 </a>
             </li>
             <li>
@@ -135,132 +140,37 @@
     </nav>
 </header>
 <main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
-</header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="http://localhost:1313/tags/approximation/">Approximation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/bct/">BCT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/binary/">Binary <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/cactus/">Cactus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/chunking/">Chunking <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/combination/">Combination <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/construction/">Construction <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/continued-fraction-theory/">Continued Fraction Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/counting/">Counting <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dp/">DP <sup><strong><sup>8</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ds/">DS <sup><strong><sup>5</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dual-graph/">Dual Graph <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/flow/">Flow <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph/">Graph <sup><strong><sup>8</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph-euler-theorem/">Graph Euler Theorem <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/interactive/">Interactive <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/kdt/">KDT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ktt/">KTT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/maths/">Maths <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mcmf/">MCMF <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mst/">MST <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/number-theory/">Number Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/odt/">ODT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/pearls/">Pearls <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/permutation/">Permutation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sam/">SAM <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/segtree/">SegTree <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/series-parallel/">Series-Parallel <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/set/">Set <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solutions/">Solutions <sup><strong><sup>25</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solving/">Solving <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sorting/">Sorting <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/strings/">Strings <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tb5/">TB5 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/topology/">Topology <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/torus/">Torus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tree/">Tree <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tricks/">Tricks <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/vcc/">VCC <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/%E6%A0%91%E5%89%96/">树剖 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Random Kth Max
+    </h1>
+    <div class="post-meta"><span title='2026-06-04 19:19:51 +0800 CST'>June 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>简单题。</p>
+<p>首先看到这个题目第一眼就要想到结论：$n$ 个在 $[0,1]$ 间均匀随机的数的第 $k$ 小期望是 $\cfrac{k}{n + 1}$。</p>
+<p>这个范围相当宽裕，我们只要给出一个 $O(\text{poly } n)$ 的即可</p>
+<p>然后我们考虑枚举答案所在区间，我们现在枚举到了 $[t - 1, t]$。</p>
+<p>然后我们想知道有多少个随机数落在这个区间里，多少个落在区间左，多少个落在区间右。我们如果知道这些我们可以直接通过那个结论算出对应的期望。</p>
+<p>然后我们就是想要知道在钦定了左中右的数量后有多大概率。</p>
+<p>我们可以使用二维背包，直接做即可。时间复杂度四次方。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/dp/">DP</a></li>
+      <li><a href="http://localhost:1313/tags/counting/">Counting</a></li>
+    </ul>
+  </footer>
+</article>
     </main>
     
 <footer class="footer">
@@ -347,6 +257,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

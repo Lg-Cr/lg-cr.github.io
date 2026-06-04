@@ -143,6 +143,51 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Random Kth Max
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简单题。
+首先看到这个题目第一眼就要想到结论：$n$ 个在 $[0,1]$ 间均匀随机的数的第 $k$ 小期望是 $\cfrac{k}{n &#43; 1}$。
+这个范围相当宽裕，我们只要给出一个 $O(\text{poly } n)$ 的即可
+然后我们考虑枚举答案所在区间，我们现在枚举到了 $[t - 1, t]$。
+然后我们想知道有多少个随机数落在这个区间里，多少个落在区间左，多少个落在区间右。我们如果知道这些我们可以直接通过那个结论算出对应的期望。
+然后我们就是想要知道在钦定了左中右的数量后有多大概率。
+我们可以使用二维背包，直接做即可。时间复杂度四次方。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-04 19:19:51 +0800 CST'>June 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Random Kth Max" href="http://localhost:1313/posts/random-kth-max/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">一般难度的推式子题
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>首先我们有 $O(n^3)$ DP。
+设 $f_{i,j}$ 为当前你有 $i$ 个点，高度为 $j$ 的方案数。转移直接考虑把一个树接到另一个树下边。
+f[1][1] = 1; rep (i, 1, n) pre[1][i] = 1; rep (i, 2, n) { rep (j, 2, i) { rep (k, 1, i - 1) { f[i][j] &#43;= f[i - k][j] * pre[k][j - 1]; f[i][j] &#43;= pre[i - k][j - 1] * f[k][j - 1]; } } rep (j, 1, n) pre[i][j] = pre[i][j - 1] &#43; f[i][j]; } Mint ans = 0; rep (i, 1, n) { ans &#43;= f[n][i] * (i - 1); } 考虑优化，这个dp本质上是第一维做加法卷积，第二维做 max 卷积。于是应该容易用 ntt 做到 O(n^2\log n)$。获得六十分。但实际上模数卡了你所以别往这个方向想。
+就我们感觉一下这个深度是硬伤啊。其实我们是不是可以不计第二维呢？但问题是你取 max 啊！好像很难说你把他直接剁掉哎。
+那我们换个方向，我觉得这个 DP 没有很多前途。
+我有一计。你考虑你根本不管前面的了。你想 $f_{i}$ 表示 $n$ 个点的树里面深度为 $i$ 的方案数。
+主要是你发现其实 $f$ 后几项是很规律的。你想一下能不能从后往前推。
+你考虑你当前有一棵高为 $i$ 的树。然后你要把他的高度变矮。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-31 10:17:03 +0800 CST'>May 31, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 一般难度的推式子题" href="http://localhost:1313/posts/%E4%B8%80%E8%88%AC%E9%9A%BE%E5%BA%A6%E7%9A%84%E6%8E%A8%E5%BC%8F%E5%AD%90%E9%A2%98/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">彩绘
     </h2>
   </header>

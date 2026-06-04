@@ -5,11 +5,23 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Tags | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>Sightseeing Plan | Inftopia</title>
+<meta name="keywords" content="Solutions, Counting, Combination">
+<meta name="description" content="有趣题。
+首先答案相当于要求三个矩阵里枚举三个点，然后求 AB 的路径数乘上 BC 之间的路径数加起来。
+然后这个东西呢，我们先考虑假如 A 和 B 都固定的情况，我们发现是一个矩形。
+然后我们根据一个叫曲棍球棒恒等式的东西我们很容易写出其为：
+$$
+f(x_r &#43; 1, y_r &#43; 1) &#43; f(x_l, y_l) - f(x_r &#43; 1, y_l) - f(x_l, y_r &#43; 1);
+$$
+然后我们就有平方做法了。
+然后我们怎么继续优化？
+我们首先发现这个式子是可以拆的，拆成十六个问题，每个问题相当于给起点和终点要求午饭点。
+然后我们还是想着差分对吧，然后我们就把他差分成：午饭区域是一个以起点为左下角的长方形。
+然后我们惊奇的发现我们可以枚举我们从哪个边界出这个矩形的，因为我们知道了这个之后我们可以方便算出有多少种方案，更重要的是——在经过固定边界的一条路径上的午饭点的数量是相同的，我们直接乘起来就可以了。
+然后就大概是超大常数 $O(n)$。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/tags/">
+<link rel="canonical" href="http://localhost:1313/posts/sightseeing-plan/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +30,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/sightseeing-plan/">
 <noscript>
     <style>
         #theme-toggle,
@@ -82,7 +93,7 @@
   });">
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -118,7 +129,7 @@
             </li>
             <li>
                 <a href="http://localhost:1313/tags/" title="Tags">
-                    <span class="active">Tags</span>
+                    <span>Tags</span>
                 </a>
             </li>
             <li>
@@ -135,132 +146,43 @@
     </nav>
 </header>
 <main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
-</header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="http://localhost:1313/tags/approximation/">Approximation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/bct/">BCT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/binary/">Binary <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/cactus/">Cactus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/chunking/">Chunking <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/combination/">Combination <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/construction/">Construction <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/continued-fraction-theory/">Continued Fraction Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/counting/">Counting <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dp/">DP <sup><strong><sup>8</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ds/">DS <sup><strong><sup>5</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dual-graph/">Dual Graph <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/flow/">Flow <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph/">Graph <sup><strong><sup>8</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph-euler-theorem/">Graph Euler Theorem <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/interactive/">Interactive <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/kdt/">KDT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ktt/">KTT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/maths/">Maths <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mcmf/">MCMF <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mst/">MST <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/number-theory/">Number Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/odt/">ODT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/pearls/">Pearls <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/permutation/">Permutation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sam/">SAM <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/segtree/">SegTree <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/series-parallel/">Series-Parallel <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/set/">Set <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solutions/">Solutions <sup><strong><sup>25</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solving/">Solving <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sorting/">Sorting <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/strings/">Strings <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tb5/">TB5 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/topology/">Topology <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/torus/">Torus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tree/">Tree <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tricks/">Tricks <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/vcc/">VCC <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/%E6%A0%91%E5%89%96/">树剖 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Sightseeing Plan
+    </h1>
+    <div class="post-meta"><span title='2026-06-04 19:46:13 +0800 CST'>June 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>有趣题。</p>
+<p>首先答案相当于要求三个矩阵里枚举三个点，然后求 AB 的路径数乘上 BC 之间的路径数加起来。</p>
+<p>然后这个东西呢，我们先考虑假如 A 和 B 都固定的情况，我们发现是一个矩形。</p>
+<p>然后我们根据一个叫曲棍球棒恒等式的东西我们很容易写出其为：</p>
+<p>$$
+f(x_r + 1, y_r + 1) + f(x_l, y_l) - f(x_r + 1, y_l) - f(x_l, y_r + 1);
+$$</p>
+<p>然后我们就有平方做法了。</p>
+<p>然后我们怎么继续优化？</p>
+<p>我们首先发现这个式子是可以拆的，拆成十六个问题，每个问题相当于给起点和终点要求午饭点。</p>
+<p>然后我们还是想着差分对吧，然后我们就把他差分成：午饭区域是一个以起点为左下角的长方形。</p>
+<p>然后我们惊奇的发现我们可以枚举我们从哪个边界出这个矩形的，因为我们知道了这个之后我们可以方便算出有多少种方案，更重要的是——在经过固定边界的一条路径上的午饭点的数量是相同的，我们直接乘起来就可以了。</p>
+<p>然后就大概是超大常数 $O(n)$。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/counting/">Counting</a></li>
+      <li><a href="http://localhost:1313/tags/combination/">Combination</a></li>
+    </ul>
+  </footer>
+</article>
     </main>
     
 <footer class="footer">
@@ -347,6 +269,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

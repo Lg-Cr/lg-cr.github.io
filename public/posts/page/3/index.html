@@ -143,6 +143,151 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">排序大师
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>厉害厉害厉害！
+就是在面对这类的排列的题目，尤其是排序类，一个非常重要的方向就是从图理论出发。
+非常经典的就是 $i\to p_i$ 建边，然后每次交换就是可以合并两个环或者拆开两个环，目标是 $n$ 个自环。
+然而在这里你发现首先你这样连会导致 $O(n)$ 个边的变动，不可取，我们希望有常数级别的边的变动。
+然后一个 native 的想法是你考虑 $p_i\to p_{i&#43;1}$。于是我们得到了一个下界，大概是与目标图的不同边的数量除以 $4$ 向上取整。
+但我们很容易发现这个下界相当的松，构造十分的困难况且我们还能举出反例，我们需要一个紧一些的下界，而且另一个原因是，这个链的形状我们实在是不太好刻画，这个链的信息实际上蛮多的，这也是导致下界很松的原因之一。
+我们想要的是环，最好是数个数，但正常的方法不行了，怎么办？
+这个题目牛逼的来了，他指出：我们可以 $p_i &#43; 1\ to p_{i&#43;1}$。
+注意这个是在排列前后添了 $0,n&#43;1$ 的情况下。
+我们发现他本质上来讲，是把一条链，进行了错位，把链变成了自环。
+其根本思想在于，我们可以通过改变连边方式本身来改变图的性质。
+这确乎是一个范式的突破。我们的图理论与排列理论相结合，不再拘泥于那一种的连边方式，而是我们可以尝试多种的，不同的，适配每个题目性质的连边方式，这是前所未有的。
+我做这个题目的时候就卡在我根本没有向这个地方想，被这个集体无意识给禁锢住了。
+一个顺畅的思考路径应该是想到 native 的想法后想到这个链化为自环然后做完。
+这个连边方式跟这个题目的性质有什么适配性呢？这还得从 $i\to p_i$ 说起。
+我们说到，这个东西最大的问题在于，他需要更改 $O(n)$ 个，而其根本是他是对段进行操作。
+然后我们自然地想到这个我们要把段转化为单点，自然是使用差分。这是差分思想的一种灵活运用。
+我们发现我们可以让每个连边关联于他前后的东西，我们最好是希望在进行一系列操作之后，中间的影响恰好被抵消掉了，我们不用管。
+然后我们想着要把 $p_i$ 和 $p_{i&#43;1}$ 关联起来，既然如此，我们 $p_i\to p_{i&#43;1}$ 如何？
+这就诞生了我们的链。
+但我们想要的是环啊，于是我们就把他挪一下，让最终图全是自环。
+我们注意到，原图是不重要的，最终图是重要的。
+然后变成了 $p_i &#43; 1\to p_{i&#43;1}$。
+然后我们发现这个题已经做完了一大半。
+我们发现我们每个操作本质上相当于交换对应的两个对这个出边，自然也就是最多多出现两个自环，且奇偶性一定不会变。
+我们发现这个下界紧得多，我们试图构造。
+我们发现我们本质上就是要每次多两个自环，也就是多两个 $x\to x&#43;1$,$y\to y&#43;1$。
+然后我们不难这样构造：我们找到第一个前面有比他大的东西的 $x$，再找 $x$ 前面最大的 $y$，然后你发现 $x-1$ 在 $y$ 前面，$y&#43;1$ 在 $x$ 后边，然后我们按顺序这样拼一下，把 $x-1\to x$ 拼起来，$y\to y&#43;1$ 拼起来即可，不难发现在没排序的情况下总是能找到的。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-01 23:41:21 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 排序大师" href="http://localhost:1313/posts/%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">这样吗......滚吧
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>今天是五一节。
+它本来应该是平凡的一天。
+中午妈妈问我今天要不要出去逛逛。
+我不得不答应。
+我反常地开始想晚上吃什么。
+烤肉我吃过好多次了，只有第一次是好吃的，后面的每次我总是抱着能像第一次一样好吃的幻想，结果总是落空。
+我想吃牛排。
+我说：我想吃牛排。
+妈妈说：最近牛排好贵，我们吃烤肉吧。
+好吧。那吃烤肉吧。
+然后到了晚上了，她拉着我去一家商场里面。
+整个商场我看到的全是饭店，而且个个看起来都比牛排和烤肉好吃。
+我们走进了一家烤肉店。
+整个烤肉店勾起了我以前吃的不好吃的烤肉的回忆。
+妈妈问我我要吃什么，我说你知道我要吃什么，但她反常地让我自己选。
+然后我拿着盘子，不知道选什么。
+她说都拿一样，试试哪个好吃。
+我照做了。
+然后开始烤肉了。
+我把我拿的全吃了一遍，除了烤面包没有合我胃口的。
+然后我开始刷手机。
+妈妈说：这样你吃点甜点，面包之类的吧。
+然后我拿了两片面包，一边看手机，一边吃面包。
+面包吃完了我又拿了两片。
+我不记得我拿了多少片了，我只记得我拿了好多。
+然后不知道什么时候，妈妈说：该走了，你吃饱了吧。
+我视频还没看完，于是我说我没吃饱。
+过了一会儿，她说你现在总吃饱了吧。
+尽管视频没看完我还是得说我吃饱了。
+妈妈说：我们回家吧。
+但我反常地想试着逛逛商场。
+然后我就带着妈妈一路乱走，一路路上，却全是些服装店，饰品店。
+妈妈今天怎么这么不对劲。
+换作以前，我如果拉着她乱逛，她可能就发毛了。
+我想上厕所了。
+但我转了半天没找到厕所。
+妈妈说：那我们回家上厕所吧。
+我不得不答应。
+在找电动车的时候，我说：妈妈，你今天好像跟以前不一样。
+她说：怎么啦，你想干什么就干什么呀。
+到一半的路上，她说：反正这么近，几分钟，我们明天再来吧。
+我急了。
+我还没去那些满眼的饭店里转转。
+而且我明天不想出门。
+我说：
+你不是说我想干什么就能干什么吗，我现在想去逛街。
+我命令她掉头。
+但她一直重复说：
+很近，明天再来吧。
+我想哭。
+到家了。我打开了电脑。
+电脑里响起了我单曲循环了不知道多少遍的 hypertrance。
+我扑到了我的被子上，多么的柔软。
+我哭了。
+我总是幻想着我能变成尼采笔下的超人，
+浑身都是欲望，
+但我是蛆。
+连食欲都没有。
+也许每天喝着营养液维持生命体征的生活更适合我。
+也许像花角那样的原子人生活。
+整天带着 kig。
+每天只要写写代码，做做音乐。
+的生活。
+更适合我。
+我爱那样的生活。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-01 20:17:14 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 这样吗......滚吧" href="http://localhost:1313/posts/%E8%BF%99%E6%A0%B7%E5%90%97......%E6%BB%9A%E5%90%A7/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Balancing Network
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>又一个神仙构造题。
+对于第一个小问，相对是简单的。
+首先 $O(nm)$ 是唐的，你枚举结尾然后暴力跑。
+一个 native 的想法是你考虑找一棵树然后换根，然而你发现你并找不出来一棵这样的树。
+然后你考虑奇怪的方法，我们发现这个是可达性，然后试图使用 bitset 然后发现做完了。
+你直接每次按顺序用 bitset 模拟即可。
+对于第二个小问，有点困难。
+一个 native 的想法是你考虑钦定两个终点，然后画在图上需要你做一个割出来把点割成两边，但实际上这很困难。
+另一个 native 的想法是你直接考虑钦定一个线从头到尾一点不动，其他的方向尽量远离这条线，这实际上大部分情况下是可以的，但完全图会出问题。
+然后我们参考一下题解。
+首先 $n=2$ 爆了。
+你发现你还是从后往前，不过是类似于把一股线编织起来，然后呢你记录这个每个线最终到哪里，以及每个终点汇聚了多少线。
+然后你就很神奇的，你直接瞎搞，直到你发现如果你再把这根线会进去（因为你是从后向前，所以他合并的是一个根在右边的树，最左边的线头都只有一根）会直接导致答案合法，然后你就临时抱佛脚把这个方向转一下。
+结果你突然发现这样是对的，因为这个不可能两个线头都是 $n-1$。
+然后就很神奇的做完了这个题。
+这么看来其实这个不合法的条件是相当松的，不过因为这个题目本身的原因，这个解空间的形状奇特，导致找到一个普适的方法变得困难。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-01 15:16:29 +0800 CST'>May 1, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Balancing Network" href="http://localhost:1313/posts/balancing-network/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Distinct GCDs (Hard Version)
     </h2>
   </header>
@@ -331,24 +476,12 @@ Continued Fraction Theory
   <footer class="entry-footer"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to P4384 QOJ2994 [八省联考 2018] 制胡窜" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello World
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Test Test Test Test Test Test a
-#include &lt;bits/stdc&#43;&#43;.h&gt; $a$ $$ a $$
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-17 19:03:14 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Hello World" href="http://localhost:1313/posts/hello-world/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/posts/page/2/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/posts/page/4/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
