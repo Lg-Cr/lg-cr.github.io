@@ -6,8 +6,65 @@
     <description>Recent content in Posts on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 04 Jun 2026 19:46:13 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 23:29:43 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>路南柯</title>
+      <link>http://localhost:1313/posts/%E8%B7%AF%E5%8D%97%E6%9F%AF/</link>
+      <pubDate>Fri, 05 Jun 2026 23:29:43 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E8%B7%AF%E5%8D%97%E6%9F%AF/</guid>
+      <description>&lt;p&gt;牛牛题。&lt;/p&gt;
+&lt;p&gt;首先你把答案 reverse 一下，就是指定一个根，然后每次扩展一个相邻于当前连通块的点。&lt;/p&gt;
+&lt;p&gt;先考虑如何 check。&lt;/p&gt;
+&lt;p&gt;首先一个 native 的想法是考虑两种方向相反的 DFS 序。&lt;/p&gt;
+&lt;p&gt;然后你发现一个菊花图就把你 hack 了。&lt;/p&gt;
+&lt;p&gt;然后另一个 native 的想法是用两个根这样做。&lt;/p&gt;
+&lt;p&gt;但实际上你通过跑一下你发现还是会出问题，然后你看一下相同的两棵树，你发现他们一般动一两条边，然后他们分别连的都是同一连通块。&lt;/p&gt;
+&lt;p&gt;这启示我们从一个点连到哪个点进行考虑。&lt;/p&gt;
+&lt;p&gt;我们注意到我们根据一个拓扑序来构造一棵树的话，本质上你是把每个点选择一个前面的点挂上去。其实跟整个树的结构无关。你只关心每一步了连到了哪个点。&lt;/p&gt;
+&lt;p&gt;然后我们就想，如果对于两个拓扑序来讲一个点都能挂到前面的两个点上，那是不是就不唯一了呢？这个感觉是非常对的。&lt;/p&gt;
+&lt;p&gt;形式化的来讲，你对每个 $i$ 都找出 $i$ 在每个拓扑序中的位置，然后把前面的所有数的集合交起来。如果存在一个 $i$ 使得该集合大小超过 $1$ 则不合法。&lt;/p&gt;
+&lt;p&gt;然后你趁洗澡的时候对拍，然后回来发现拍了四万多组了都没出问题，就把他当对的了。&lt;/p&gt;
+&lt;p&gt;然后接下来的思路，你灵光一现，想到我们其实不怎么关心是怎么遍历的，我们关心的是从哪个点开始遍历的。&lt;/p&gt;
+&lt;p&gt;然后我们就想一条边他是怎么被经过的。然后你发现除了连接叶子的边其他边都要被正反经过一遍。&lt;/p&gt;
+&lt;p&gt;我们把叶子剥了，把每个里叶子都作为起点扫一遍就能做到。（这个显然是下界）&lt;/p&gt;
+&lt;p&gt;然后我们发现这个图的性质很优雅。我们发现这样一并把原来的性质满足了。&lt;/p&gt;
+&lt;p&gt;但我们还要考虑叶子怎么放置。我们发现我们直接紧贴着放在里叶子的后面即可。因为你发现这样一定不会重。&lt;/p&gt;
+&lt;p&gt;然后就做完了。&lt;/p&gt;
+&lt;p&gt;啊？&lt;/p&gt;
+&lt;p&gt;等等，然后怎么做答案呢。&lt;/p&gt;
+&lt;p&gt;直接做即可。&lt;/p&gt;
+&lt;p&gt;我好厉害。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;你发现你输出解会有点问题。&lt;/p&gt;
+&lt;p&gt;但不慌，你扰动一下，你每次把 $G$ 翻转一下。&lt;/p&gt;
+&lt;p&gt;然后就过了！！！&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Forbidden Tournament</title>
+      <link>http://localhost:1313/posts/forbidden-tournament/</link>
+      <pubDate>Thu, 04 Jun 2026 19:57:25 +0800</pubDate>
+      <guid>http://localhost:1313/posts/forbidden-tournament/</guid>
+      <description>&lt;p&gt;首先“三元环”触发关键词。&lt;/p&gt;
+&lt;p&gt;在竞赛图中若有环则一定有三元环。&lt;/p&gt;
+&lt;p&gt;然后我们再套路地把竞赛图进行 SCC 缩点是一条链。&lt;/p&gt;
+&lt;p&gt;很容易知道如果一个 SCC 不是链的最后一个他只能是一个点，因为若不是，则有三元环，而他们都指向后面，因此不合法。&lt;/p&gt;
+&lt;p&gt;显然我们要重点考虑最后一个 SCC。&lt;/p&gt;
+&lt;p&gt;然后呢就不会了，看一眼题解。&lt;/p&gt;
+&lt;p&gt;我们现在考虑找 SCC 中的一个点 $u$，并把他的前驱后继分开来。&lt;/p&gt;
+&lt;p&gt;显然前驱必须是一条链。&lt;/p&gt;
+&lt;p&gt;后继呢可以手玩。假设不是一条链，则一定有一个三元环，如果这个三元环都指向了一个点，那不合法，如果没有的话，则一定指到了 $u$ 的前驱，然后我们拿 $u$，那个前驱，指向前驱的点作为三元环，如果满足一定条件他们一定都指向三元环下一个点。反正啰里啰唆的，分讨即可。懒得写。于是后继也必须是一条链。&lt;/p&gt;
+&lt;p&gt;然后怎么做呢？&lt;/p&gt;
+&lt;p&gt;然后我们通过手玩发现其实这个条件是充要的。具体来讲你反证法然后一定能推出一个矛盾。&lt;/p&gt;
+&lt;p&gt;然后他就像一个厚厚的甜甜圈一样，基于一个环。&lt;/p&gt;
+&lt;p&gt;主要是怎么 DP 的问题。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这个不愧是2000pts的题目完全做不出来。&lt;/p&gt;
+&lt;p&gt;严肃研读题解。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;大哥我错了，这个题怎么这么难。&lt;/p&gt;
+&lt;p&gt;你主要是你对这个甜甜圈计数，&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Sightseeing Plan</title>
       <link>http://localhost:1313/posts/sightseeing-plan/</link>
@@ -39,36 +96,6 @@ $$&lt;/p&gt;
 &lt;p&gt;然后我们想知道有多少个随机数落在这个区间里，多少个落在区间左，多少个落在区间右。我们如果知道这些我们可以直接通过那个结论算出对应的期望。&lt;/p&gt;
 &lt;p&gt;然后我们就是想要知道在钦定了左中右的数量后有多大概率。&lt;/p&gt;
 &lt;p&gt;我们可以使用二维背包，直接做即可。时间复杂度四次方。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>一般难度的推式子题</title>
-      <link>http://localhost:1313/posts/%E4%B8%80%E8%88%AC%E9%9A%BE%E5%BA%A6%E7%9A%84%E6%8E%A8%E5%BC%8F%E5%AD%90%E9%A2%98/</link>
-      <pubDate>Sun, 31 May 2026 10:17:03 +0800</pubDate>
-      <guid>http://localhost:1313/posts/%E4%B8%80%E8%88%AC%E9%9A%BE%E5%BA%A6%E7%9A%84%E6%8E%A8%E5%BC%8F%E5%AD%90%E9%A2%98/</guid>
-      <description>&lt;p&gt;首先我们有 $O(n^3)$ DP。&lt;/p&gt;
-&lt;p&gt;设 $f_{i,j}$ 为当前你有 $i$ 个点，高度为 $j$ 的方案数。转移直接考虑把一个树接到另一个树下边。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pre&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pre&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pre&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;pre&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pre&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Mint&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ans&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ans&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;考虑优化，这个dp本质上是第一维做加法卷积，第二维做 max 卷积。于是应该容易用 ntt 做到 O(n^2\log n)$。获得六十分。但实际上模数卡了你所以别往这个方向想。&lt;/p&gt;
-&lt;p&gt;就我们感觉一下这个深度是硬伤啊。其实我们是不是可以不计第二维呢？但问题是你取 max 啊！好像很难说你把他直接剁掉哎。&lt;/p&gt;
-&lt;p&gt;那我们换个方向，我觉得这个 DP 没有很多前途。&lt;/p&gt;
-&lt;p&gt;我有一计。你考虑你根本不管前面的了。你想 $f_{i}$ 表示 $n$ 个点的树里面深度为 $i$ 的方案数。&lt;/p&gt;
-&lt;p&gt;主要是你发现其实 $f$ 后几项是很规律的。你想一下能不能从后往前推。&lt;/p&gt;
-&lt;p&gt;你考虑你当前有一棵高为 $i$ 的树。然后你要把他的高度变矮。&lt;/p&gt;</description>
     </item>
     <item>
       <title>彩绘</title>
@@ -677,22 +704,6 @@ $$&lt;/p&gt;</description>
 &lt;p&gt;然而你发现你不知道一个叫作平面图欧拉定理的东东：$V+F=E+1$（此处 F 不包括最外面那个平面）。&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;其实是忘了&lt;/del&gt;。&lt;/p&gt;
 &lt;p&gt;然后你发现我们直接构造出来的东西的这个三角形数算一下为这个 $2V-P-2$。$P$ 为边界个数。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Construction of Highway</title>
-      <link>http://localhost:1313/posts/construction-of-highway/</link>
-      <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
-      <guid>http://localhost:1313/posts/construction-of-highway/</guid>
-      <description>&lt;p&gt;这个题本身是相对简单的。首先由路径修改查询想到树剖，从区间覆盖想到 ODT，从求逆序对想到树状数组，然后就做完了。&lt;/p&gt;
-&lt;p&gt;但我们要探讨一个更深刻的东西，这本质上是一个根到单点的覆盖问题。我们自然希望得到他的一些性质。&lt;/p&gt;
-&lt;p&gt;你 feel 一下，感觉你每次暴力合并连续段的时间复杂度好像均摊是不高的，但我想了很久这个东西怎么证。&lt;/p&gt;
-&lt;p&gt;一开始我以为是 $O(1)$ 的，然后一直在试图构造但失败了。&lt;/p&gt;
-&lt;p&gt;后面我想到树剖，然后就很容易得到 $O(\log n)$ 的上界，因为如果不看轻边那剩下的就是颜色段均摊，是 $O(n)$ 的。&lt;/p&gt;
-&lt;p&gt;但我一直怀疑有没有更紧的上界，琢磨了好久。我好像一直不是很会构造。然后扔到了 u 群里，结果被 le0n 和 rqy 秒了。&lt;/p&gt;
-&lt;p&gt;构造大概就是你做一个满二叉树，然后按照二进制位翻转的顺序去插入叶子（我们只考虑叶子的贡献），然后你发现就得到了 $O(\log n)$ 的构造。&lt;/p&gt;
-&lt;p&gt;我觉得这个其实非常深刻，就是我从来没想到过二进制位翻转除了 fft 外还能有其他的用处，这里体现出来是他能最大化与之前的“冲突”。&lt;/p&gt;
-&lt;p&gt;然后 rqy 还指出，实际上对于一般的树而言，上界就是 $\sum_i \min(sz_i, 2\sum_{\text v\in{lightson}} sz_v)$。想来确实如此，你考虑一个点与他的父亲被连上/断掉了多少次。你发现最多是你的子树内每个点搞一次，然后这个次数就限定了一定是跟轻重儿子有关系。你可以通过简单地构造得出。&lt;/p&gt;
-&lt;p&gt;这实际上又是一个所谓的通过拆贡献并重新统计大大简化的过程，我觉得这个事情其实很本质，仍然是你对一个事情计数困难的时候考虑拆然后再拼起来。&lt;/p&gt;</description>
     </item>
     <item>
       <title>古明地枣的袜子</title>

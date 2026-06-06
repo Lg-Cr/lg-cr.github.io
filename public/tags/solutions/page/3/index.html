@@ -143,6 +143,31 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Distinct GCDs (Hard Version)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>看错题了，我一开始没看到要求最小化那个不同种类数，但我也做出来了。
+我想的就是研究这个性质，首先设原序列是 $a$，gcd 序列是 $b$，然后你发现我们一定要求 $lcm(b_i,b_{i&#43;1})=a_{i&#43;1}$。
+然后呢你找 $b$，然后你发现如果 $p|b_{i-1},p|b_{i&#43;1}$ 于是 $p|b_i$，$(b_{i-1},b_{i&#43;1})|b_i$。
+然后你发现这个是充要条件，然后一个构造就是 1 n/2, 2, n / 2 &#43; 1…..。
+然而这样没有限制最小化不同种类数，但无论如何这个性质还是蛮厉害的。
+然后回到正题，你发现你看错题了。
+然后我们想着这个既然要最小是吧，那我们就直接想一下最小是多少，显然是不能小于 $k$ 满足 $k$ 个点的图的欧拉路径长度等于 $n$。
+然后你试图构造发现你不会构造。
+你乱搞一波，然后发现 easy version 可以 $2^i3^{m-i}$。
+然后你发现你如法炮制，$2^{i}3^{m-i}5^{j}7^{k-j}$。
+然而你发现你这个对应交换 $i,j$ 也会被判为相同。
+然后你发现你还剩了蛮多位置。然后变成 $2^{i&#43;j}3^{i}5^{m-i}7^{j}11^{k-j}$ 即可。
+注意欧拉路径写法，不要像我一样 wa 十几发。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-30 22:39:06 +0800 CST'>April 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Distinct GCDs (Hard Version)" href="http://localhost:1313/posts/distinct-gcds-hard-version/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Square Resistance Value
     </h2>
   </header>
@@ -196,34 +221,6 @@ Continued Fraction Theory
   </div>
   <footer class="entry-footer"><span title='2026-04-26 22:16:41 +0800 CST'>April 26, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to 星图重绘" href="http://localhost:1313/posts/%E6%98%9F%E5%9B%BE%E9%87%8D%E7%BB%98/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Construction of Highway
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>这个题本身是相对简单的。首先由路径修改查询想到树剖，从区间覆盖想到 ODT，从求逆序对想到树状数组，然后就做完了。
-但我们要探讨一个更深刻的东西，这本质上是一个根到单点的覆盖问题。我们自然希望得到他的一些性质。
-你 feel 一下，感觉你每次暴力合并连续段的时间复杂度好像均摊是不高的，但我想了很久这个东西怎么证。
-一开始我以为是 $O(1)$ 的，然后一直在试图构造但失败了。
-后面我想到树剖，然后就很容易得到 $O(\log n)$ 的上界，因为如果不看轻边那剩下的就是颜色段均摊，是 $O(n)$ 的。
-但我一直怀疑有没有更紧的上界，琢磨了好久。我好像一直不是很会构造。然后扔到了 u 群里，结果被 le0n 和 rqy 秒了。
-构造大概就是你做一个满二叉树，然后按照二进制位翻转的顺序去插入叶子（我们只考虑叶子的贡献），然后你发现就得到了 $O(\log n)$ 的构造。
-我觉得这个其实非常深刻，就是我从来没想到过二进制位翻转除了 fft 外还能有其他的用处，这里体现出来是他能最大化与之前的“冲突”。
-然后 rqy 还指出，实际上对于一般的树而言，上界就是 $\sum_i \min(sz_i, 2\sum_{\text v\in{lightson}} sz_v)$。想来确实如此，你考虑一个点与他的父亲被连上/断掉了多少次。你发现最多是你的子树内每个点搞一次，然后这个次数就限定了一定是跟轻重儿子有关系。你可以通过简单地构造得出。
-这实际上又是一个所谓的通过拆贡献并重新统计大大简化的过程，我觉得这个事情其实很本质，仍然是你对一个事情计数困难的时候考虑拆然后再拼起来。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-20 22:57:49 +0800 CST'>April 20, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Construction of Highway" href="http://localhost:1313/posts/construction-of-highway/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 

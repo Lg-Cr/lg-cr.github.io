@@ -5,11 +5,36 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Tags | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>路南柯 | Inftopia</title>
+<meta name="keywords" content="Solutions, Construction">
+<meta name="description" content="牛牛题。
+首先你把答案 reverse 一下，就是指定一个根，然后每次扩展一个相邻于当前连通块的点。
+先考虑如何 check。
+首先一个 native 的想法是考虑两种方向相反的 DFS 序。
+然后你发现一个菊花图就把你 hack 了。
+然后另一个 native 的想法是用两个根这样做。
+但实际上你通过跑一下你发现还是会出问题，然后你看一下相同的两棵树，你发现他们一般动一两条边，然后他们分别连的都是同一连通块。
+这启示我们从一个点连到哪个点进行考虑。
+我们注意到我们根据一个拓扑序来构造一棵树的话，本质上你是把每个点选择一个前面的点挂上去。其实跟整个树的结构无关。你只关心每一步了连到了哪个点。
+然后我们就想，如果对于两个拓扑序来讲一个点都能挂到前面的两个点上，那是不是就不唯一了呢？这个感觉是非常对的。
+形式化的来讲，你对每个 $i$ 都找出 $i$ 在每个拓扑序中的位置，然后把前面的所有数的集合交起来。如果存在一个 $i$ 使得该集合大小超过 $1$ 则不合法。
+然后你趁洗澡的时候对拍，然后回来发现拍了四万多组了都没出问题，就把他当对的了。
+然后接下来的思路，你灵光一现，想到我们其实不怎么关心是怎么遍历的，我们关心的是从哪个点开始遍历的。
+然后我们就想一条边他是怎么被经过的。然后你发现除了连接叶子的边其他边都要被正反经过一遍。
+我们把叶子剥了，把每个里叶子都作为起点扫一遍就能做到。（这个显然是下界）
+然后我们发现这个图的性质很优雅。我们发现这样一并把原来的性质满足了。
+但我们还要考虑叶子怎么放置。我们发现我们直接紧贴着放在里叶子的后面即可。因为你发现这样一定不会重。
+然后就做完了。
+啊？
+等等，然后怎么做答案呢。
+直接做即可。
+我好厉害。
+
+你发现你输出解会有点问题。
+但不慌，你扰动一下，你每次把 $G$ 翻转一下。
+然后就过了！！！">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/tags/">
+<link rel="canonical" href="http://localhost:1313/posts/%E8%B7%AF%E5%8D%97%E6%9F%AF/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +43,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E8%B7%AF%E5%8D%97%E6%9F%AF/">
 <noscript>
     <style>
         #theme-toggle,
@@ -82,7 +106,7 @@
   });">
 </script>
 </head>
-<body class="list" id="top">
+<body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
@@ -118,7 +142,7 @@
             </li>
             <li>
                 <a href="http://localhost:1313/tags/" title="Tags">
-                    <span class="active">Tags</span>
+                    <span>Tags</span>
                 </a>
             </li>
             <li>
@@ -135,123 +159,55 @@
     </nav>
 </header>
 <main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
-</header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="http://localhost:1313/tags/approximation/">Approximation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/bct/">BCT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/cactus/">Cactus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/chunking/">Chunking <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/combination/">Combination <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/construction/">Construction <sup><strong><sup>7</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/continued-fraction-theory/">Continued Fraction Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/counting/">Counting <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dp/">DP <sup><strong><sup>7</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ds/">DS <sup><strong><sup>4</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/dual-graph/">Dual Graph <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/flow/">Flow <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph/">Graph <sup><strong><sup>9</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/graph-euler-theorem/">Graph Euler Theorem <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/interactive/">Interactive <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/kdt/">KDT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/ktt/">KTT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/maths/">Maths <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mcmf/">MCMF <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/mst/">MST <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/number-theory/">Number Theory <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/pearls/">Pearls <sup><strong><sup>3</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/permutation/">Permutation <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sam/">SAM <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/segtree/">SegTree <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/series-parallel/">Series-Parallel <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/set/">Set <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solutions/">Solutions <sup><strong><sup>25</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/solving/">Solving <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/sorting/">Sorting <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/strings/">Strings <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tb5/">TB5 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/topology/">Topology <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/torus/">Torus <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tree/">Tree <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/tricks/">Tricks <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/tags/vcc/">VCC <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      路南柯
+    </h1>
+    <div class="post-meta"><span title='2026-06-05 23:29:43 +0800 CST'>June 5, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>牛牛题。</p>
+<p>首先你把答案 reverse 一下，就是指定一个根，然后每次扩展一个相邻于当前连通块的点。</p>
+<p>先考虑如何 check。</p>
+<p>首先一个 native 的想法是考虑两种方向相反的 DFS 序。</p>
+<p>然后你发现一个菊花图就把你 hack 了。</p>
+<p>然后另一个 native 的想法是用两个根这样做。</p>
+<p>但实际上你通过跑一下你发现还是会出问题，然后你看一下相同的两棵树，你发现他们一般动一两条边，然后他们分别连的都是同一连通块。</p>
+<p>这启示我们从一个点连到哪个点进行考虑。</p>
+<p>我们注意到我们根据一个拓扑序来构造一棵树的话，本质上你是把每个点选择一个前面的点挂上去。其实跟整个树的结构无关。你只关心每一步了连到了哪个点。</p>
+<p>然后我们就想，如果对于两个拓扑序来讲一个点都能挂到前面的两个点上，那是不是就不唯一了呢？这个感觉是非常对的。</p>
+<p>形式化的来讲，你对每个 $i$ 都找出 $i$ 在每个拓扑序中的位置，然后把前面的所有数的集合交起来。如果存在一个 $i$ 使得该集合大小超过 $1$ 则不合法。</p>
+<p>然后你趁洗澡的时候对拍，然后回来发现拍了四万多组了都没出问题，就把他当对的了。</p>
+<p>然后接下来的思路，你灵光一现，想到我们其实不怎么关心是怎么遍历的，我们关心的是从哪个点开始遍历的。</p>
+<p>然后我们就想一条边他是怎么被经过的。然后你发现除了连接叶子的边其他边都要被正反经过一遍。</p>
+<p>我们把叶子剥了，把每个里叶子都作为起点扫一遍就能做到。（这个显然是下界）</p>
+<p>然后我们发现这个图的性质很优雅。我们发现这样一并把原来的性质满足了。</p>
+<p>但我们还要考虑叶子怎么放置。我们发现我们直接紧贴着放在里叶子的后面即可。因为你发现这样一定不会重。</p>
+<p>然后就做完了。</p>
+<p>啊？</p>
+<p>等等，然后怎么做答案呢。</p>
+<p>直接做即可。</p>
+<p>我好厉害。</p>
+<hr>
+<p>你发现你输出解会有点问题。</p>
+<p>但不慌，你扰动一下，你每次把 $G$ 翻转一下。</p>
+<p>然后就过了！！！</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/construction/">Construction</a></li>
+    </ul>
+  </footer>
+</article>
     </main>
     
 <footer class="footer">
@@ -338,6 +294,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

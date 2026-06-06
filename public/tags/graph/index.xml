@@ -6,8 +6,33 @@
     <description>Recent content in Graph on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 07 May 2026 22:36:29 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 19:57:25 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/graph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forbidden Tournament</title>
+      <link>http://localhost:1313/posts/forbidden-tournament/</link>
+      <pubDate>Thu, 04 Jun 2026 19:57:25 +0800</pubDate>
+      <guid>http://localhost:1313/posts/forbidden-tournament/</guid>
+      <description>&lt;p&gt;首先“三元环”触发关键词。&lt;/p&gt;
+&lt;p&gt;在竞赛图中若有环则一定有三元环。&lt;/p&gt;
+&lt;p&gt;然后我们再套路地把竞赛图进行 SCC 缩点是一条链。&lt;/p&gt;
+&lt;p&gt;很容易知道如果一个 SCC 不是链的最后一个他只能是一个点，因为若不是，则有三元环，而他们都指向后面，因此不合法。&lt;/p&gt;
+&lt;p&gt;显然我们要重点考虑最后一个 SCC。&lt;/p&gt;
+&lt;p&gt;然后呢就不会了，看一眼题解。&lt;/p&gt;
+&lt;p&gt;我们现在考虑找 SCC 中的一个点 $u$，并把他的前驱后继分开来。&lt;/p&gt;
+&lt;p&gt;显然前驱必须是一条链。&lt;/p&gt;
+&lt;p&gt;后继呢可以手玩。假设不是一条链，则一定有一个三元环，如果这个三元环都指向了一个点，那不合法，如果没有的话，则一定指到了 $u$ 的前驱，然后我们拿 $u$，那个前驱，指向前驱的点作为三元环，如果满足一定条件他们一定都指向三元环下一个点。反正啰里啰唆的，分讨即可。懒得写。于是后继也必须是一条链。&lt;/p&gt;
+&lt;p&gt;然后怎么做呢？&lt;/p&gt;
+&lt;p&gt;然后我们通过手玩发现其实这个条件是充要的。具体来讲你反证法然后一定能推出一个矛盾。&lt;/p&gt;
+&lt;p&gt;然后他就像一个厚厚的甜甜圈一样，基于一个环。&lt;/p&gt;
+&lt;p&gt;主要是怎么 DP 的问题。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这个不愧是2000pts的题目完全做不出来。&lt;/p&gt;
+&lt;p&gt;严肃研读题解。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;大哥我错了，这个题怎么这么难。&lt;/p&gt;
+&lt;p&gt;你主要是你对这个甜甜圈计数，&lt;/p&gt;</description>
+    </item>
     <item>
       <title>全对最大流</title>
       <link>http://localhost:1313/posts/%E5%85%A8%E5%AF%B9%E6%9C%80%E5%A4%A7%E6%B5%81/</link>
