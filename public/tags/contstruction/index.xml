@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Contstruction on Inftopia</title>
+    <link>http://localhost:1313/tags/contstruction/</link>
+    <description>Recent content in Contstruction on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 06 Jun 2026 17:09:27 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/contstruction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Master of Modular Arithmetic</title>
+      <link>http://localhost:1313/posts/master-of-modular-arithmetic/</link>
+      <pubDate>Sat, 06 Jun 2026 17:09:27 +0800</pubDate>
+      <guid>http://localhost:1313/posts/master-of-modular-arithmetic/</guid>
+      <description>&lt;p&gt;嗯首先我们先思考如何通过模和乘法凑出任意一个数。&lt;/p&gt;
+&lt;p&gt;我们很容易想到我们可以用两步操作，我们指定一个大质模数（比如 1e9+7），然后我们找 $\cfrac{b}{a} (\mod 10^9+7)$ 作为乘法即可。&lt;/p&gt;
+&lt;p&gt;然后我们想到把操作的一个点用来做乘和模，然后剩下一个放到最后一个点。&lt;/p&gt;
+&lt;p&gt;然后我们就可以在 $2n-2$ 次操作内把前 $n-1$ 个都归到任意我们想要的值。&lt;/p&gt;
+&lt;p&gt;然后我们想把最后一个也归位，但显然只有一个数不行的，我们想想两个数。不妨考虑 $n=2$ 的情况。&lt;/p&gt;
+&lt;p&gt;我们首先想到，我们如果目的是给一个数乘上一个数且后面一定要取模的话，那实际上我们可以把这个数调得很大（因为你后面肯定要取模，可以加后面那个模数的整数倍）然后这样对另一个数就没有影响了。&lt;/p&gt;
+&lt;p&gt;然后显然取模你是没有什么办法能避免的。&lt;/p&gt;
+&lt;p&gt;然后我们还发现最后一次一定会把某个位置的值乘上某个数，这提示我们不妨倒序考虑。&lt;/p&gt;
+&lt;p&gt;我们相当于说找 $a$ 的一个因子 $x$，使得其 $&amp;gt; b$，然后可以使 $a$ 除以 $x$，$b$ 加上 $x$ 的任意倍。&lt;/p&gt;
+&lt;p&gt;然后懒了，开始打表。&lt;/p&gt;
+&lt;p&gt;结果打出来一坨几百个边的图，在 graph editor 里抽搐。&lt;/p&gt;
+&lt;p&gt;只能推结论了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

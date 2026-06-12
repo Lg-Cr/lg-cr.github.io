@@ -172,6 +172,56 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Minimum Segments
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>显然条件应该要满足 $r_i \le r_{i&#43;1}$。
+这个题就给我一种感觉，就是它看起来很好做，但实际上不是很会做。
+首先一个经典的想法是，考虑一个计算 $r$ 的过程：你从左到右扫，维护 $x_j$ 为颜色为 $j$ 的元素中在 $i$ 及以后的第一个下标。然后 $r_i$ 就是 $x$ 的 max。
+每次扫过去，相当于对于 $a_i$，把 $x_{a_i}$ 变为 $t_i$，然而我们根本不用考虑改，我们可以把他变成直接对 $t_i$ 取 max。于是我们就摆脱了具体颜色的限制。
+然后我们想到对于 $r_i\ne r_{i&#43;1}$ 的情况，我们发现我们能直接确定 $t_i$。对于相等的情况，我们能确定他的一个范围。然后我们相当于要构造合法的 $t_i$。 这个条件显然是充要的。
+对于一个 $t$ 而言他有什么性质？他的限制好像只有不存在 $t_i=t_j\le n(i\ne j)$。我们似乎把全局的问题转化为了相对局部的。
+注意你要在整个序列前面加一个数，这样第一个数也可以考虑到了。
+然后显然一个想法是贪心，考虑每次填最小的。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-07 22:39:05 +0800 CST'>June 7, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Minimum Segments" href="http://localhost:1313/posts/minimum-segments/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Master of Modular Arithmetic
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>嗯首先我们先思考如何通过模和乘法凑出任意一个数。
+我们很容易想到我们可以用两步操作，我们指定一个大质模数（比如 1e9&#43;7），然后我们找 $\cfrac{b}{a} (\mod 10^9&#43;7)$ 作为乘法即可。
+然后我们想到把操作的一个点用来做乘和模，然后剩下一个放到最后一个点。
+然后我们就可以在 $2n-2$ 次操作内把前 $n-1$ 个都归到任意我们想要的值。
+然后我们想把最后一个也归位，但显然只有一个数不行的，我们想想两个数。不妨考虑 $n=2$ 的情况。
+我们首先想到，我们如果目的是给一个数乘上一个数且后面一定要取模的话，那实际上我们可以把这个数调得很大（因为你后面肯定要取模，可以加后面那个模数的整数倍）然后这样对另一个数就没有影响了。
+然后显然取模你是没有什么办法能避免的。
+然后我们还发现最后一次一定会把某个位置的值乘上某个数，这提示我们不妨倒序考虑。
+我们相当于说找 $a$ 的一个因子 $x$，使得其 $&gt; b$，然后可以使 $a$ 除以 $x$，$b$ 加上 $x$ 的任意倍。
+然后懒了，开始打表。
+结果打出来一坨几百个边的图，在 graph editor 里抽搐。
+只能推结论了。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-06 17:09:27 +0800 CST'>June 6, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Master of Modular Arithmetic" href="http://localhost:1313/posts/master-of-modular-arithmetic/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">路南柯
     </h2>
   </header>
@@ -280,6 +330,32 @@ $$ f(x_r &#43; 1, y_r &#43; 1) &#43; f(x_l, y_l) - f(x_r &#43; 1, y_l) - f(x_l, 
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">一般难度的推式子题
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>首先我们有 $O(n^3)$ DP。
+设 $f_{i,j}$ 为当前你有 $i$ 个点，高度为 $j$ 的方案数。转移直接考虑把一个树接到另一个树下边。
+f[1][1] = 1; rep (i, 1, n) pre[1][i] = 1; rep (i, 2, n) { rep (j, 2, i) { rep (k, 1, i - 1) { f[i][j] &#43;= f[i - k][j] * pre[k][j - 1]; f[i][j] &#43;= pre[i - k][j - 1] * f[k][j - 1]; } } rep (j, 1, n) pre[i][j] = pre[i][j - 1] &#43; f[i][j]; } Mint ans = 0; rep (i, 1, n) { ans &#43;= f[n][i] * (i - 1); } 考虑优化，这个dp本质上是第一维做加法卷积，第二维做 max 卷积。于是应该容易用 ntt 做到 O(n^2\log n)$。获得六十分。但实际上模数卡了你所以别往这个方向想。
+就我们感觉一下这个深度是硬伤啊。其实我们是不是可以不计第二维呢？但问题是你取 max 啊！好像很难说你把他直接剁掉哎。
+那我们换个方向，我觉得这个 DP 没有很多前途。
+我有一计。你考虑你根本不管前面的了。你想 $f_{i}$ 表示 $n$ 个点的树里面深度为 $i$ 的方案数。
+主要是你发现其实 $f$ 后几项是很规律的。你想一下能不能从后往前推。
+你考虑你当前有一棵高为 $i$ 的树。然后你要把他的高度变矮。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-31 10:17:03 +0800 CST'>May 31, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 一般难度的推式子题" href="http://localhost:1313/posts/%E4%B8%80%E8%88%AC%E9%9A%BE%E5%BA%A6%E7%9A%84%E6%8E%A8%E5%BC%8F%E5%AD%90%E9%A2%98/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">彩绘
     </h2>
   </header>
@@ -337,73 +413,6 @@ $f_{i,j}$ 表示当前考虑了 $[1,i]$ 的下标，前面用了 $j$ 个 $1$。
   </div>
   <footer class="entry-footer"><span title='2026-05-23 10:38:36 +0800 CST'>May 23, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Two Characters, Two Colors" href="http://localhost:1313/posts/two-characters-two-colors/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Permutation and Minimum
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>首先我们发现其实这个东西是可以分类讨论的。
-对于 $(2i-1,2i)$ 这样的二元组讨论。
-若两者都不是 $-1$ 则直接跳过。（甚至可以直接离散化掉）
-若两者都是 $-1$ 则可以放在一起算。具体来讲，我们可以数一共有多少个这样的二元组，然后我们只要算全是 $-1$ 的答案，然后再乘上把这些二元组去掉之后的答案即可。（因为对于其他的二元组确定的情况下，实际上的方案数总是相同的）
-比如有 $k$ 个二元组，然后你考虑钦定哪些数作为二元组中的更小值，然后再排列一下。钦定的方案数为 $Catalan(k)$。因为注意到你本质上要求对于任意前缀，选的作为最小值的个数 $\ge$ 作为最大值的个数。然后排列即为 $k!$，即答案为 $Catalan(k)k!$。
-现在我们只要专心考虑恰好有一个 $-1$ 的即可。
-我们先考虑简单的情况，假设整个排列都是一个 $-1$ 和一个非 $-1$。
-然后这个时候开始 DP。
-我们发现这个顺序根本不重要，我们只要给他们染色然后配对即可。最终再乘上阶乘。
-我们如法炮制，还是按值域排在一起，发现我们可以从大到小做。
-我们称已经被填入的为白点，我们要填的是黑点。
-设 $f_{i,j,k}$ 为当前处理了值域在 $[i,n]$ 内的东西，其中钦定 $j$ 个 $[1,i)$ 中的黑点，$k$ 个 $[i,n]$ 内的黑点已经被预留了。
-然后直接转移即可。
-调半天过不了样例。
-问题在于，实际上你不能在 dp 的时候简单地只看你留了几个来考虑这个 $(-1,-1)$ 二元组，你要把他放进去算，因为实际上这个预留与实际上还是有一些区别的，因为你可能可以填上这个东西。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-21 22:35:45 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Permutation and Minimum" href="http://localhost:1313/posts/permutation-and-minimum/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">论思考
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>如何思考？在如今这个阶段没有良好的思维习惯恐怕是举步维艰。
-使用记录工具，例如在电脑上进行 markdown 打字。这样应该可以显著提升思维的深度。 别躺床上想题！这样很容易变懒散。不想动。 排除干扰，尤其忌讳思考一半打断，这会消除思考的惯性。使你注意力涣散。 思考的时候要试着去从本质上，从抽象上看问题，越本质越好。这样能排除 corner case 的影响，使整个问题变得形式简洁，容易被一次性处理。 主动出击而非守株待兔。 主动打表 主动猜结论 主动尝试方向 主动手玩样例 在记录了目前思路之后如果没有头绪。不妨回头看你想到的思路，试着想想如果反过来会怎么样，推敲每一步是否有其他道路。这可能会发现你一些错误的惯性所带来的疏忽。 放平心态，心如止水。不要急。就算快想出来了也要严格验证。不然容易最后临门一脚踢歪了。 思考时应该要试图在不同事物间建立联系。把他们连成一个整体。 善用潜意识，想不出来可以先换题，过会儿再想。 有危机感！不要懒散。 要坚信这个题目是想的出来的。 当你发现你走的很深的时候立马掉头。不能一条路走到黑。 </p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-21 18:31:04 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to 论思考" href="http://localhost:1313/posts/%E8%AE%BA%E6%80%9D%E8%80%83/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AtCoder Quality Problem
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>我意识到了我做 DP 的严重问题。我非常习惯于说去推结论和性质，结果迟迟没有开始试图设计状态。对 DP 理解的非常的不深刻。在推性质的时候应该主动像 DP 上靠。而不是先推再说。要主动地设计状态，尝试几种经典的状态设计。然后试图找出关系。或者是先找出子结构之间的联系。
-DP 的本质就是子结构。要主动洞察这个题目有哪些子结构，以及他们之间的良好性质，而不是仅靠“发现”。
-我觉得我设计暴力 DP 这件事比 DP 优化更困难。因为我并没有养成这种良好的思维习惯。
-开始正题。
-这个题目首先就是我们 feel 一下这个题目。
-一个 native 的想法是考虑从小到大以 popcnt 为层推进。然后呢你其实可以把他看成一个金字塔。然后你想一下，比如说你当前先把单个元素染个色。然后对于横跨的，怎么办？实际上对于这些横跨的不能随便染色，反例：RBBR 13 24 R 14 23 B 然后就炸了。
-然后呢我就摆了，也许是畏惧吧。
-你其实可以推进一步，你思考为什么会炸。
-因为 R 和 B 的并都是 S。
-然后显然 R 和 B 的并不能都不是 S。
-然后如果 S 是 R 那一定是 R 的并是 S。反过来同理。
-实际上现在你可以直接开始试图设计状态了。
-比如你很经典地你设 $f_{S,0/1}$ 为 $S$ 内染色，然后颜色为 $0/1$。然后这个时候你想怎么转移。
-你发现你好转移啊，你找这个并不是当前颜色的并。然后你发现其实这个并一定得是对应的 $f$ 然后你直接转移即可。
-优化用脚优化。你直接一个一个加即可，套路。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-21 18:04:02 +0800 CST'>May 21, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to AtCoder Quality Problem" href="http://localhost:1313/posts/atcoder-quality-problem/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

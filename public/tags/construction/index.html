@@ -143,6 +143,32 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Minimum Segments
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>显然条件应该要满足 $r_i \le r_{i&#43;1}$。
+这个题就给我一种感觉，就是它看起来很好做，但实际上不是很会做。
+首先一个经典的想法是，考虑一个计算 $r$ 的过程：你从左到右扫，维护 $x_j$ 为颜色为 $j$ 的元素中在 $i$ 及以后的第一个下标。然后 $r_i$ 就是 $x$ 的 max。
+每次扫过去，相当于对于 $a_i$，把 $x_{a_i}$ 变为 $t_i$，然而我们根本不用考虑改，我们可以把他变成直接对 $t_i$ 取 max。于是我们就摆脱了具体颜色的限制。
+然后我们想到对于 $r_i\ne r_{i&#43;1}$ 的情况，我们发现我们能直接确定 $t_i$。对于相等的情况，我们能确定他的一个范围。然后我们相当于要构造合法的 $t_i$。 这个条件显然是充要的。
+对于一个 $t$ 而言他有什么性质？他的限制好像只有不存在 $t_i=t_j\le n(i\ne j)$。我们似乎把全局的问题转化为了相对局部的。
+注意你要在整个序列前面加一个数，这样第一个数也可以考虑到了。
+然后显然一个想法是贪心，考虑每次填最小的。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-07 22:39:05 +0800 CST'>June 7, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Minimum Segments" href="http://localhost:1313/posts/minimum-segments/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">路南柯
     </h2>
   </header>

@@ -5,52 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>About | Inftopia</title>
-<meta name="keywords" content="">
-<meta name="description" content="👋 我是谁
-我是 Infter/Inftress，一名热爱算法的 OIer / 信息学竞赛选手。
-
-坐标：江西/南昌
-CCF认证等级：8 级
-年龄：15
-MBTI: INTP-T
-
-📝 关于本博客
-这里主要记录我在算法学习路上的点滴，包括但不限于：
-
-题解与思路复盘：记录经典题目的解题过程与代码实现。
-算法笔记：整理数据结构与算法的核心要点，方便随时复习。
-竞赛总结与方法论：赛后复盘，经验教训与关于学习 oi 的一些思考。
-部分零散的思考：有感即发的随笔或者单纯的意识流记录。
-
-我希望通过写作，不仅能巩固自己的知识，也能帮助到同样在这条路上的你。
-🛠️ 博客技术栈
-本博客由以下工具驱动：
-
-框架：Hugo —— 极速的静态站点生成器
-主题：PaperMod —— 简洁、响应式、支持深色模式
-部署：Cloudflare Pages &#43; GitHub Actions —— 自动构建与全球 CDN 加速
-评论：utterances —— 基于 GitHub Issues 的轻量评论系统
-
-🔗 找到我
-
-GitHub：https://github.com/Lg-Cr
-洛谷：https://www.luogu.com.cn/user/386547
-Codeforces：https://codeforces.com/profile/Infter
-Atcoder：https://atcoder.jp/users/Infter
-UOJ：https://uoj.ac/user/profile/LightningCreeper
-电子邮箱：lightningcreeper@163.com
-QQ：3655485944
-网易云音乐：Inftress
-
-💬 关于评论
-本博客的评论系统基于 GitHub Issues，你需要登录 GitHub 账号才能留言。所有评论内容均存储于本博客的 GitHub 仓库中，公开透明。
-
-以上大部分内容由 DeepSeek 生成。
-
-相信你能耐心看到这里多少与我有点缘分。 qwq">
+<title>Minimum Segments | Inftopia</title>
+<meta name="keywords" content="Solutions, Construction">
+<meta name="description" content="显然条件应该要满足 $r_i \le r_{i&#43;1}$。
+这个题就给我一种感觉，就是它看起来很好做，但实际上不是很会做。
+首先一个经典的想法是，考虑一个计算 $r$ 的过程：你从左到右扫，维护 $x_j$ 为颜色为 $j$ 的元素中在 $i$ 及以后的第一个下标。然后 $r_i$ 就是 $x$ 的 max。
+每次扫过去，相当于对于 $a_i$，把 $x_{a_i}$ 变为 $t_i$，然而我们根本不用考虑改，我们可以把他变成直接对 $t_i$ 取 max。于是我们就摆脱了具体颜色的限制。
+然后我们想到对于 $r_i\ne r_{i&#43;1}$ 的情况，我们发现我们能直接确定 $t_i$。对于相等的情况，我们能确定他的一个范围。然后我们相当于要构造合法的 $t_i$。 这个条件显然是充要的。
+对于一个 $t$ 而言他有什么性质？他的限制好像只有不存在 $t_i=t_j\le n(i\ne j)$。我们似乎把全局的问题转化为了相对局部的。
+注意你要在整个序列前面加一个数，这样第一个数也可以考虑到了。
+然后显然一个想法是贪心，考虑每次填最小的。">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/about/">
+<link rel="canonical" href="http://localhost:1313/posts/minimum-segments/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -59,7 +25,7 @@ QQ：3655485944
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/about/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/minimum-segments/">
 <noscript>
     <style>
         #theme-toggle,
@@ -163,7 +129,7 @@ QQ：3655485944
             </li>
             <li>
                 <a href="http://localhost:1313/about/" title="About">
-                    <span class="active">About</span>
+                    <span>About</span>
                 </a>
             </li>
             <li>
@@ -180,88 +146,35 @@ QQ：3655485944
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      About
+      Minimum Segments
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
     </h1>
-    <div class="post-meta"><span title='2026-04-17 20:53:47 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
+    <div class="post-meta"><span title='2026-06-07 22:39:05 +0800 CST'>June 7, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span>
 
 </div>
-  </header> <details class="toc" >
-    <summary accesskey="c" title="(Alt + C)">
-        <span class="title">Table of Contents</span>
-    </summary>
+  </header> 
 
-    <div class="inner"><ul>
-            <li>
-                <a href="#-%e6%88%91%e6%98%af%e8%b0%81" aria-label="👋 我是谁">👋 我是谁</a></li>
-            <li>
-                <a href="#-%e5%85%b3%e4%ba%8e%e6%9c%ac%e5%8d%9a%e5%ae%a2" aria-label="📝 关于本博客">📝 关于本博客</a></li>
-            <li>
-                <a href="#-%e5%8d%9a%e5%ae%a2%e6%8a%80%e6%9c%af%e6%a0%88" aria-label="🛠️ 博客技术栈">🛠️ 博客技术栈</a></li>
-            <li>
-                <a href="#-%e6%89%be%e5%88%b0%e6%88%91" aria-label="🔗 找到我">🔗 找到我</a></li>
-            <li>
-                <a href="#-%e5%85%b3%e4%ba%8e%e8%af%84%e8%ae%ba" aria-label="💬 关于评论">💬 关于评论</a>
-            </li>
-        </ul>
-    </div>
-</details>
-
-  <div class="post-content md-content"><h2 id="-我是谁">👋 我是谁<a hidden class="anchor" aria-hidden="true" href="#-我是谁">#</a></h2>
-<p>我是 <strong>Infter/Inftress</strong>，一名热爱算法的 OIer / 信息学竞赛选手。</p>
-<ul>
-<li><strong>坐标</strong>：江西/南昌</li>
-<li><strong>CCF认证等级</strong>：8 级</li>
-<li><strong>年龄</strong>：15</li>
-<li><strong>MBTI</strong>: INTP-T</li>
-</ul>
-<h2 id="-关于本博客">📝 关于本博客<a hidden class="anchor" aria-hidden="true" href="#-关于本博客">#</a></h2>
-<p>这里主要记录我在算法学习路上的点滴，包括但不限于：</p>
-<ul>
-<li><strong>题解与思路复盘</strong>：记录经典题目的解题过程与代码实现。</li>
-<li><strong>算法笔记</strong>：整理数据结构与算法的核心要点，方便随时复习。</li>
-<li><strong>竞赛总结与方法论</strong>：赛后复盘，经验教训与关于学习 oi 的一些思考。</li>
-<li><strong>部分零散的思考</strong>：有感即发的随笔或者单纯的意识流记录。</li>
-</ul>
-<p>我希望通过写作，不仅能巩固自己的知识，也能帮助到同样在这条路上的你。</p>
-<h2 id="-博客技术栈">🛠️ 博客技术栈<a hidden class="anchor" aria-hidden="true" href="#-博客技术栈">#</a></h2>
-<p>本博客由以下工具驱动：</p>
-<ul>
-<li><strong>框架</strong>：<a href="https://gohugo.io/">Hugo</a> —— 极速的静态站点生成器</li>
-<li><strong>主题</strong>：<a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod</a> —— 简洁、响应式、支持深色模式</li>
-<li><strong>部署</strong>：<a href="https://pages.cloudflare.com/">Cloudflare Pages</a> + <a href="https://github.com/features/actions">GitHub Actions</a> —— 自动构建与全球 CDN 加速</li>
-<li><strong>评论</strong>：<a href="https://utteranc.es/">utterances</a> —— 基于 GitHub Issues 的轻量评论系统</li>
-</ul>
-<h2 id="-找到我">🔗 找到我<a hidden class="anchor" aria-hidden="true" href="#-找到我">#</a></h2>
-<ul>
-<li><strong>GitHub</strong>：<a href="https://github.com/Lg-Cr">https://github.com/Lg-Cr</a></li>
-<li><strong>洛谷</strong>：<a href="https://www.luogu.com.cn/user/386547">https://www.luogu.com.cn/user/386547</a></li>
-<li><strong>Codeforces</strong>：<a href="https://codeforces.com/profile/Infter">https://codeforces.com/profile/Infter</a></li>
-<li><strong>Atcoder</strong>：<a href="https://atcoder.jp/users/Infter">https://atcoder.jp/users/Infter</a></li>
-<li><strong>UOJ</strong>：<a href="https://uoj.ac/user/profile/LightningCreeper">https://uoj.ac/user/profile/LightningCreeper</a></li>
-<li><strong>电子邮箱</strong>：lightningcreeper@163.com</li>
-<li><strong>QQ</strong>：3655485944</li>
-<li><strong>网易云音乐</strong>：Inftress</li>
-</ul>
-<h2 id="-关于评论">💬 关于评论<a hidden class="anchor" aria-hidden="true" href="#-关于评论">#</a></h2>
-<p>本博客的评论系统基于 GitHub Issues，你需要登录 GitHub 账号才能留言。所有评论内容均存储于本博客的 GitHub 仓库中，公开透明。</p>
-<hr>
-<p>以上大部分内容由 DeepSeek 生成。</p>
-<hr>
-<p>相信你能耐心看到这里多少与我有点缘分。 qwq</p>
-<p>以下是一些我自己想写的东西。</p>
-<p>如果你对我感兴趣的话，可以加我 QQ 跟我交个朋友咩。我除了最近中考基本大部分时间在线。</p>
-<p>OI 上，我在低谷期，如果有朋友能给予我帮助那我将万分感激。我的状态过去也十分的低迷，长期陷入颓废之中，不过最近情况开始有了些好转。</p>
-<p>社交上。我可能因为曾经面对陌生人极度社恐，就算我之前去过几次全国性的比赛也没有参加任何的面基活动，只是自己一个人宅在宿舍里。过去一年我又因为种种原因没有能够参加 apio 和 wc。相信我们会在今年 12 月的 wc 见面！</p>
-<p>音乐上，我比较喜欢电子音乐。但其实很大程度上都是自己在听，很业余，没有老资历带，虽然之前混过一小段时间圈但很快就退了。可能审美和品味都完全没有入门，如果有老资历带带我那就太好了。</p>
-<p>性格上，我可能外表看起来很活泼开朗，但实际上面对别人想要聊天的时候还是会很紧张的<del>我不太善言辞，可能会说出一些不太恰当的话，请多谅解</del></p>
-<hr>
-<p><em>本博客所有文章若无特殊声明，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 许可协议。转载请注明出处。</em></p>
+  <div class="post-content md-content"><p>显然条件应该要满足 $r_i \le r_{i+1}$。</p>
+<p>这个题就给我一种感觉，就是它看起来很好做，但实际上不是很会做。</p>
+<p>首先一个经典的想法是，考虑一个计算 $r$ 的过程：你从左到右扫，维护 $x_j$ 为颜色为 $j$ 的元素中在 $i$ 及以后的第一个下标。然后 $r_i$ 就是 $x$ 的 max。</p>
+<p>每次扫过去，相当于对于 $a_i$，把 $x_{a_i}$ 变为 $t_i$，然而我们根本不用考虑改，我们可以把他变成直接对 $t_i$ 取 max。于是我们就摆脱了具体颜色的限制。</p>
+<p>然后我们想到对于 $r_i\ne r_{i+1}$ 的情况，我们发现我们能直接确定 $t_i$。对于相等的情况，我们能确定他的一个范围。然后我们相当于要构造合法的 $t_i$。 这个条件显然是充要的。</p>
+<p>对于一个 $t$ 而言他有什么性质？他的限制好像只有不存在 $t_i=t_j\le n(i\ne j)$。我们似乎把全局的问题转化为了相对局部的。</p>
+<p>注意你要在整个序列前面加一个数，这样第一个数也可以考虑到了。</p>
+<p>然后显然一个想法是贪心，考虑每次填最小的。</p>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/solutions/">Solutions</a></li>
+      <li><a href="http://localhost:1313/tags/construction/">Construction</a></li>
     </ul>
   </footer>
 </article>

@@ -6,8 +6,22 @@
     <description>Recent content in Construction on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Jun 2026 23:29:43 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2026 22:39:05 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/construction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Minimum Segments</title>
+      <link>http://localhost:1313/posts/minimum-segments/</link>
+      <pubDate>Sun, 07 Jun 2026 22:39:05 +0800</pubDate>
+      <guid>http://localhost:1313/posts/minimum-segments/</guid>
+      <description>&lt;p&gt;显然条件应该要满足 $r_i \le r_{i+1}$。&lt;/p&gt;
+&lt;p&gt;这个题就给我一种感觉，就是它看起来很好做，但实际上不是很会做。&lt;/p&gt;
+&lt;p&gt;首先一个经典的想法是，考虑一个计算 $r$ 的过程：你从左到右扫，维护 $x_j$ 为颜色为 $j$ 的元素中在 $i$ 及以后的第一个下标。然后 $r_i$ 就是 $x$ 的 max。&lt;/p&gt;
+&lt;p&gt;每次扫过去，相当于对于 $a_i$，把 $x_{a_i}$ 变为 $t_i$，然而我们根本不用考虑改，我们可以把他变成直接对 $t_i$ 取 max。于是我们就摆脱了具体颜色的限制。&lt;/p&gt;
+&lt;p&gt;然后我们想到对于 $r_i\ne r_{i+1}$ 的情况，我们发现我们能直接确定 $t_i$。对于相等的情况，我们能确定他的一个范围。然后我们相当于要构造合法的 $t_i$。 这个条件显然是充要的。&lt;/p&gt;
+&lt;p&gt;对于一个 $t$ 而言他有什么性质？他的限制好像只有不存在 $t_i=t_j\le n(i\ne j)$。我们似乎把全局的问题转化为了相对局部的。&lt;/p&gt;
+&lt;p&gt;注意你要在整个序列前面加一个数，这样第一个数也可以考虑到了。&lt;/p&gt;
+&lt;p&gt;然后显然一个想法是贪心，考虑每次填最小的。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>路南柯</title>
       <link>http://localhost:1313/posts/%E8%B7%AF%E5%8D%97%E6%9F%AF/</link>
