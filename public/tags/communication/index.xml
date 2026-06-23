@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Communication on Inftopia</title>
+    <link>http://localhost:1313/tags/communication/</link>
+    <description>Recent content in Communication on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Jun 2026 23:16:28 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/communication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>8染色</title>
+      <link>http://localhost:1313/posts/8%E6%9F%93%E8%89%B2/</link>
+      <pubDate>Tue, 23 Jun 2026 23:16:28 +0800</pubDate>
+      <guid>http://localhost:1313/posts/8%E6%9F%93%E8%89%B2/</guid>
+      <description>&lt;p&gt;一个经典的想法是考虑让 Alice 和 Bob 都进行同一个过程。如果填不出来了就给提示。（显然 Alice 知道的信息严格多于 Bob，因此可以直接假装自己是 Bob 然后看自己需要哪些提示）&lt;/p&gt;
+&lt;p&gt;其实我们应该想想不同的染色方案之间有哪些联系。&lt;/p&gt;
+&lt;p&gt;感觉最困难的还是因为他是一个全局的问题，并不是很局部。我们得试着把这个问题拆的局部一些。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;卡住了，看了一眼这个 AC 代码。&lt;/p&gt;
+&lt;p&gt;得到信息：考虑节点度数。&lt;/p&gt;
+&lt;p&gt;然后我们好像发现，你如果度数很少的话你根本不需要记录，你知道了旁边的一定有一个合法的。&lt;/p&gt;
+&lt;p&gt;所以一个想法是把度数 $\ge 8$ 的点的颜色传过去。&lt;/p&gt;
+&lt;p&gt;然后你发现你还是要传 3.75e5 个过去，太多啦！&lt;/p&gt;
+&lt;p&gt;一个 creative 的想法是你根本不用传整个数过去，你也许只要传 3 位中的 2 位，剩下一位直接二分图染色。&lt;/p&gt;
+&lt;p&gt;然后就过了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

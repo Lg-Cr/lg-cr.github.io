@@ -143,6 +143,28 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">8染色
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>一个经典的想法是考虑让 Alice 和 Bob 都进行同一个过程。如果填不出来了就给提示。（显然 Alice 知道的信息严格多于 Bob，因此可以直接假装自己是 Bob 然后看自己需要哪些提示）
+其实我们应该想想不同的染色方案之间有哪些联系。
+感觉最困难的还是因为他是一个全局的问题，并不是很局部。我们得试着把这个问题拆的局部一些。
+卡住了，看了一眼这个 AC 代码。
+得到信息：考虑节点度数。
+然后我们好像发现，你如果度数很少的话你根本不需要记录，你知道了旁边的一定有一个合法的。
+所以一个想法是把度数 $\ge 8$ 的点的颜色传过去。
+然后你发现你还是要传 3.75e5 个过去，太多啦！
+一个 creative 的想法是你根本不用传整个数过去，你也许只要传 3 位中的 2 位，剩下一位直接二分图染色。
+然后就过了。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-23 23:16:28 +0800 CST'>June 23, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 8染色" href="http://localhost:1313/posts/8%E6%9F%93%E8%89%B2/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Minimum Segments
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
