@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Records on Inftopia</title>
+    <link>http://localhost:1313/tags/records/</link>
+    <description>Recent content in Records on Inftopia</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 25 Jun 2026 19:36:29 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/records/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>新高一复健计划记录</title>
+      <link>http://localhost:1313/posts/%E6%96%B0%E9%AB%98%E4%B8%80%E5%A4%8D%E5%81%A5%E8%AE%A1%E5%88%92%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Thu, 25 Jun 2026 19:36:29 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E6%96%B0%E9%AB%98%E4%B8%80%E5%A4%8D%E5%81%A5%E8%AE%A1%E5%88%92%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;p&gt;最后一年不能摆了，必须全力冲刺了。&lt;/p&gt;
+&lt;p&gt;之前一直在上文化课，现开始复健。&lt;/p&gt;
+&lt;p&gt;另一方面也应该调整好状态了。&lt;/p&gt;
+&lt;p&gt;从 6.25 晚上七点四十开始。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;625&#34;&gt;6.25&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

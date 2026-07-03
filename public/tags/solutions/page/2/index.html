@@ -143,23 +143,6 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">彩绘
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>简单题，但脑抽了。
-这个题目本质上就是让我们算这个每个位置的系数。（因为他可以通过类似哈希来检验你的系数，就算你有不算出系数的方法，那通过他的不同数据一定能唯一确定系数）
-好的我们很容易得到一个 $O(n^3)$ 的做法，设 $f_{i,j}$ 为第 $i$ 轮第 $j$ 个数的系数，然后枚举你当前选择哪一个。然后便是 $O(n^2)$ 的。你发现对每个 $f_{i,j}$ 他只从 $f_{i-1,j}$ 和 $f_{i-1,j-1}$ 转移过来。然后就方了。
-如何继续优化？显然你可以把每轮的除以 $i-1$ 和除以 $2$ 拎出来。然后你对着剩下的表进行干瞪。你通过瞎试发现他一定是 $\binom{i-1}{j-1}$ 的倍数。然后你对他除完之后的进行因式分解。然后发现除完之后是两个双阶乘的积。然后你就糊里糊涂地做完了，但并不知道这个组合意义。这不乏为一种方法但多少有点唐了。
-然后说正解，实际上你发现我糖丸了。你还可以继续拎。具体思想就还是考虑不变量以及图论建模。我们把他变成在自动机上走，然后你发现你每增加 $j$ 就会乘上固定贡献，每增加 $i-j$ 也会乘上固定贡献。于是我们发现这两个贡献与你走的路径无关，乘上的东西都是一定的。然后贡献就是两个双阶乘，而你的路径数就是 $\binom{i-1}{j-1}$。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-30 23:33:04 +0800 CST'>May 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to 彩绘" href="http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">Sequence Growing Hard
     </h2>
   </header>
@@ -413,6 +396,33 @@ Creatively，我们发现我们在做 kruskal。
   </div>
   <footer class="entry-footer"><span title='2026-05-04 23:23:05 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Blue and Red Tree" href="http://localhost:1313/posts/blue-and-red-tree/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">School Road
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>广义串并联好题。
+首先我们看到 $m \le n &#43; 13$ 这个就是广义串并联。
+其次，对于这种东西，我们可以把点双搞出来，这个简单路径的限制如果是难点可以用点双解决。
+首先肯定不可能出点双再进来。
+你考虑我们发现如果 $1$ 和 $n$ 不在一个点双以内，那我们直接就连一条 $1,n,L$ 的路径显然不会更改答案。
+所以我们直接考虑它点双。
+好的然后我们既然用的是这个广义串并联，我们就要考虑 $K_4$。
+然后你发现，如果有这个 $K_4$ 就一定存在 $&gt;L$ 的路径。
+然后我们知道他是广义串并联，然后我们缩图即可。
+而且注意到 $1$ 和 $n$ 是可以不缩的，如果不缩导致不行说明也是不行的（类似 $K_4$ 的分析）
+重边显然是要 check 边长短。
+二度点显然把两个长度加起来即可。
+这个告诉我们的就是说这个 VCC 非常的好用在简单路径中。
+以及这个广义串并联看到部分分就要想到。
+或者更本质的来说，你如果是要搞类似这种就是一排排过去，长得跟毛细血管一样的，那就是可以试试广义串并联。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-04 23:16:14 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to School Road" href="http://localhost:1313/posts/school-road/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

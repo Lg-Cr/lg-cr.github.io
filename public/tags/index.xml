@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 23 Jun 2026 23:16:28 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 23:10:07 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Counting</title>
+      <link>http://localhost:1313/tags/counting/</link>
+      <pubDate>Fri, 03 Jul 2026 23:10:07 +0800</pubDate>
+      <guid>http://localhost:1313/tags/counting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DP</title>
+      <link>http://localhost:1313/tags/dp/</link>
+      <pubDate>Fri, 03 Jul 2026 23:10:07 +0800</pubDate>
+      <guid>http://localhost:1313/tags/dp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Solutions</title>
+      <link>http://localhost:1313/tags/solutions/</link>
+      <pubDate>Fri, 03 Jul 2026 23:10:07 +0800</pubDate>
+      <guid>http://localhost:1313/tags/solutions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Records</title>
+      <link>http://localhost:1313/tags/records/</link>
+      <pubDate>Thu, 25 Jun 2026 19:36:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/records/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DS</title>
+      <link>http://localhost:1313/tags/ds/</link>
+      <pubDate>Wed, 24 Jun 2026 22:45:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/ds/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Treap</title>
+      <link>http://localhost:1313/tags/treap/</link>
+      <pubDate>Wed, 24 Jun 2026 22:45:29 +0800</pubDate>
+      <guid>http://localhost:1313/tags/treap/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Communication</title>
       <link>http://localhost:1313/tags/communication/</link>
@@ -30,27 +72,6 @@
       <description></description>
     </item>
     <item>
-      <title>Solutions</title>
-      <link>http://localhost:1313/tags/solutions/</link>
-      <pubDate>Tue, 23 Jun 2026 23:16:28 +0800</pubDate>
-      <guid>http://localhost:1313/tags/solutions/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DS</title>
-      <link>http://localhost:1313/tags/ds/</link>
-      <pubDate>Fri, 19 Jun 2026 23:40:18 +0800</pubDate>
-      <guid>http://localhost:1313/tags/ds/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tree</title>
-      <link>http://localhost:1313/tags/tree/</link>
-      <pubDate>Sat, 13 Jun 2026 21:24:30 +0800</pubDate>
-      <guid>http://localhost:1313/tags/tree/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Contstruction</title>
       <link>http://localhost:1313/tags/contstruction/</link>
       <pubDate>Sat, 06 Jun 2026 17:09:27 +0800</pubDate>
@@ -58,24 +79,10 @@
       <description></description>
     </item>
     <item>
-      <title>Counting</title>
-      <link>http://localhost:1313/tags/counting/</link>
-      <pubDate>Thu, 04 Jun 2026 19:57:25 +0800</pubDate>
-      <guid>http://localhost:1313/tags/counting/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Combination</title>
       <link>http://localhost:1313/tags/combination/</link>
       <pubDate>Thu, 04 Jun 2026 19:46:13 +0800</pubDate>
       <guid>http://localhost:1313/tags/combination/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DP</title>
-      <link>http://localhost:1313/tags/dp/</link>
-      <pubDate>Thu, 04 Jun 2026 19:19:51 +0800</pubDate>
-      <guid>http://localhost:1313/tags/dp/</guid>
       <description></description>
     </item>
     <item>
@@ -170,6 +177,13 @@
       <description></description>
     </item>
     <item>
+      <title>Tree</title>
+      <link>http://localhost:1313/tags/tree/</link>
+      <pubDate>Mon, 04 May 2026 23:23:05 +0800</pubDate>
+      <guid>http://localhost:1313/tags/tree/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Series-Parallel</title>
       <link>http://localhost:1313/tags/series-parallel/</link>
       <pubDate>Mon, 04 May 2026 23:16:14 +0800</pubDate>
@@ -230,27 +244,6 @@
       <link>http://localhost:1313/tags/graph-euler-theorem/</link>
       <pubDate>Sun, 26 Apr 2026 22:16:41 +0800</pubDate>
       <guid>http://localhost:1313/tags/graph-euler-theorem/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Binary</title>
-      <link>http://localhost:1313/tags/binary/</link>
-      <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
-      <guid>http://localhost:1313/tags/binary/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ODT</title>
-      <link>http://localhost:1313/tags/odt/</link>
-      <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
-      <guid>http://localhost:1313/tags/odt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>树剖</title>
-      <link>http://localhost:1313/tags/%E6%A0%91%E5%89%96/</link>
-      <pubDate>Mon, 20 Apr 2026 22:57:49 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E6%A0%91%E5%89%96/</guid>
       <description></description>
     </item>
     <item>

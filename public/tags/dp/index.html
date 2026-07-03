@@ -143,6 +143,32 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Festivals in JOI Kingdom 2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>做题首先应该发掘性质，这里的性质很显然，对于正确答案而言肯定是按照右端点排序。
+然后我就走偏了。
+考虑正难则反，算相同的方案数。
+注意到当相同的时候，正确答案和错误答案一定是一一对应的。
+这个题看起来就很像 DP，那我们就要找子结构，找阶段。
+好的我们现在想要做的是找其充要条件，这要求我们手玩。
+我们通过手玩发现对于正确答案（红），错误答案（蓝），其他区间（黑）而言，所有的区间的左端点必须在蓝内。然后在两个红的右端点之间的右端点的左端点必须比较小的那个红的右端点小。
+然后我们发现其实这个限制更有排序需求的是右端点，然后我们按照右端点排序，于是很自然想到以红色的右端点为阶段。
+这个一个很好的性质是在一个阶段内，黑色的线段的左端点是一个排列，右端点在一定范围内完全无限制。
+那从左到右还是从右到左？这个其实不一定，我们试了一下发现从右到左更好做。
+然后这里是一个不平凡的观察，我们可以把蓝线段拆开来，右端点在上个阶段里确定，左端点在这个阶段里确定。
+此时我们就对红色的左端点与两个蓝色的分界线的相对位置进行分类讨论。我们每次枚举这个阶段里的黑色左端点有多少个。然后把右端点任意插入。
+不过我们还要考虑红蓝是同一个线段的情况，我们开两个数组即可。
+直接转移并卡点常即可获得 100。时间复杂度 $O(n^2)$。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-03 23:10:07 +0800 CST'>July 3, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Festivals in JOI Kingdom 2" href="http://localhost:1313/posts/festivals-in-joi-kingdom-2/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Random Kth Max
     </h2>
   </header>
@@ -158,32 +184,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-06-04 19:19:51 +0800 CST'>June 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Random Kth Max" href="http://localhost:1313/posts/random-kth-max/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">一般难度的推式子题
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>首先我们有 $O(n^3)$ DP。
-设 $f_{i,j}$ 为当前你有 $i$ 个点，高度为 $j$ 的方案数。转移直接考虑把一个树接到另一个树下边。
-f[1][1] = 1; rep (i, 1, n) pre[1][i] = 1; rep (i, 2, n) { rep (j, 2, i) { rep (k, 1, i - 1) { f[i][j] &#43;= f[i - k][j] * pre[k][j - 1]; f[i][j] &#43;= pre[i - k][j - 1] * f[k][j - 1]; } } rep (j, 1, n) pre[i][j] = pre[i][j - 1] &#43; f[i][j]; } Mint ans = 0; rep (i, 1, n) { ans &#43;= f[n][i] * (i - 1); } 考虑优化，这个dp本质上是第一维做加法卷积，第二维做 max 卷积。于是应该容易用 ntt 做到 O(n^2\log n)$。获得六十分。但实际上模数卡了你所以别往这个方向想。
-就我们感觉一下这个深度是硬伤啊。其实我们是不是可以不计第二维呢？但问题是你取 max 啊！好像很难说你把他直接剁掉哎。
-那我们换个方向，我觉得这个 DP 没有很多前途。
-我有一计。你考虑你根本不管前面的了。你想 $f_{i}$ 表示 $n$ 个点的树里面深度为 $i$ 的方案数。
-主要是你发现其实 $f$ 后几项是很规律的。你想一下能不能从后往前推。
-你考虑你当前有一棵高为 $i$ 的树。然后你要把他的高度变矮。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-31 10:17:03 +0800 CST'>May 31, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to 一般难度的推式子题" href="http://localhost:1313/posts/%E4%B8%80%E8%88%AC%E9%9A%BE%E5%BA%A6%E7%9A%84%E6%8E%A8%E5%BC%8F%E5%AD%90%E9%A2%98/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
