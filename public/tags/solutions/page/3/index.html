@@ -143,6 +143,122 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Cactus Meets Torus
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>如果前面的是怪物题，那这个是克苏鲁题，不可名状，只能感性理解。
+什么逆天东西啊喂！
+首先我们得先看懂题，注意 Torus 指的不是球，他实际上你硬要画出来是一个…甜甜圈。
+但我们还是在矩形纸上考虑问题吧，不然太难描述了。
+我们可以把他假想成，一个无限延伸的平面，上下左右都复制当前纸，这样直观一点。
+好的，我们想象一下，一个环可以长什么样。
+他首先不能在纸上是一个圆对吧这样切了就爆了。
+他能是怎么样的？他肯定至少要能穿过边界对吧，然后呢他这个要求联通，等价于说你要按照这个环切了之后呢，存在一个连通块，满足他进行在 $x$ 和 $y$ 上都进行类似 mod 的操作重叠在一起后覆盖了整个矩形。
+或者本质一点，他应该是，所有的连通块，全等？？？
+我感觉是这样的。
+然后我们发现他实际上画在这个无限平面上呢，是类似一堆这个同一个方向的线，类似平行，但是可能扭来扭去。
+显然我们可以在无限平面上任意平移这个我们考虑的矩形。
+然后显然我们根据拓扑原理，你是直的是弯的的是根本不重要的，你只要交点结构一样即可。
+你交点的这个位置是不重要的，重要的是你交点在整个图形中的层次与地位。
+然后你发现就非常多的画环的方式都是等价的，比如一个横线是一个等价类，一个竖线是一个等价类，一个对角线也是一个等价类。他们的特点都是可以通过连续地平移矩阵，或者连续地扰动这个路径得到同一个地方。
+然后我们有一个非常重要的感性理解，就是其实像比如说无论是横的啊，竖的啊，对角线的啊，还是缠两圈的对角线啊，甚至自己跟自己交错的神秘斜线。他们本质相同。我们都可以通过旋转和缩放我们所观测的这个矩形来发现，比如一个对角线，你给他转一下再缩放一下，对角线就变为竖线了。因此我们可以选择最简单的横线和竖线思考问题。
+然后我们可以开始思考问题了。是的现在才开始思考问题。
+我们注意到，如果等价类 $\ge 3$ 个，那他们必定共点。
+不然因为你不能边相交，三个拓扑上方向不同的一定会围出我们不想要的环。
+然后我们发现这等价于仙人掌上所有环共点。
+我们试图构造，发现这是好构造的，你就钦定一个中心点，然后向外辐射即可。
+只要满足这个条件就是 Yes。
+显然剩下的树你随便挂在一边即可。
+如果等价类 $=2$ 个，那他们要么共点，要么其中一个等价类只有一个环，且与其他所有的环相交。
+理由同理，如果共点的话我们在第一个情况就算过了，不用管。
+如果是一个等价类只有一个环，且与其他所有的环相交，这相当于一个川中间画了一横。
+然后这个东西你发现你可以看成是，仙人掌上的所有其他环都挂在一个特定的环上。
+这个也是好判的，你记 $i$ 在 $c_i$ 个环里，你只要看 $\sum c_i = sz&#43;cnt-1$ 即可。
+然后如果只有一个等价类，我们发现他一定得是一堆竖线，然后一个横线段（不是横直线）贯穿。
+这等价于所有的环都挂在一条链上，你建出圆方树进行简单的树形 DP 即可。
+然后我们终于理解完了这个题目。但也只是理解，至于证明？
+我们伟大的信息学，不需要证明。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-05 22:48:39 +0800 CST'>May 5, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Cactus Meets Torus" href="http://localhost:1313/posts/cactus-meets-torus/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Tri Colored Paths
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>非常非常厉害厉害的题目，总算是自己做出来了个厉害题。
+首先显然正难则反。
+嗯。我们一个想法呢，是说，我们可以按点分类，分成 A 点：连接 1 2 的点，B 点：1 3, C 点：2 3, X 点：1 2 3, O 点：无。
+然后呢，我们想一下啊，我们发现我们只要把 ABC 中不同的两个点，连起来，然后就一定是一条合法路径。
+当然这个有 corner case，就是如果是个三元环，那就爆了。
+为什么呢？因为两点都连有不同的两种颜色，所以满足。
+所以似乎这个如果有 ABC 点的话，那只能有这一种，换句话来说只能有两种颜色。
+好的，然后 X 点同理，你发现，这个如果有 X 点似乎其他必须得是 O 点。
+然后你写完发现样例过不了。
+为啥呢，因为 corner case。
+然后你很容易发现，我们如果是 X 点的情况，因为 corner case，我们如果两个不同颜色的边连到了同一个点双里，那就爆了，因为会形成一条路。
+然后另一种情况就是，你根本没有 X 点，你可能是有一堆奇奇怪怪的三元环（如样例 1），他因为俩点接到同一个点上了，所以爆了。
+然后你怎么着一下，然后就把这个情况全部判掉，然后就过了。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-04 23:32:34 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Tri Colored Paths" href="http://localhost:1313/posts/tri-colored-paths/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Blue and Red Tree
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>怪物题目。
+我一直在想正着做，然后就爆了。
+我们考虑反着做。
+首先你解放一条边，显然这条边一定得是红蓝边重合。
+然后你解放倒数第二条边，然后你发现他一定得是红蓝边分别连接了两个相同的这个解放块。
+然后你发现你相当于是合并解放块的过程。
+然后你干脆啊，直接就给他启发式合并，把整个块变成一个点，然后他就相当于要求红蓝边是重边。
+显然因为两个是树，所以呢你根本不用区分哪个是红边哪个是蓝边，直接找重边即可，因为树不可能有重边。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-04 23:23:05 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Blue and Red Tree" href="http://localhost:1313/posts/blue-and-red-tree/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">School Road
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>广义串并联好题。
+首先我们看到 $m \le n &#43; 13$ 这个就是广义串并联。
+其次，对于这种东西，我们可以把点双搞出来，这个简单路径的限制如果是难点可以用点双解决。
+首先肯定不可能出点双再进来。
+你考虑我们发现如果 $1$ 和 $n$ 不在一个点双以内，那我们直接就连一条 $1,n,L$ 的路径显然不会更改答案。
+所以我们直接考虑它点双。
+好的然后我们既然用的是这个广义串并联，我们就要考虑 $K_4$。
+然后你发现，如果有这个 $K_4$ 就一定存在 $&gt;L$ 的路径。
+然后我们知道他是广义串并联，然后我们缩图即可。
+而且注意到 $1$ 和 $n$ 是可以不缩的，如果不缩导致不行说明也是不行的（类似 $K_4$ 的分析）
+重边显然是要 check 边长短。
+二度点显然把两个长度加起来即可。
+这个告诉我们的就是说这个 VCC 非常的好用在简单路径中。
+以及这个广义串并联看到部分分就要想到。
+或者更本质的来说，你如果是要搞类似这种就是一排排过去，长得跟毛细血管一样的，那就是可以试试广义串并联。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-04 23:16:14 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to School Road" href="http://localhost:1313/posts/school-road/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Cost Performance Flow
     </h2>
   </header>
@@ -312,122 +428,12 @@
   <footer class="entry-footer"><span title='2026-04-30 22:39:06 +0800 CST'>April 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Distinct GCDs (Hard Version)" href="http://localhost:1313/posts/distinct-gcds-hard-version/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Square Resistance Value
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>很清奇的构造题，以前似乎从来没见过逼近这一块的构造，而且这还是逼近无理数，我说实话开始有点懵。
-这个题你如果事先知道连分数理论的话应该是相当简单的。
-首先串联是电阻相加，并联是电阻的倒数相加再倒数。
-然后一个很厉害的放缩就是你考虑每次在原电路上串联或者并联一个电阻。然后这个时候你发现他会让分子加上分母或者分母加上分子。
-这就是 Stern-Brocot 树啊，然后你发现把整个连分数理论套上去基本上就做完了，你直接在 Stern-Brocot 树上二分，然后很容易通过连分数理论证明精度是足够的。
-这个题其实就是科技题吧，学会科技就好做了。
-Continued Fraction Theory
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-28 23:12:23 +0800 CST'>April 28, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Square Resistance Value" href="http://localhost:1313/posts/square-resistance-value/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">星图重绘
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>神啦兄弟神啦。
-逆天构造拼尽全力无法战胜。
-明明想出了所有的结论，却仍然不会构造。
-我们称左上右下为 A 区，左下右上为 B 区。
-结论 1: 一个三角形可以被放入矩形当且仅当没有连续上升或连续下降。换个说法就是有 2 个点的两条边在不同区。
-这个显然，手玩即可。
-结论 2: 一定不会有一个点被包含在三角形内。
-如果这样的话可以通过把原来那个三角形删了并通过手玩发现至少获得两个三角形，一定更优。
-结论 3: 答案图一定不会有两个分开的三角形连通块。
-如果 P 和 Q 在横坐标或者纵坐标上有交叉，那直接去交叉的那个点，然后在另一侧取两侧的两个外围点组成三角形就联通了。
-如果整个 P 在 Q 左下角，那取 P 的一个点然后取一条132形三角形（一个多边形一定有逆序对）然后再把其包含的点像 2 一样塞进去即可。
-结论 4: 一个点如果周围被三角形挤满，那一定四个象限都有边。
-假设没有，那就有一边是不符合条件的三角形。
-结论 5：一个多边形的坨坨子里面不会有空。
-这个十分大便，你就分讨吧，然后会发现这个是对的。
-结论 6：前缀最大值最小值后缀最大值最小值一定在边界上。
-因为你不可能在里面啊，你在里面与 4 矛盾，然而又不能在里面空出来，这样与 5 矛盾。
-然后呢一个 native 的想法是增量构造，你直接把能连的都连上。
-然后你如果是 acm 赛制你一发交上去然后你发现你通过了。
-但我们是 oier 不是 acmer 我们不能这样，我们不能瞎猜，得有理有据的推。
-然后你发现推不出来。
-好的。然后这个逆天构造干了个事情。他宣称答案就是以前缀最大值前缀最小值后缀最大值后缀最小值为边界组成的坨坨子，并且内部通过单调栈来进行分配。
-这实际上就是增量构造构造出来的东西。但这个东西十分的吓人，你哪知道这个为什么是最优的，感觉一眼看上去是完全没有这个道理的。
-然而你发现你不知道一个叫作平面图欧拉定理的东东：$V&#43;F=E&#43;1$（此处 F 不包括最外面那个平面）。
-其实是忘了。
-然后你发现我们直接构造出来的东西的这个三角形数算一下为这个 $2V-P-2$。$P$ 为边界个数。
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-26 22:16:41 +0800 CST'>April 26, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to 星图重绘" href="http://localhost:1313/posts/%E6%98%9F%E5%9B%BE%E9%87%8D%E7%BB%98/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">古明地枣的袜子
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>以下假设 $n,m$ 同阶。
-很好的题目！
-第一个重要的观察就是，这个操作的顺序显然是不影响这个答案的。
-我们想到我们不能直接去进行这个操作，因为他涉及到 $O(n)$ 个点，就算再怎么维护，都是困难的，我们要把他压缩一波。
-我们要把这个信息最好是压到 $O(1)$，但在没有预处理的情况下有些困难。
-我们先不考虑查询，我们直接考虑给一堆修改，你怎么小空间地干这个事情。
-首先明显的想法是，这个前缀加有点太蠢了，考虑差分一下，变成单点加，后缀最大值。
-然后你发现你可以把调换两维啊。既然你这个单点加的顺序没有关系，那我们就直接从后往前考虑，刚好算得就是后缀最大值。
-然后你就变成了，把这些操作呢按照以 $x$ 为第一关键字从大到小，以 $y$ 为第二关键字从小到大排序，依次考虑，于是你发现你根本不需要考虑 $x$ 的问题，你直接把排完序后的 $y$ 求一个前缀最大值就可以了。
-这个时候你发现前缀最小值这个东西是好东西！他可以看作是一个半裙元素，可以简单地拼接，且信息量为 $O(1)$。只需记录内部前缀最大值，以及总和，即可方便地合并。
-然后我们到了这个序列上呢，你发现你还是要把区间排序，这个事情难做的，因为你至少要根号 log 的复杂度。然后考虑你干脆先排好序，然后在排好序的序列上找 $i\in[l,r]$，把这个子序列拿出来即可。
-然后就出现了一个 KDT 的做法，你考虑类似整体二分一样，把所有询问一起做，从后往前扫一遍，考虑每个点对每个询问的贡献，画在二维平面上，就是矩形加上一个半裙元素，使用 KDT 做到 $O(n\sqrt n)$。
-但是呢，KDT 常数太大了，于是我们考虑其他做法。
-我们考虑分块对吧，然后呢我们想想对什么分块，对扫描的东西？还是原本的下标？
-原本的下标的话，你发现仍旧是退化成了一个你要往里面加东西，而这个你加一个至少要 $O(\log n)$，不可取。
-我们对扫描的东西分块，我们就发现我们直接在每个块里面算即可，合并块之间是好合并的，你对每个询问来讲，你如果知道了每个块内部的东西，那合并起来，直接把所有的信息加在一起即可。
-我们考虑如何计算一个块内所有下标在 $[l,r]$ 内的答案。
-我们突然发现这个块内的元素只有 $O(\sqrt n)$ 个啊！那你不是总共只有 $O(n)$ 种可能的本质不同询问，那你直接把所有的算出来就可以了，至于把原询问映射到小询问上，这个是简单的，直接离散化。
-我们问题转化为了，给定长为 $n$ 的序列 $a$ 和半裙元素序列 $b$，要求在 $O(n^2)$ 的时间复杂度内求出对于每个 $[l,r]$，满足 $a_i \in [l,r]$ 的 $i$ 的子序列的 $b$ 的和是多少。
-我们一招鲜吃遍天。既然我们都搞的是本质不同询问，那你再搞一次，用 TB5？
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-19 20:13:21 +0800 CST'>April 19, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to 古明地枣的袜子" href="http://localhost:1313/posts/%E5%8F%A4%E6%98%8E%E5%9C%B0%E6%9E%A3%E7%9A%84%E8%A2%9C%E5%AD%90/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">P4384 QOJ2994 [八省联考 2018] 制胡窜
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>看到子串出现类直接套上一个 SAM。
-然后非常套路地使用线段树合并来维护子树的 endpos。
-我们的限制即相当于是，给定一堆长度相等的线段（存在线段树里），然后要你算多少种方案插两根针不会把所有线段全部插到。
-我们考虑正难则反，考虑多少种会把所有插到。
-然后我们再转化，考虑一根针能插到的线段的起点位置是一个线段，即我们要选两个定长线段覆盖所有点。
-这个问题简单多了，我们设第一个线段的末尾是 $x$，另一个的开头是 $y$。
-我们先假设两个不是线段，我们假设要用 $[-\infin, x]$ 和 $[y,\infin]$ 来覆盖所有点。
-二元限制我们画成图，容易发现满足条件的 $(x,y)$ 点对是一个右下角的，阶梯状面积，其中凹点在 $x=y$ 上，且凹点的 $x$ 就是点的位置。
-然后我们考虑两个线段的限制，他其实就是给 $x$ 设定了一个上界，$y$ 设定了一个下界，然后这样合法的仍旧是一个阶梯状。
-我们考虑在使用线段树维护阶梯状的时候，我们不从横坐标维护有多少个 $y$ 满足在当前 $x$ 下合法，我们维护那个突出去主对角线的面积。
-你发现这个东西是好维护的，你对每个线段树节点维护第一个和最后一个点，然后 pushup 的时候算一下两边的贡献然后额外把少算的贡献算上即可。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-17 22:42:18 +0800 CST'>April 17, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to P4384 QOJ2994 [八省联考 2018] 制胡窜" href="http://localhost:1313/posts/%E5%88%B6%E8%83%A1%E7%AA%9C/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/tags/solutions/page/2/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/tags/solutions/page/4/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>

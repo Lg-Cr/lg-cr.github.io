@@ -143,6 +143,91 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Sightseeing Plan
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>有趣题。
+首先答案相当于要求三个矩阵里枚举三个点，然后求 AB 的路径数乘上 BC 之间的路径数加起来。
+然后这个东西呢，我们先考虑假如 A 和 B 都固定的情况，我们发现是一个矩形。
+然后我们根据一个叫曲棍球棒恒等式的东西我们很容易写出其为：
+$$ f(x_r &#43; 1, y_r &#43; 1) &#43; f(x_l, y_l) - f(x_r &#43; 1, y_l) - f(x_l, y_r &#43; 1); $$
+然后我们就有平方做法了。
+然后我们怎么继续优化？
+我们首先发现这个式子是可以拆的，拆成十六个问题，每个问题相当于给起点和终点要求午饭点。
+然后我们还是想着差分对吧，然后我们就把他差分成：午饭区域是一个以起点为左下角的长方形。
+然后我们惊奇的发现我们可以枚举我们从哪个边界出这个矩形的，因为我们知道了这个之后我们可以方便算出有多少种方案，更重要的是——在经过固定边界的一条路径上的午饭点的数量是相同的，我们直接乘起来就可以了。
+然后就大概是超大常数 $O(n)$。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-04 19:46:13 +0800 CST'>June 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Sightseeing Plan" href="http://localhost:1313/posts/sightseeing-plan/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Random Kth Max
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简单题。
+首先看到这个题目第一眼就要想到结论：$n$ 个在 $[0,1]$ 间均匀随机的数的第 $k$ 小期望是 $\cfrac{k}{n &#43; 1}$。
+这个范围相当宽裕，我们只要给出一个 $O(\text{poly } n)$ 的即可
+然后我们考虑枚举答案所在区间，我们现在枚举到了 $[t - 1, t]$。
+然后我们想知道有多少个随机数落在这个区间里，多少个落在区间左，多少个落在区间右。我们如果知道这些我们可以直接通过那个结论算出对应的期望。
+然后我们就是想要知道在钦定了左中右的数量后有多大概率。
+我们可以使用二维背包，直接做即可。时间复杂度四次方。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-04 19:19:51 +0800 CST'>June 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Random Kth Max" href="http://localhost:1313/posts/random-kth-max/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">一般难度的推式子题
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>首先我们有 $O(n^3)$ DP。
+设 $f_{i,j}$ 为当前你有 $i$ 个点，高度为 $j$ 的方案数。转移直接考虑把一个树接到另一个树下边。
+f[1][1] = 1; rep (i, 1, n) pre[1][i] = 1; rep (i, 2, n) { rep (j, 2, i) { rep (k, 1, i - 1) { f[i][j] &#43;= f[i - k][j] * pre[k][j - 1]; f[i][j] &#43;= pre[i - k][j - 1] * f[k][j - 1]; } } rep (j, 1, n) pre[i][j] = pre[i][j - 1] &#43; f[i][j]; } Mint ans = 0; rep (i, 1, n) { ans &#43;= f[n][i] * (i - 1); } 考虑优化，这个dp本质上是第一维做加法卷积，第二维做 max 卷积。于是应该容易用 ntt 做到 O(n^2\log n)$。获得六十分。但实际上模数卡了你所以别往这个方向想。
+就我们感觉一下这个深度是硬伤啊。其实我们是不是可以不计第二维呢？但问题是你取 max 啊！好像很难说你把他直接剁掉哎。
+那我们换个方向，我觉得这个 DP 没有很多前途。
+我有一计。你考虑你根本不管前面的了。你想 $f_{i}$ 表示 $n$ 个点的树里面深度为 $i$ 的方案数。
+主要是你发现其实 $f$ 后几项是很规律的。你想一下能不能从后往前推。
+你考虑你当前有一棵高为 $i$ 的树。然后你要把他的高度变矮。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-31 10:17:03 +0800 CST'>May 31, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 一般难度的推式子题" href="http://localhost:1313/posts/%E4%B8%80%E8%88%AC%E9%9A%BE%E5%BA%A6%E7%9A%84%E6%8E%A8%E5%BC%8F%E5%AD%90%E9%A2%98/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">彩绘
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简单题，但脑抽了。
+这个题目本质上就是让我们算这个每个位置的系数。（因为他可以通过类似哈希来检验你的系数，就算你有不算出系数的方法，那通过他的不同数据一定能唯一确定系数）
+好的我们很容易得到一个 $O(n^3)$ 的做法，设 $f_{i,j}$ 为第 $i$ 轮第 $j$ 个数的系数，然后枚举你当前选择哪一个。然后便是 $O(n^2)$ 的。你发现对每个 $f_{i,j}$ 他只从 $f_{i-1,j}$ 和 $f_{i-1,j-1}$ 转移过来。然后就方了。
+如何继续优化？显然你可以把每轮的除以 $i-1$ 和除以 $2$ 拎出来。然后你对着剩下的表进行干瞪。你通过瞎试发现他一定是 $\binom{i-1}{j-1}$ 的倍数。然后你对他除完之后的进行因式分解。然后发现除完之后是两个双阶乘的积。然后你就糊里糊涂地做完了，但并不知道这个组合意义。这不乏为一种方法但多少有点唐了。
+然后说正解，实际上你发现我糖丸了。你还可以继续拎。具体思想就还是考虑不变量以及图论建模。我们把他变成在自动机上走，然后你发现你每增加 $j$ 就会乘上固定贡献，每增加 $i-j$ 也会乘上固定贡献。于是我们发现这两个贡献与你走的路径无关，乘上的东西都是一定的。然后贡献就是两个双阶乘，而你的路径数就是 $\binom{i-1}{j-1}$。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-30 23:33:04 +0800 CST'>May 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to 彩绘" href="http://localhost:1313/posts/%E5%BD%A9%E7%BB%98/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Sequence Growing Hard
     </h2>
   </header>
@@ -307,122 +392,6 @@ Creatively，我们发现我们在做 kruskal。
   </div>
   <footer class="entry-footer"><span title='2026-05-07 22:36:29 +0800 CST'>May 7, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to 全对最大流" href="http://localhost:1313/posts/%E5%85%A8%E5%AF%B9%E6%9C%80%E5%A4%A7%E6%B5%81/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Cactus Meets Torus
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>如果前面的是怪物题，那这个是克苏鲁题，不可名状，只能感性理解。
-什么逆天东西啊喂！
-首先我们得先看懂题，注意 Torus 指的不是球，他实际上你硬要画出来是一个…甜甜圈。
-但我们还是在矩形纸上考虑问题吧，不然太难描述了。
-我们可以把他假想成，一个无限延伸的平面，上下左右都复制当前纸，这样直观一点。
-好的，我们想象一下，一个环可以长什么样。
-他首先不能在纸上是一个圆对吧这样切了就爆了。
-他能是怎么样的？他肯定至少要能穿过边界对吧，然后呢他这个要求联通，等价于说你要按照这个环切了之后呢，存在一个连通块，满足他进行在 $x$ 和 $y$ 上都进行类似 mod 的操作重叠在一起后覆盖了整个矩形。
-或者本质一点，他应该是，所有的连通块，全等？？？
-我感觉是这样的。
-然后我们发现他实际上画在这个无限平面上呢，是类似一堆这个同一个方向的线，类似平行，但是可能扭来扭去。
-显然我们可以在无限平面上任意平移这个我们考虑的矩形。
-然后显然我们根据拓扑原理，你是直的是弯的的是根本不重要的，你只要交点结构一样即可。
-你交点的这个位置是不重要的，重要的是你交点在整个图形中的层次与地位。
-然后你发现就非常多的画环的方式都是等价的，比如一个横线是一个等价类，一个竖线是一个等价类，一个对角线也是一个等价类。他们的特点都是可以通过连续地平移矩阵，或者连续地扰动这个路径得到同一个地方。
-然后我们有一个非常重要的感性理解，就是其实像比如说无论是横的啊，竖的啊，对角线的啊，还是缠两圈的对角线啊，甚至自己跟自己交错的神秘斜线。他们本质相同。我们都可以通过旋转和缩放我们所观测的这个矩形来发现，比如一个对角线，你给他转一下再缩放一下，对角线就变为竖线了。因此我们可以选择最简单的横线和竖线思考问题。
-然后我们可以开始思考问题了。是的现在才开始思考问题。
-我们注意到，如果等价类 $\ge 3$ 个，那他们必定共点。
-不然因为你不能边相交，三个拓扑上方向不同的一定会围出我们不想要的环。
-然后我们发现这等价于仙人掌上所有环共点。
-我们试图构造，发现这是好构造的，你就钦定一个中心点，然后向外辐射即可。
-只要满足这个条件就是 Yes。
-显然剩下的树你随便挂在一边即可。
-如果等价类 $=2$ 个，那他们要么共点，要么其中一个等价类只有一个环，且与其他所有的环相交。
-理由同理，如果共点的话我们在第一个情况就算过了，不用管。
-如果是一个等价类只有一个环，且与其他所有的环相交，这相当于一个川中间画了一横。
-然后这个东西你发现你可以看成是，仙人掌上的所有其他环都挂在一个特定的环上。
-这个也是好判的，你记 $i$ 在 $c_i$ 个环里，你只要看 $\sum c_i = sz&#43;cnt-1$ 即可。
-然后如果只有一个等价类，我们发现他一定得是一堆竖线，然后一个横线段（不是横直线）贯穿。
-这等价于所有的环都挂在一条链上，你建出圆方树进行简单的树形 DP 即可。
-然后我们终于理解完了这个题目。但也只是理解，至于证明？
-我们伟大的信息学，不需要证明。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-05 22:48:39 +0800 CST'>May 5, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Cactus Meets Torus" href="http://localhost:1313/posts/cactus-meets-torus/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Tri Colored Paths
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>非常非常厉害厉害的题目，总算是自己做出来了个厉害题。
-首先显然正难则反。
-嗯。我们一个想法呢，是说，我们可以按点分类，分成 A 点：连接 1 2 的点，B 点：1 3, C 点：2 3, X 点：1 2 3, O 点：无。
-然后呢，我们想一下啊，我们发现我们只要把 ABC 中不同的两个点，连起来，然后就一定是一条合法路径。
-当然这个有 corner case，就是如果是个三元环，那就爆了。
-为什么呢？因为两点都连有不同的两种颜色，所以满足。
-所以似乎这个如果有 ABC 点的话，那只能有这一种，换句话来说只能有两种颜色。
-好的，然后 X 点同理，你发现，这个如果有 X 点似乎其他必须得是 O 点。
-然后你写完发现样例过不了。
-为啥呢，因为 corner case。
-然后你很容易发现，我们如果是 X 点的情况，因为 corner case，我们如果两个不同颜色的边连到了同一个点双里，那就爆了，因为会形成一条路。
-然后另一种情况就是，你根本没有 X 点，你可能是有一堆奇奇怪怪的三元环（如样例 1），他因为俩点接到同一个点上了，所以爆了。
-然后你怎么着一下，然后就把这个情况全部判掉，然后就过了。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 23:32:34 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Tri Colored Paths" href="http://localhost:1313/posts/tri-colored-paths/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Blue and Red Tree
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>怪物题目。
-我一直在想正着做，然后就爆了。
-我们考虑反着做。
-首先你解放一条边，显然这条边一定得是红蓝边重合。
-然后你解放倒数第二条边，然后你发现他一定得是红蓝边分别连接了两个相同的这个解放块。
-然后你发现你相当于是合并解放块的过程。
-然后你干脆啊，直接就给他启发式合并，把整个块变成一个点，然后他就相当于要求红蓝边是重边。
-显然因为两个是树，所以呢你根本不用区分哪个是红边哪个是蓝边，直接找重边即可，因为树不可能有重边。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 23:23:05 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Blue and Red Tree" href="http://localhost:1313/posts/blue-and-red-tree/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">School Road
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>广义串并联好题。
-首先我们看到 $m \le n &#43; 13$ 这个就是广义串并联。
-其次，对于这种东西，我们可以把点双搞出来，这个简单路径的限制如果是难点可以用点双解决。
-首先肯定不可能出点双再进来。
-你考虑我们发现如果 $1$ 和 $n$ 不在一个点双以内，那我们直接就连一条 $1,n,L$ 的路径显然不会更改答案。
-所以我们直接考虑它点双。
-好的然后我们既然用的是这个广义串并联，我们就要考虑 $K_4$。
-然后你发现，如果有这个 $K_4$ 就一定存在 $&gt;L$ 的路径。
-然后我们知道他是广义串并联，然后我们缩图即可。
-而且注意到 $1$ 和 $n$ 是可以不缩的，如果不缩导致不行说明也是不行的（类似 $K_4$ 的分析）
-重边显然是要 check 边长短。
-二度点显然把两个长度加起来即可。
-这个告诉我们的就是说这个 VCC 非常的好用在简单路径中。
-以及这个广义串并联看到部分分就要想到。
-或者更本质的来说，你如果是要搞类似这种就是一排排过去，长得跟毛细血管一样的，那就是可以试试广义串并联。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 23:16:14 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to School Road" href="http://localhost:1313/posts/school-road/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

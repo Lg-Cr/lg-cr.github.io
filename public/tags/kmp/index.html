@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Tree | Inftopia</title>
+<title>KMP | Inftopia</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="Inftress">
-<link rel="canonical" href="http://localhost:1313/tags/tree/">
+<link rel="canonical" href="http://localhost:1313/tags/kmp/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/tree/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/tree/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/kmp/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/kmp/">
 <noscript>
     <style>
         #theme-toggle,
@@ -137,93 +137,45 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    Tree
+    KMP
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">那一年的秘密基地
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
+    <h2 class="entry-hint-parent">Fedya the Potter Strikes Back
     </h2>
   </header>
   <div class="entry-content">
-    <p>题目相当于选定一个根使其树上的“逆序对”数最小。
-不妨先把根定在 $1$，考虑从 $1$ 移动到 $u$。
-发现本质相当于把 $1$ 到 $u$ 的路径翻转。即给答案带来 $顺序对数-逆序对数$ 的差量。
-原题等价于维护一棵树，每个点的权值为其到根的路径上的 $顺序对数-逆序对数$，要求支持交换两数，查询全局最小值。
-我们显然从差值角度考虑问题，因此可以简化为求逆序对数的最大值。
-考虑更改一个数会对其子树产生什么影响。
-对于其前缀，那些原本比他大，现在比他小或者原本比他小，现在比他大的数会产生固定的贡献。
-显然对于整个子树内其差量是固定的，考虑计算，即计算根到一个点的路径上的数在 $[l,r]$ 中的有多少个。
-假若没有修改这部分贡献是容易使用主席树计算出来的。
-具体来讲，按照 DFS 的顺序，每个节点的权值线段树继承其父亲，并每次在当前权值上增加 $1$，查询直接在对应权值线段树上求和即可。
-带上修改，一个显然的做法是带修莫队。但太慢了过不了。
-哦，你可以把修改变成删去一个，加上一个，然后可以 CDQ。
-具体来讲，DFS 序一维，时间一维，值域一维。你发现他就是三维数点。
-好的这个问题解决了。
-对于其后缀，我们要给子树内的每个数 $x$ 加上 $u$ 到 $x$ 的路径上，值在 $[l,r]$ 间的数的个数。
-不妨差分，我们相当于要给子树内值在 $[l,r]$ 内的东西加上 $1$。然后求树上前缀和的最大值。
-但实际上应该是不太对的，因为树上前缀和的最大值这个东西似乎挺难维护的。
-但你发现其实最大的问题是，这需要同时考虑链和子树，必须考虑树的形态。而树剖显然做不了。
-糖丸了。
-他每次只会交换相邻两个，那用脚做啊。
-你发现会影响答案当且仅当两个数成父子关系，且对下面的影响只有 $1,0,-1$ 的影响。
+    <p>非常有启发性的题目。
+首先考虑一下这个静态的怎么做。
+就子串匹配这个东西，第一反应是 SA 或者是 Z 函数。
+相当于是固定左端点，然后右端点就是一个区间，这非常适合于这类什么区间最小值求和之类的，因为你只要单调栈维护即可。
+但是他们是不好在线做的。
+然后我们考虑转一下思路，考虑 kmp，kmp 是可以在线的。
+乍一看这个 kmp 固定右端点左端点不连续。但他有一个好处是他均摊是对的。
+然后我们一个很暴力的想法就是每次前缀直接把他的所有的 border 全都枚举一遍。
+这显然糖丸了。
+但一个启发是，我们可以实时维护 border。因为一个左端点出来就不会再进去了，然后我们就可以直接维护。
+具体来讲我们相当于是搞一个 border 的左端点的 set。然后每次只能要么把不对的一个一个踢掉，然后再把当前的点加进去。
+于是问题变成了我们如何快速找到那些不对的。
+你注意到一个事情，就是他这个所有的 border 关系形成了一棵树，然后我们每次相当于取一个到根的链。
+然后我们每次直接给每个节点维护一个他下一个的字符是他的颜色。
+然后我们就相当于要把这个链上所有颜色不对的全干掉。
+这是好做的，有各种做法比如倍增。但最好的做法就是你直接记录每个点最靠下的不同色的祖先。然后暴力跳均摊 $O(1)$。
+这个东西应该是相当有用的，因为你考虑你严格拓展了 kmp。你不仅知道了这个 border 树是怎么样的，你甚至可以直接实时维护这个 border 是啥。
+然后我们具体如何统计最小值之和？
+我们都维护了，我们直接给每个 border 维护他们的最小值就可以了。
+我们相当于要进行这些操作：加上一个数，全局对 $w$ 取 min，删掉一个数。
+他给出了一个相当有趣的做法，你考虑用 map 维护 cnt。
+加上一个数直接加。
+取 min 就直接暴力把 $&gt;w$ 的全部 erase 了然后加到 $cnt_w$ 上。
+删掉一个树直接删。
+因为每次 map 不同元素数都只会加减 $1$ 因此均摊是对的。
 </p>
   </div>
-  <footer class="entry-footer"><span title='2026-06-13 21:24:30 +0800 CST'>June 13, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to 那一年的秘密基地" href="http://localhost:1313/posts/%E9%82%A3%E4%B8%80%E5%B9%B4%E7%9A%84%E7%A7%98%E5%AF%86%E5%9F%BA%E5%9C%B0/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Blue and Red Tree
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>怪物题目。
-我一直在想正着做，然后就爆了。
-我们考虑反着做。
-首先你解放一条边，显然这条边一定得是红蓝边重合。
-然后你解放倒数第二条边，然后你发现他一定得是红蓝边分别连接了两个相同的这个解放块。
-然后你发现你相当于是合并解放块的过程。
-然后你干脆啊，直接就给他启发式合并，把整个块变成一个点，然后他就相当于要求红蓝边是重边。
-显然因为两个是树，所以呢你根本不用区分哪个是红边哪个是蓝边，直接找重边即可，因为树不可能有重边。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 23:23:05 +0800 CST'>May 4, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Blue and Red Tree" href="http://localhost:1313/posts/blue-and-red-tree/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Continued Fraction Theory
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>这个东西本质上是用离散的东西去拟合和逼近实数。本质上是整数序列与实数的对应。是用来逼近的，拥有非常良好的性质。
-这个东西用我的话来说的话，连分数本身通过截断可以用来近似，而且很好的性质是他是最优有理近似。而且他与这个数本身的性质有着非同寻常的关系，他们在本质上同源。以及他实际上和欧几里得算法是亲戚，本质上都是对东西进行数论上的分解，只不过这个连分数把范围扩大了，扩大到实数，而且还拥有众多其他性质。还有一个点就是他还有另一个出现的形式就是通过若干次分子加分母或者分母加分子也就是 Stern-Brocot 树的形式出现，我感觉这种方式更好出 oi 题。
-例题：Square Resistance Value
-贴上 DeepSeek 的讲解：
-连分数是一个被严重低估的数学工具。它用一串整数编码一个实数，并且这串整数直接给出了该实数的最佳有理逼近序列。下面我从定义开始，逐步推进到关键性质、证明，最后给出你想要的概括。
-1. 什么是连分数 一种最常用的形式是简单连分数（Simple Continued Fraction）：
-对于实数 $\alpha$，令
-$$ \alpha_0 = \alpha, \quad a_0 = \lfloor \alpha_0 \rfloor $$
-然后递归定义：
-如果 $\alpha_n$ 不是整数，则
-$$ \alpha_{n&#43;1} = \frac{1}{\alpha_n - a_n}, \quad a_{n&#43;1} = \lfloor \alpha_{n&#43;1} \rfloor $$
-这样会得到一个可能终止的整数序列 $a_0, a_1, a_2, \dots$，记作
-$$ \alpha = [a_0; a_1, a_2, a_3, \dots] $$
-其含义是： $$ \alpha = a_0 &#43; \cfrac{1}{a_1 &#43; \cfrac{1}{a_2 &#43; \cfrac{1}{a_3 &#43; \ddots}}} $$
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-28 23:19:48 +0800 CST'>April 28, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Continued Fraction Theory" href="http://localhost:1313/posts/continued-fraction-theory/"></a>
+  <footer class="entry-footer"><span title='2026-08-30 23:22:57 +0800 CST'>August 30, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Fedya the Potter Strikes Back" href="http://localhost:1313/posts/fedya-the-potter-strikes-back/"></a>
 </article>
     </main>
     
