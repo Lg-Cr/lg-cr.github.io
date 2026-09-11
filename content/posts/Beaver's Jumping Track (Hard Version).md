@@ -1,7 +1,7 @@
 +++
 date = '2026-09-11T23:45:22+08:00'
 draft = false
-title = 'Beaver's Jumping Track (Hard Version)'
+title = "Beaver's Jumping Track (Hard Version)"
 tags = ['Solutions', 'DS', 'SegTree']
 +++
 

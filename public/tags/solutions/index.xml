@@ -6,8 +6,26 @@
     <description>Recent content in Solutions on Inftopia</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 30 Aug 2026 23:22:57 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 23:45:22 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/solutions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beaver&#39;s Jumping Track (Hard Version)</title>
+      <link>http://localhost:1313/posts/beavers-jumping-track-hard-version/</link>
+      <pubDate>Fri, 11 Sep 2026 23:45:22 +0800</pubDate>
+      <guid>http://localhost:1313/posts/beavers-jumping-track-hard-version/</guid>
+      <description>&lt;p&gt;很 educational 的题目。&lt;/p&gt;
+&lt;p&gt;可以看作是线段树的一种比较泛化的形式。&lt;/p&gt;
+&lt;p&gt;好的聚焦具体问题。&lt;/p&gt;
+&lt;p&gt;如果不强制在线，一个经典的做法是，对序列进行扫描线并维护时间轴。简直是天然的结构。&lt;/p&gt;
+&lt;p&gt;然后一个很本质的思考方向是，你在做线段树的时候，你其实在做一个合并。因为你要快速地查询单点的值，肯定是要通过某些压缩的结构来做到。&lt;/p&gt;
+&lt;p&gt;这个最大子段和的结构的合并是经典的。（都做这个题了应该会）&lt;/p&gt;
+&lt;p&gt;很明显的是这看起来比普通的区间修改单点查询强多了。因此考虑线段树。&lt;/p&gt;
+&lt;p&gt;我们发现我们可以把信息当成一个 Tag 来进行维护，每次询问就是 pushdown 到最底下然后看看 Tag。然后 Tag 之间是好合并的。&lt;/p&gt;
+&lt;p&gt;具体一点的话。考虑一个 Tag，他总是由两段组成，前一段是跟你初始的 a 有关，只可能是 ±a。而后一段都是常量。&lt;/p&gt;
+&lt;p&gt;因为每个地方的 a 不一样，我们可以分开维护。具体来讲对于第一段常量段我们只把 ±a 的符号提出来做最大子段和，容易知道乘上 ∣a∣ 后是对的。&lt;/p&gt;
+&lt;p&gt;每次 pushdown 其实就是把父亲的 Tag 接到儿子的后面。在接的时候如果前面的段有常量段了那后面的段的变量段也会变成常量。&lt;/p&gt;
+&lt;p&gt;注意 x 正负不同的时候因为取 max 所以形式是不同的，要都记一下。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Fedya the Potter Strikes Back</title>
       <link>http://localhost:1313/posts/fedya-the-potter-strikes-back/</link>

@@ -143,6 +143,30 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Beaver&#39;s Jumping Track (Hard Version)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>很 educational 的题目。
+可以看作是线段树的一种比较泛化的形式。
+好的聚焦具体问题。
+如果不强制在线，一个经典的做法是，对序列进行扫描线并维护时间轴。简直是天然的结构。
+然后一个很本质的思考方向是，你在做线段树的时候，你其实在做一个合并。因为你要快速地查询单点的值，肯定是要通过某些压缩的结构来做到。
+这个最大子段和的结构的合并是经典的。（都做这个题了应该会）
+很明显的是这看起来比普通的区间修改单点查询强多了。因此考虑线段树。
+我们发现我们可以把信息当成一个 Tag 来进行维护，每次询问就是 pushdown 到最底下然后看看 Tag。然后 Tag 之间是好合并的。
+具体一点的话。考虑一个 Tag，他总是由两段组成，前一段是跟你初始的 a 有关，只可能是 ±a。而后一段都是常量。
+因为每个地方的 a 不一样，我们可以分开维护。具体来讲对于第一段常量段我们只把 ±a 的符号提出来做最大子段和，容易知道乘上 ∣a∣ 后是对的。
+每次 pushdown 其实就是把父亲的 Tag 接到儿子的后面。在接的时候如果前面的段有常量段了那后面的段的变量段也会变成常量。
+注意 x 正负不同的时候因为取 max 所以形式是不同的，要都记一下。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-11 23:45:22 +0800 CST'>September 11, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
+  <a class="entry-link" aria-label="post link to Beaver&#39;s Jumping Track (Hard Version)" href="http://localhost:1313/posts/beavers-jumping-track-hard-version/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Fedya the Potter Strikes Back
     </h2>
   </header>
@@ -365,30 +389,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-06-07 22:39:05 +0800 CST'>June 7, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
   <a class="entry-link" aria-label="post link to Minimum Segments" href="http://localhost:1313/posts/minimum-segments/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Master of Modular Arithmetic
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>嗯首先我们先思考如何通过模和乘法凑出任意一个数。
-我们很容易想到我们可以用两步操作，我们指定一个大质模数（比如 1e9&#43;7），然后我们找 $\cfrac{b}{a} (\mod 10^9&#43;7)$ 作为乘法即可。
-然后我们想到把操作的一个点用来做乘和模，然后剩下一个放到最后一个点。
-然后我们就可以在 $2n-2$ 次操作内把前 $n-1$ 个都归到任意我们想要的值。
-然后我们想把最后一个也归位，但显然只有一个数不行的，我们想想两个数。不妨考虑 $n=2$ 的情况。
-我们首先想到，我们如果目的是给一个数乘上一个数且后面一定要取模的话，那实际上我们可以把这个数调得很大（因为你后面肯定要取模，可以加后面那个模数的整数倍）然后这样对另一个数就没有影响了。
-然后显然取模你是没有什么办法能避免的。
-然后我们还发现最后一次一定会把某个位置的值乘上某个数，这提示我们不妨倒序考虑。
-我们相当于说找 $a$ 的一个因子 $x$，使得其 $&gt; b$，然后可以使 $a$ 除以 $x$，$b$ 加上 $x$ 的任意倍。
-然后懒了，开始打表。
-结果打出来一坨几百个边的图，在 graph editor 里抽搐。
-只能推结论了。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-06 17:09:27 +0800 CST'>June 6, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Inftress</span></footer>
-  <a class="entry-link" aria-label="post link to Master of Modular Arithmetic" href="http://localhost:1313/posts/master-of-modular-arithmetic/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
